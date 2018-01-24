@@ -32,11 +32,13 @@
 
 #ifndef CONFIGURATION_H
 #define CONFIGURATION_H
-#define CONFIGURATION_H_VERSION 010107
+#define CONFIGURATION_H_VERSION 010110
 
 //===========================================================================
 //============================ TH3D Configuration ===========================
 //===========================================================================
+
+// ONLY UNCOMMENT THINGS IN ONE PRINTER SECTION!!! IF YOU DO NOT FOLLOW THIS THEN YOU WILL GET ERRORS.
 
 //===========================================================================
 // Creality CR-10 Options - Select Sanguino(1284P) from Tools
@@ -188,6 +190,13 @@
 // Use your own printer name
 //#define USER_PRINTER_NAME "Change Me" 
 
+// If you want to keep your heaters ON during probing uncomment the below line. We do NOT recommend doing this on AC beds.
+//#define HEATERS_ON_DURING_PROBING
+
+// If your bed pulsing from PID is causing your lights to dim (mainly with AC beds)or you want slightly quicker bed 
+// heat up times uncomment below to switch back to the old "bang-bang" method that cycles it on and off slower.
+//#define PIDBED_DISABLE
+
 //===========================================================================
 // IF YOU HAVE A CUSTOM PROBE MOUNT OR ONE THAT IS NOT PRE-SUPPORTED
 // UNCOMMENT THE CUSTOM_PROBE OPTION AND ENTER YOUR PROBE LOCATION BELOW
@@ -203,9 +212,9 @@
   *
   *      +-- BACK ---+
   *      |           |
-  *    L |    (+) P  | R <-- probe (20,20)
+  *    L |    (+) P  | R <-- probe (10,10)
   *    E |           | I
-  *    F | (-) N (+) | G <-- nozzle (10,10)
+  *    F | (-) N (+) | G <-- nozzle (0,0)
   *    T |           | H
   *      |    (-)    | T
   *      |           |

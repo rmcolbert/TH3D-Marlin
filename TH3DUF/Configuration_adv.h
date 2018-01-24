@@ -32,12 +32,12 @@
  */
 #ifndef CONFIGURATION_ADV_H
 #define CONFIGURATION_ADV_H
-#define CONFIGURATION_ADV_H_VERSION 010107
+#define CONFIGURATION_ADV_H_VERSION 010110
 
 // @section temperature
 
 #if DISABLED(PIDTEMPBED)
-  #define BED_CHECK_INTERVAL 5000 // ms between checks in bang-bang control
+  #define BED_CHECK_INTERVAL 500 // ms between checks in bang-bang control
   #if ENABLED(BED_LIMIT_SWITCHING)
     #define BED_HYSTERESIS 2 // Only disable heating if T>target+BED_HYSTERESIS and enable heating if T>target-BED_HYSTERESIS
   #endif
@@ -238,6 +238,8 @@
                                       // Note: Only affects SCROLL_LONG_FILENAMES with SDSORT_CACHE_NAMES but not SDSORT_DYNAMIC_RAM.
   #endif
 
+  #define LCD_SET_PROGRESS_MANUALLY
+  
   #if DISABLED(SLIM_1284P)
      #define SCROLL_LONG_FILENAMES
   #endif

@@ -1,6 +1,6 @@
 #ifndef CONFIGURATION_BACKEND_H
 #define CONFIGURATION_BACKEND_H
-#define CONFIGURATION_BACKEND_H_VERSION 010107
+#define CONFIGURATION_BACKEND_H_VERSION 010110
 
 //===========================================================================
 //==================== DO NOT MODIFY BELOW THIS LINE ========================
@@ -415,11 +415,11 @@
   #define TEMP_SENSOR_BED 5
 #endif
 
-#define TEMP_RESIDENCY_TIME 5  
+#define TEMP_RESIDENCY_TIME 10  
 #define TEMP_HYSTERESIS 3      
 #define TEMP_WINDOW     1      
 
-#define TEMP_BED_RESIDENCY_TIME 5 
+#define TEMP_BED_RESIDENCY_TIME 10 
 #define TEMP_BED_HYSTERESIS 3     
 #define TEMP_BED_WINDOW     1     
 
@@ -452,7 +452,9 @@
  
 #endif // PIDTEMP
 
-#define PIDTEMPBED
+#if DISABLED(PIDBED_DISABLE)
+  #define PIDTEMPBED
+#endif
 
 #define MAX_BED_POWER 255
 
@@ -490,7 +492,7 @@
   #define FIX_MOUNTED_PROBE
 #endif
 
-#if ENABLED(FIX_MOUNTED_PROBE)
+#if ENABLED(FIX_MOUNTED_PROBE) && DISABLED(HEATERS_ON_DURING_PROBING)
   #define PROBING_HEATERS_OFF   
 #endif
 
