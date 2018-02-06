@@ -155,11 +155,6 @@
 // DO NOT DISABLE THIS. LEAVE UNCOMMENTED EVEN IF NOT USING EZABL.
 #define EZABL_POINTS 4
 
-// If you use large binder clips to hold your glass or other surface please
-// uncomment this line to make the probing area set further in. If the sensor
-// probes over a binder clip it will give it an invalid reading.
-//#define BINDER_CLIPS
-
 // If you are having leveling issues with the EZABL try uncommenting the below
 // line. This will change the leveling type from bilinear to linear. Some printers
 // do better with linear leveling instead of bilinear.
