@@ -810,7 +810,7 @@
 #endif
 
 #define HOMING_FEEDRATE_XY (40*60)
-#define HOMING_FEEDRATE_Z  (10*60)
+#define HOMING_FEEDRATE_Z  (8*60)
 
 #define EEPROM_SETTINGS
 #define EEPROM_CHITCHAT
