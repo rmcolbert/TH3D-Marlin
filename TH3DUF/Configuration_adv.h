@@ -238,7 +238,9 @@
                                       // Note: Only affects SCROLL_LONG_FILENAMES with SDSORT_CACHE_NAMES but not SDSORT_DYNAMIC_RAM.
   #endif
 
-  #define LCD_SET_PROGRESS_MANUALLY
+  #if DISABLED(Anet_Lcd2004)
+    #define LCD_SET_PROGRESS_MANUALLY
+  #endif
   
   #if DISABLED(SLIM_1284P)
      #define SCROLL_LONG_FILENAMES

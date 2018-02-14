@@ -80,6 +80,9 @@
     #define Y_BED_SIZE 500
     #define Z_MAX_POS 500
   #endif
+
+  #define X_MIN_POS 0
+  #define Y_MIN_POS 0
   
   #define ENCODER_PULSES_PER_STEP 4
   #define ENCODER_STEPS_PER_MENU_ITEM 1
@@ -159,7 +162,9 @@
     #define Y_BED_SIZE 500
     #define Z_MAX_POS 500
   #endif
-  
+
+  #define X_MIN_POS 0
+  #define Y_MIN_POS 0
   #define ENCODER_PULSES_PER_STEP 4
   #define ENCODER_STEPS_PER_MENU_ITEM 1
 
@@ -216,6 +221,8 @@
     #define MOTHERBOARD BOARD_MELZI_CREALITY_ENDER2
   #endif
 
+  #define X_MIN_POS 0
+  #define Y_MIN_POS 0
   #define X_BED_SIZE 160
   #define Y_BED_SIZE 150
   #define Z_MAX_POS 220
@@ -260,6 +267,8 @@
     #define MOTHERBOARD BOARD_MKS_BASE
   #endif
 
+  #define X_MIN_POS 0
+  #define Y_MIN_POS 0
   #define X_BED_SIZE 300
   #define Y_BED_SIZE 300
   #define Z_MAX_POS 400
@@ -305,10 +314,180 @@
     #define MOTHERBOARD BOARD_RAMBO
   #endif
 
+  #define X_MIN_POS 0
+  #define Y_MIN_POS 0
   #define X_BED_SIZE 295
   #define Y_BED_SIZE 295
   #define Z_MAX_POS 250
 #endif //end taz5
+
+//ANET Model Settings - Thank you Pete for the Anet Printer settings.
+#if ENABLED(Anet_A2)||ENABLED(Anet_A6)||ENABLED(Anet_A8)||ENABLED(Anet_E10)||ENABLED(Anet_E12)
+  #define SLIM_1284P
+  #ifndef MOTHERBOARD
+    #define MOTHERBOARD BOARD_ANET_10 
+  #endif
+  #define BAUDRATE 115200
+
+  #define X_MIN_ENDSTOP_INVERTING true
+  #define Y_MIN_ENDSTOP_INVERTING true
+  #if ENABLED(EZABL_ENABLE)
+    #define Z_MIN_ENDSTOP_INVERTING true
+  #else
+    #define Z_MIN_ENDSTOP_INVERTING false
+  #endif
+  #define X_MAX_ENDSTOP_INVERTING false
+  #define Y_MAX_ENDSTOP_INVERTING false
+  #define Z_MAX_ENDSTOP_INVERTING false
+  #if ENABLED(EZABL_ENABLE)
+    #define Z_MIN_PROBE_ENDSTOP_INVERTING true
+  #else
+    #define Z_MIN_PROBE_ENDSTOP_INVERTING false
+  #endif
+
+  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
+  #define DEFAULT_MAX_FEEDRATE          { 500, 500, 15, 25 }
+  #define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 1000, 5000 }
+
+  #define DEFAULT_ACCELERATION          500   
+  #define DEFAULT_RETRACT_ACCELERATION  1000  
+  #define DEFAULT_TRAVEL_ACCELERATION   500   
+  
+  #define DEFAULT_XJERK                 10.0
+  #define DEFAULT_YJERK                 10.0
+  #define DEFAULT_ZJERK                  0.4
+  #define DEFAULT_EJERK                  5.0
+  
+  #if ENABLED(OEM_MOUNT)
+     #define FIX_MOUNTED_PROBE
+  #endif
+  #if ENABLED(BLTOUCH)
+       #define Z_SAFE_HOMING
+  #endif
+
+  #if ENABLED(Anet_Lcd2004)
+    #define ZONESTAR_LCD  
+  #endif
+  #if ENABLED(Anet_Lcd12864)
+   #define ANET_FULL_GRAPHICS_LCD
+    #define LCD_SET_PROGRESS_MANUALLY
+    #define PRINTJOB_TIMER_AUTOSTART
+  #endif
+
+  #define Z_MIN_POS 0
+  #define X_MAX_POS X_BED_SIZE
+  #define Y_MAX_POS Y_BED_SIZE
+  
+#endif
+
+#if ENABLED(A2_Small_Bed)   
+    #define X_MIN_POS 0
+    #define Y_MIN_POS 0
+    #define X_BED_SIZE 220
+    #define Y_BED_SIZE 220
+    #define Z_MAX_POS 230
+ 
+    #if ENABLED(OEM_MOUNT)
+    #define FIX_MOUNTED_PROBE
+       #define X_PROBE_OFFSET_FROM_EXTRUDER -33
+       #define Y_PROBE_OFFSET_FROM_EXTRUDER -22
+    #endif
+ 
+    #define INVERT_X_DIR false
+    #define INVERT_Y_DIR true
+    #define INVERT_Z_DIR false
+    #define INVERT_E0_DIR false 
+#endif
+
+#if ENABLED(A2_Large_Bed)
+    #define X_MIN_POS 0
+    #define Y_MIN_POS 0
+    #define X_BED_SIZE 220
+    #define Y_BED_SIZE 270
+    #define Z_MAX_POS 230
+    
+    #if ENABLED(OEM_MOUNT)
+    #define FIX_MOUNTED_PROBE
+        #define X_PROBE_OFFSET_FROM_EXTRUDER -33
+        #define Y_PROBE_OFFSET_FROM_EXTRUDER -22
+    #endif
+    #define INVERT_X_DIR false
+   #define INVERT_Y_DIR true
+    #define INVERT_Z_DIR false
+    #define INVERT_E0_DIR false 
+#endif
+
+#if ENABLED(Anet_A6)
+    #define X_MIN_POS 0
+    #define Y_MIN_POS 0
+    #define X_BED_SIZE 220
+    #define Y_BED_SIZE 220
+    #define Z_MAX_POS 250
+
+    #if ENABLED(OEM_MOUNT)
+    #define FIX_MOUNTED_PROBE
+        #define X_PROBE_OFFSET_FROM_EXTRUDER -1
+        #define Y_PROBE_OFFSET_FROM_EXTRUDER -54
+    #endif
+    #define INVERT_X_DIR false
+    #define INVERT_Y_DIR false
+    #define INVERT_Z_DIR true
+    #define INVERT_E0_DIR false
+#endif
+
+#if ENABLED(Anet_A8)
+    #define X_MIN_POS -33
+    #define Y_MIN_POS -10
+    #define X_BED_SIZE 220
+    #define Y_BED_SIZE 220
+    #define Z_MAX_POS 240
+    
+   #if ENABLED(OEM_MOUNT)
+   #define FIX_MOUNTED_PROBE
+      #define X_PROBE_OFFSET_FROM_EXTRUDER -26
+      #define Y_PROBE_OFFSET_FROM_EXTRUDER -40
+   #endif
+    #define INVERT_X_DIR false
+    #define INVERT_Y_DIR false
+    #define INVERT_Z_DIR true
+    #define INVERT_E0_DIR false
+#endif
+
+#if ENABLED(Anet_E10)
+    #define X_MIN_POS -1.5
+    #define Y_MIN_POS -7.5
+    #define X_BED_SIZE 220
+    #define Y_BED_SIZE 270
+    #define Z_MAX_POS 300
+
+    #if ENABLED(OEM_MOUNT)
+        #define FIX_MOUNTED_PROBE
+        #define X_PROBE_OFFSET_FROM_EXTRUDER -38
+        #define Y_PROBE_OFFSET_FROM_EXTRUDER -12
+    #endif
+    #define INVERT_X_DIR false
+    #define INVERT_Y_DIR true
+    #define INVERT_Z_DIR true
+    #define INVERT_E0_DIR true
+#endif
+
+#if ENABLED(Anet_E12)
+    #define X_MIN_POS -1.5
+    #define Y_MIN_POS -7.5
+    #define X_BED_SIZE 300
+    #define Y_BED_SIZE 300
+    #define Z_MAX_POS 400
+
+    #if ENABLED(OEM_MOUNT)
+    #define FIX_MOUNTED_PROBE
+       #define X_PROBE_OFFSET_FROM_EXTRUDER -38
+       #define Y_PROBE_OFFSET_FROM_EXTRUDER -12
+    #endif
+    #define INVERT_X_DIR false
+    #define INVERT_Y_DIR true
+    #define INVERT_Z_DIR true
+    #define INVERT_E0_DIR true
+#endif //end Anet model settings
 
 #if ENABLED(CR10S) || ENABLED(CR10S_MINI) || ENABLED(CR10S_S4) || ENABLED(CR10S_S5) || ENABLED(CR10) || ENABLED(CR10_MINI) || ENABLED(CR10_S4) || ENABLED(CR10_S5)
   #if ENABLED(CR10_VOLCANO)
@@ -336,7 +515,7 @@
   #endif
   #if ENABLED(ENDER2_V6)
     #define X_PROBE_OFFSET_FROM_EXTRUDER -35
-    #define Y_PROBE_OFFSET_FROM_EXTRUDER -3
+    #define Y_PROBE_OFFSET_FROM_EXTRUDER -2
   #endif
 #endif
 
@@ -378,10 +557,12 @@
 //END TH3D MAIN SETTINGS
 
 #define STRING_CONFIG_H_AUTHOR "(TH3D)"
-#if ENABLED(EZABL_ENABLE) && ENABLED(SLIM_1284P) && ENABLED(LINEAR_LEVELING)
+#if (ENABLED(EZABL_ENABLE) && ENABLED(SLIM_1284P) && ENABLED(LINEAR_LEVELING)) || (ENABLED(SKEW_CORRECTION) && ENABLED(EZABL_ENABLE) && ENABLED(SLIM_1284P) && ENABLED(LINEAR_LEVELING))
   //#define SHOW_BOOTSCREEN
 #else
-  #define SHOW_BOOTSCREEN
+  #if DISABLED(Anet_Lcd2004)
+    #define SHOW_BOOTSCREEN
+  #endif
 #endif
 #define STRING_SPLASH_LINE1 SHORT_BUILD_VERSION
 #define STRING_SPLASH_LINE2 WEBSITE_URL
@@ -504,7 +685,7 @@
 
 #define XY_PROBE_SPEED 12000
 
-#define Z_PROBE_SPEED_FAST (HOMING_FEEDRATE_Z / 2)
+#define Z_PROBE_SPEED_FAST HOMING_FEEDRATE_Z
 
 #define Z_PROBE_SPEED_SLOW (Z_PROBE_SPEED_FAST / 2)
 
@@ -512,15 +693,10 @@
   #define DELAY_BEFORE_PROBING 500  // (ms) To prevent vibrations from triggering piezo sensors
 #endif
 
-//#define MULTIPLE_PROBING 2
+#define MULTIPLE_PROBING 2
 
-#if ENABLED(KEENOVO_TEMPSENSOR) || ENABLED(TORNADO)
-  #define Z_CLEARANCE_DEPLOY_PROBE   5 
-  #define Z_CLEARANCE_BETWEEN_PROBES  3
-#else
-  #define Z_CLEARANCE_DEPLOY_PROBE   10
-  #define Z_CLEARANCE_BETWEEN_PROBES  5 
-#endif
+#define Z_CLEARANCE_DEPLOY_PROBE   5
+#define Z_CLEARANCE_BETWEEN_PROBES  3 
 
 #define Z_PROBE_OFFSET_RANGE_MIN -10
 #define Z_PROBE_OFFSET_RANGE_MAX 10
@@ -550,8 +726,6 @@
 #define Y_HOME_DIR -1
 #define Z_HOME_DIR -1
 
-#define X_MIN_POS 0
-#define Y_MIN_POS 0
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
@@ -601,22 +775,27 @@
   #define GRID_MAX_POINTS_X EZABL_POINTS
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
   
-  #if ENABLED(ENDER2)
-	#define LEFT_PROBE_BED_POSITION (max(20, X_PROBE_OFFSET_FROM_EXTRUDER))
-	#define RIGHT_PROBE_BED_POSITION (min(X_BED_SIZE - 20, X_BED_SIZE + X_PROBE_OFFSET_FROM_EXTRUDER))
-	#define FRONT_PROBE_BED_POSITION (max(20, Y_PROBE_OFFSET_FROM_EXTRUDER))
-	#define BACK_PROBE_BED_POSITION (min(Y_BED_SIZE - 20, Y_BED_SIZE + Y_PROBE_OFFSET_FROM_EXTRUDER))
-  #else
-	#define LEFT_PROBE_BED_POSITION (max(50, X_PROBE_OFFSET_FROM_EXTRUDER))
-	#define RIGHT_PROBE_BED_POSITION (min(X_BED_SIZE - 50, X_BED_SIZE + X_PROBE_OFFSET_FROM_EXTRUDER))
-	#define FRONT_PROBE_BED_POSITION (max(50, Y_PROBE_OFFSET_FROM_EXTRUDER))
-	#define BACK_PROBE_BED_POSITION (min(Y_BED_SIZE - 50, Y_BED_SIZE + Y_PROBE_OFFSET_FROM_EXTRUDER))
-  #endif
+  //#if ENABLED(ENDER2)
+	  //#define LEFT_PROBE_BED_POSITION (max(20, X_PROBE_OFFSET_FROM_EXTRUDER))
+	  //#define RIGHT_PROBE_BED_POSITION (min(X_BED_SIZE - 20, X_BED_SIZE + X_PROBE_OFFSET_FROM_EXTRUDER))
+	  //#define FRONT_PROBE_BED_POSITION (max(20, Y_PROBE_OFFSET_FROM_EXTRUDER))
+	  //#define BACK_PROBE_BED_POSITION (min(Y_BED_SIZE - 20, Y_BED_SIZE + Y_PROBE_OFFSET_FROM_EXTRUDER))
+  //#elif ENABLED(Anet_A2)||ENABLED(Anet_A6)||ENABLED(Anet_A8)||ENABLED(Anet_E10)||ENABLED(Anet_E12)
+    //#define LEFT_PROBE_BED_POSITION (max(30, X_PROBE_OFFSET_FROM_EXTRUDER))
+    //#define RIGHT_PROBE_BED_POSITION (min(X_BED_SIZE - 30, X_BED_SIZE + X_PROBE_OFFSET_FROM_EXTRUDER))
+    //#define FRONT_PROBE_BED_POSITION (max(30, Y_PROBE_OFFSET_FROM_EXTRUDER))
+    //#define BACK_PROBE_BED_POSITION (min(Y_BED_SIZE - 30, Y_BED_SIZE + Y_PROBE_OFFSET_FROM_EXTRUDER))
+  //#else
+	  #define LEFT_PROBE_BED_POSITION (max(15, X_PROBE_OFFSET_FROM_EXTRUDER))
+	  #define RIGHT_PROBE_BED_POSITION (min(X_BED_SIZE - 15, X_BED_SIZE + X_PROBE_OFFSET_FROM_EXTRUDER))
+	  #define FRONT_PROBE_BED_POSITION (max(15, Y_PROBE_OFFSET_FROM_EXTRUDER))
+	  #define BACK_PROBE_BED_POSITION (min(Y_BED_SIZE - 15, Y_BED_SIZE + Y_PROBE_OFFSET_FROM_EXTRUDER))
+  //#endif
   
   #define MIN_PROBE_EDGE 10
 
   #if ENABLED(AUTO_BED_LEVELING_BILINEAR)
-    //#define EXTRAPOLATE_BEYOND_GRID
+    #define EXTRAPOLATE_BEYOND_GRID
   #endif
 
 #endif
@@ -631,7 +810,7 @@
 #endif
 
 #define HOMING_FEEDRATE_XY (40*60)
-#define HOMING_FEEDRATE_Z  (5*60)
+#define HOMING_FEEDRATE_Z  (10*60)
 
 #define EEPROM_SETTINGS
 #define EEPROM_CHITCHAT

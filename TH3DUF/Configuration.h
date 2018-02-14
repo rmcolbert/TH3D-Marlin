@@ -14,6 +14,7 @@
 * 
 * For the Tornado, TAZ5, and CR-10S select Tools > Board > Arduino Mega 2560
 * For the Ender 2 and CR-10 select Tools > Board > Sanguino(1284P Boards)
+* For the Anet Printers select Tools > Board > Anet V1.0
 * 
 * Then select the COM port your printer is on from the Tools menu.
 * 
@@ -41,7 +42,7 @@
 // ONLY UNCOMMENT THINGS IN ONE PRINTER SECTION!!! IF YOU DO NOT FOLLOW THIS THEN YOU WILL GET ERRORS.
 
 //===========================================================================
-// Creality CR-10 Options - Select Sanguino(1284P) from Tools
+// Creality CR-10 Options - Select Sanguino(1284P) from Tools > Board
 //===========================================================================
 //#define CR10
 //#define CR10_MINI
@@ -64,7 +65,7 @@
 //#define CUSTOM_PROBE
 
 //===========================================================================
-// Creality CR-10S Options - Select Arduino Mega 2560 from Tools
+// Creality CR-10S Options - Select Arduino Mega 2560 from Tools > Board
 //===========================================================================
 //#define CR10S
 //#define CR10S_MINI
@@ -101,7 +102,7 @@
 //#define CUSTOM_PROBE
 
 //===========================================================================
-// Creality Ender 2 Options - Select Sanguino(1284P) from Tools
+// Creality Ender 2 Options - Select Sanguino(1284P) from Tools > Board
 //===========================================================================
 //#define ENDER2
 
@@ -115,7 +116,7 @@
 //#define CUSTOM_PROBE
 
 //===========================================================================
-// TEVO Tornado Options - Select Arduino Mega 2560 from Tools
+// TEVO Tornado Options - Select Arduino Mega 2560 from Tools > Board
 //===========================================================================
 //#define TORNADO
 
@@ -133,7 +134,7 @@
 //#define TORNADO_BOOT
 
 //===========================================================================
-// Lulzbot TAZ5 Options - Select Arduino Mega 2560 from Tools
+// Lulzbot TAZ5 Options - Select Arduino Mega 2560 from Tools > Board
 //===========================================================================
 //#define TAZ5
 
@@ -143,6 +144,34 @@
 
 // Probe Mounts
 //#define TAZ5_OEM
+//#define CUSTOM_PROBE
+
+//===========================================================================
+// Anet Printers Options - Select Anet 1.0 from Tools > Board
+//===========================================================================
+
+// Uncomment the Anet Model you are using
+//#define Anet_A2 //** please see option below to choose bed size for the A2 only!!
+//#define Anet_A6
+//#define Anet_A8
+//#define Anet_E10
+//#define Anet_E12
+
+// Choose bed size for A2 only
+// IGNORE THESE OPTIONS FOR MACHINES OTHER THAN THE A2
+//#define A2_Small_Bed //(220x220)
+//#define A2_Large_Bed //(220x270)
+
+// Choose which type of lcd you have (Select One option)
+//#define Anet_Lcd12864 //This is the larger lcd with the rotary controller found on most Anet machines
+//#define Anet_Lcd2004 //This is the lcd with the 5 button keypad usually found on A8 and some A2 machines
+
+// EZABL Settings - Uncomment #define EZABL_ENABLE and uncomment your mount 
+// type you are using to enable EZABL Bed Leveing features
+//#define EZABL_ENABLE
+
+// Probe Mounts
+//#define OEM_MOUNT
 //#define CUSTOM_PROBE
 
 //===========================================================================
@@ -192,6 +221,9 @@
 // heat up times uncomment below to switch back to the old "bang-bang" method that cycles it on and off slower.
 //#define PIDBED_DISABLE
 
+// Allow bed to stay pause probing to recover hear during probing - will slow down probing but make it more accurate
+//#define HEATER_RECOVERY
+
 //===========================================================================
 // IF YOU HAVE A CUSTOM PROBE MOUNT OR ONE THAT IS NOT PRE-SUPPORTED
 // UNCOMMENT THE CUSTOM_PROBE OPTION AND ENTER YOUR PROBE LOCATION BELOW
@@ -239,6 +271,61 @@
  * 'zh_TW':'Chinese (Taiwan)', test':'TEST' }
  */
 #define LCD_LANGUAGE en
+
+/**
+ * Bed Skew Compensation
+ *
+ * This feature corrects for misalignment in the XYZ axes.
+ *
+ * Take the following steps to get the bed skew in the XY plane:
+ *  1. Print a test square (e.g., https://www.thingiverse.com/thing:2563185)
+ *  2. For XY_DIAG_AC measure the diagonal A to C
+ *  3. For XY_DIAG_BD measure the diagonal B to D
+ *  4. For XY_SIDE_AD measure the edge A to D
+ *
+ * Marlin automatically computes skew factors from these measurements.
+ * Skew factors may also be computed and set manually:
+ *
+ *  - Compute AB     : SQRT(2*AC*AC+2*BD*BD-4*AD*AD)/2
+ *  - XY_SKEW_FACTOR : TAN(PI/2-ACOS((AC*AC-AB*AB-AD*AD)/(2*AB*AD)))
+ *
+ * If desired, follow the same procedure for XZ and YZ.
+ * Use these diagrams for reference:
+ *
+ *    Y                     Z                     Z
+ *    ^     B-------C       ^     B-------C       ^     B-------C
+ *    |    /       /        |    /       /        |    /       /
+ *    |   /       /         |   /       /         |   /       /
+ *    |  A-------D          |  A-------D          |  A-------D
+ *    +-------------->X     +-------------->X     +-------------->Y
+ *     XY_SKEW_FACTOR        XZ_SKEW_FACTOR        YZ_SKEW_FACTOR
+ */
+//#define SKEW_CORRECTION
+
+#if ENABLED(SKEW_CORRECTION)
+  // Input all length measurements here:
+  #define XY_DIAG_AC 282.8427124746
+  #define XY_DIAG_BD 282.8427124746
+  #define XY_SIDE_AD 200
+
+  // Or, set the default skew factors directly here
+  // to override the above measurements:
+  //#define XY_SKEW_FACTOR 0.0
+
+  //#define SKEW_CORRECTION_FOR_Z
+  #if ENABLED(SKEW_CORRECTION_FOR_Z)
+    #define XZ_DIAG_AC 282.8427124746
+    #define XZ_DIAG_BD 282.8427124746
+    #define YZ_DIAG_AC 282.8427124746
+    #define YZ_DIAG_BD 282.8427124746
+    #define YZ_SIDE_AD 200
+    #define XZ_SKEW_FACTOR 0.0
+    #define YZ_SKEW_FACTOR 0.0
+  #endif
+
+  // Enable this option for M852 to set skew at runtime
+  #define SKEW_CORRECTION_GCODE
+#endif
 
 #include "Configuration_backend.h"
 
