@@ -194,8 +194,9 @@
 // do better with linear leveling instead of bilinear.
 //#define LINEAR_LEVELING
 
-// If you want to change the esteps for you your printer you can uncomment this and set to what you want\
+// If you want to change the esteps for your printer you can uncomment this and set to what you want
 // For example the Tornado is 400, Creality & Anet Machines are 95
+// USE WHOLE NUMBERS ONLY
 //#define CUSTOM_ESTEPS 95
 
 // If you are using a V6 Hotend with the V6 Thermistor 
