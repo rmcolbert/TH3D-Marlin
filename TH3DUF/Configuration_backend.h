@@ -38,7 +38,11 @@
   #if ENABLED(TITAN_EXTRUDER)
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, TITAN_EXTRUDER_STEPS }
   #else
-    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
+    #if ENABLED(CUSTOM_ESTEPS)
+		#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS }
+	  #else
+        #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
+	#endif
   #endif
   #define DEFAULT_MAX_FEEDRATE          { 500, 500, 15, 25 }
   #define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 1000, 5000 }
@@ -128,7 +132,11 @@
   #if ENABLED(TITAN_EXTRUDER)
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, TITAN_EXTRUDER_STEPS }
   #else
-    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
+    #if ENABLED(CUSTOM_ESTEPS)
+	  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS }
+	#else
+      #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
+	#endif
   #endif
   #define DEFAULT_MAX_FEEDRATE          { 500, 500, 15, 25 }
   #define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 1000, 5000 }
@@ -218,7 +226,11 @@
   #if ENABLED(TITAN_EXTRUDER)
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, TITAN_EXTRUDER_STEPS }
   #else
-    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
+    #if ENABLED(CUSTOM_ESTEPS)
+	  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS }
+	#else
+      #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
+	#endif
   #endif
   #define DEFAULT_MAX_FEEDRATE          { 500, 500, 15, 25 }
   #define DEFAULT_MAX_ACCELERATION      { 2000, 2000, 1000, 5000 }
@@ -284,7 +296,11 @@
   #if ENABLED(TITAN_EXTRUDER)
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, TITAN_EXTRUDER_STEPS }
   #else
-    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 400 }
+	#if ENABLED(CUSTOM_ESTEPS)
+	  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS }
+	#else
+      #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 400 }
+	#endif
   #endif
   #define DEFAULT_MAX_FEEDRATE          { 500, 500, 15, 25 }
   #define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 1000, 5000 }
@@ -346,8 +362,12 @@
     #define Z_MIN_PROBE_ENDSTOP_INVERTING true
   #endif
   
-  #define DEFAULT_AXIS_STEPS_PER_UNIT {100.5,100.5,1600,830}
-
+  #if ENABLED(CUSTOM_ESTEPS)
+	#define DEFAULT_AXIS_STEPS_PER_UNIT {100.5,100.5,1600,CUSTOM_ESTEPS}
+  #else
+    #define DEFAULT_AXIS_STEPS_PER_UNIT {100.5,100.5,1600,830}
+  #end
+  
   #define DEFAULT_MAX_FEEDRATE {300, 300, 3, 25}
 
   #define DEFAULT_MAX_ACCELERATION {9000,9000,100,10000}
@@ -412,15 +432,24 @@
   #if ENABLED(Anet_A2) || ENABLED(Anet_A6) || ENABLED(Anet_A8)
     #if ENABLED(TITAN_EXTRUDER)
       #define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 400, TITAN_EXTRUDER_STEPS }
-	#else
-	  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 400, 95 }
+	  #else
+	    #if ENABLED(CUSTOM_ESTEPS)
+		    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 400, CUSTOM_ESTEPS }
+	    #else
+        #define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 400, 95 }
+      #endif
+	  #endif
 	#endif
   #else
-	#if ENABLED(TITAN_EXTRUDER)
+	  #if ENABLED(TITAN_EXTRUDER)
       #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, TITAN_EXTRUDER_STEPS }
-	#else
-	  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
-	#endif
+	  #else
+	    #if ENABLED(CUSTOM_ESTEPS)
+		   #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS }
+	    #else
+       #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
+	    #endif
+	  #endif
   #endif
   #define DEFAULT_MAX_FEEDRATE          { 500, 500, 15, 25 }
   #define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 1000, 5000 }
@@ -436,9 +465,6 @@
   
   #if ENABLED(OEM_MOUNT)
      #define FIX_MOUNTED_PROBE
-  #endif
-  #if ENABLED(BLTOUCH)
-       #define Z_SAFE_HOMING
   #endif
 
   #if ENABLED(Anet_Lcd2004)
