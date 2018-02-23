@@ -14,7 +14,11 @@
   #define X_MIN_ENDSTOP_INVERTING false
   #define Y_MIN_ENDSTOP_INVERTING false
   #if ENABLED(EZABL_ENABLE)
-    #define Z_MIN_ENDSTOP_INVERTING true
+	#if ENABLED(NC_SENSOR)
+		#define Z_MIN_ENDSTOP_INVERTING false
+	#else
+		#define Z_MIN_ENDSTOP_INVERTING true
+	#endif
   #else
     #define Z_MIN_ENDSTOP_INVERTING false
   #endif
@@ -22,7 +26,11 @@
   #define Y_MAX_ENDSTOP_INVERTING false
   #define Z_MAX_ENDSTOP_INVERTING false
   #if ENABLED(EZABL_ENABLE)
-    #define Z_MIN_PROBE_ENDSTOP_INVERTING true
+    #if ENABLED(NC_SENSOR)
+		#define Z_MIN_PROBE_ENDSTOP_INVERTING false
+	#else
+		#define Z_MIN_PROBE_ENDSTOP_INVERTING true
+	#endif
   #else
     #define Z_MIN_PROBE_ENDSTOP_INVERTING false
   #endif
@@ -96,7 +104,11 @@
   #define X_MIN_ENDSTOP_INVERTING false
   #define Y_MIN_ENDSTOP_INVERTING false
   #if ENABLED(EZABL_ENABLE)
-    #define Z_MIN_ENDSTOP_INVERTING true
+	#if ENABLED(NC_SENSOR)
+		#define Z_MIN_ENDSTOP_INVERTING false
+	#else
+		#define Z_MIN_ENDSTOP_INVERTING true
+	#endif
   #else
     #define Z_MIN_ENDSTOP_INVERTING false
   #endif
@@ -104,7 +116,11 @@
   #define Y_MAX_ENDSTOP_INVERTING false
   #define Z_MAX_ENDSTOP_INVERTING false
   #if ENABLED(EZABL_ENABLE)
-    #define Z_MIN_PROBE_ENDSTOP_INVERTING true
+    #if ENABLED(NC_SENSOR)
+		#define Z_MIN_PROBE_ENDSTOP_INVERTING false
+	#else
+		#define Z_MIN_PROBE_ENDSTOP_INVERTING true
+	#endif
   #else
     #define Z_MIN_PROBE_ENDSTOP_INVERTING false
   #endif
@@ -178,7 +194,11 @@
   #define X_MIN_ENDSTOP_INVERTING false
   #define Y_MIN_ENDSTOP_INVERTING false
   #if ENABLED(EZABL_ENABLE)
-    #define Z_MIN_ENDSTOP_INVERTING true
+	#if ENABLED(NC_SENSOR)
+		#define Z_MIN_ENDSTOP_INVERTING false
+	#else
+		#define Z_MIN_ENDSTOP_INVERTING true
+	#endif
   #else
     #define Z_MIN_ENDSTOP_INVERTING false
   #endif
@@ -186,7 +206,11 @@
   #define Y_MAX_ENDSTOP_INVERTING false
   #define Z_MAX_ENDSTOP_INVERTING false
   #if ENABLED(EZABL_ENABLE)
-    #define Z_MIN_PROBE_ENDSTOP_INVERTING true
+    #if ENABLED(NC_SENSOR)
+		#define Z_MIN_PROBE_ENDSTOP_INVERTING false
+	#else
+		#define Z_MIN_PROBE_ENDSTOP_INVERTING true
+	#endif
   #else
     #define Z_MIN_PROBE_ENDSTOP_INVERTING false
   #endif
@@ -235,11 +259,27 @@
 
   #define X_MIN_ENDSTOP_INVERTING true
   #define Y_MIN_ENDSTOP_INVERTING true
-  #define Z_MIN_ENDSTOP_INVERTING true
+  #if ENABLED(EZABL_ENABLE)
+	#if ENABLED(NC_SENSOR)
+		#define Z_MIN_ENDSTOP_INVERTING false
+	#else
+		#define Z_MIN_ENDSTOP_INVERTING true
+	#endif
+  #else
+    #define Z_MIN_ENDSTOP_INVERTING true
+  #endif
   #define X_MAX_ENDSTOP_INVERTING false
   #define Y_MAX_ENDSTOP_INVERTING false
   #define Z_MAX_ENDSTOP_INVERTING false
-  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
+  #if ENABLED(EZABL_ENABLE)
+    #if ENABLED(NC_SENSOR)
+		#define Z_MIN_PROBE_ENDSTOP_INVERTING false
+	#else
+		#define Z_MIN_PROBE_ENDSTOP_INVERTING true
+	#endif
+  #else
+    #define Z_MIN_PROBE_ENDSTOP_INVERTING true
+  #endif
 
   #if ENABLED(TITAN_EXTRUDER)
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, TITAN_EXTRUDER_STEPS }
@@ -284,12 +324,28 @@
 
   #define X_MIN_ENDSTOP_INVERTING true
   #define Y_MIN_ENDSTOP_INVERTING true
-  #define Z_MIN_ENDSTOP_INVERTING true
+  #if ENABLED(EZABL_ENABLE)
+	#if ENABLED(NC_SENSOR)
+		#define Z_MIN_ENDSTOP_INVERTING false
+	#else
+		#define Z_MIN_ENDSTOP_INVERTING true
+	#endif
+  #else
+    #define Z_MIN_ENDSTOP_INVERTING true
+  #endif
   #define X_MAX_ENDSTOP_INVERTING false
   #define Y_MAX_ENDSTOP_INVERTING false
   #define Z_MAX_ENDSTOP_INVERTING false
-  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
-
+  #if ENABLED(EZABL_ENABLE)
+    #if ENABLED(NC_SENSOR)
+		#define Z_MIN_PROBE_ENDSTOP_INVERTING false
+	#else
+		#define Z_MIN_PROBE_ENDSTOP_INVERTING true
+	#endif
+  #else
+    #define Z_MIN_PROBE_ENDSTOP_INVERTING true
+  #endif
+  
   #define DEFAULT_AXIS_STEPS_PER_UNIT {100.5,100.5,1600,830}
 
   #define DEFAULT_MAX_FEEDRATE {300, 300, 3, 25}
@@ -332,20 +388,40 @@
   #define X_MIN_ENDSTOP_INVERTING true
   #define Y_MIN_ENDSTOP_INVERTING true
   #if ENABLED(EZABL_ENABLE)
-    #define Z_MIN_ENDSTOP_INVERTING true
+	#if ENABLED(NC_SENSOR)
+		#define Z_MIN_ENDSTOP_INVERTING false
+	#else
+		#define Z_MIN_ENDSTOP_INVERTING true
+	#endif
   #else
-    #define Z_MIN_ENDSTOP_INVERTING false
+    #define Z_MIN_ENDSTOP_INVERTING true
   #endif
   #define X_MAX_ENDSTOP_INVERTING false
   #define Y_MAX_ENDSTOP_INVERTING false
   #define Z_MAX_ENDSTOP_INVERTING false
   #if ENABLED(EZABL_ENABLE)
-    #define Z_MIN_PROBE_ENDSTOP_INVERTING true
+    #if ENABLED(NC_SENSOR)
+		#define Z_MIN_PROBE_ENDSTOP_INVERTING false
+	#else
+		#define Z_MIN_PROBE_ENDSTOP_INVERTING true
+	#endif
   #else
-    #define Z_MIN_PROBE_ENDSTOP_INVERTING false
+    #define Z_MIN_PROBE_ENDSTOP_INVERTING true
   #endif
-
-  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
+  
+  #if ENABLED(Anet_A2) || ENABLED(Anet_A6) || ENABLED(Anet_A8)
+    #if ENABLED(TITAN_EXTRUDER)
+      #define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 400, TITAN_EXTRUDER_STEPS }
+	#else
+	  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 400, 95 }
+	#endif
+  #else
+	#if ENABLED(TITAN_EXTRUDER)
+      #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, TITAN_EXTRUDER_STEPS }
+	#else
+	  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
+	#endif
+  #endif
   #define DEFAULT_MAX_FEEDRATE          { 500, 500, 15, 25 }
   #define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 1000, 5000 }
 
@@ -396,7 +472,11 @@
     #define INVERT_X_DIR false
     #define INVERT_Y_DIR true
     #define INVERT_Z_DIR false
-    #define INVERT_E0_DIR false 
+    #if ENABLED(TITAN_EXTRUDER)
+      #define INVERT_E0_DIR true
+	#else
+      #define INVERT_E0_DIR false
+    #endif 
 #endif
 
 #if ENABLED(A2_Large_Bed)
@@ -412,9 +492,13 @@
         #define Y_PROBE_OFFSET_FROM_EXTRUDER -22
     #endif
     #define INVERT_X_DIR false
-   #define INVERT_Y_DIR true
+    #define INVERT_Y_DIR true
     #define INVERT_Z_DIR false
-    #define INVERT_E0_DIR false 
+    #if ENABLED(TITAN_EXTRUDER)
+      #define INVERT_E0_DIR true
+	#else
+      #define INVERT_E0_DIR false
+    #endif
 #endif
 
 #if ENABLED(Anet_A6)
@@ -432,7 +516,11 @@
     #define INVERT_X_DIR false
     #define INVERT_Y_DIR false
     #define INVERT_Z_DIR true
-    #define INVERT_E0_DIR false
+    #if ENABLED(TITAN_EXTRUDER)
+      #define INVERT_E0_DIR true
+	#else
+      #define INVERT_E0_DIR false
+    #endif
 #endif
 
 #if ENABLED(Anet_A8)
@@ -450,7 +538,11 @@
     #define INVERT_X_DIR false
     #define INVERT_Y_DIR false
     #define INVERT_Z_DIR true
-    #define INVERT_E0_DIR false
+    #if ENABLED(TITAN_EXTRUDER)
+      #define INVERT_E0_DIR true
+	#else
+      #define INVERT_E0_DIR false
+    #endif
 #endif
 
 #if ENABLED(Anet_E10)
@@ -468,7 +560,11 @@
     #define INVERT_X_DIR false
     #define INVERT_Y_DIR true
     #define INVERT_Z_DIR true
-    #define INVERT_E0_DIR true
+    #if ENABLED(TITAN_EXTRUDER)
+      #define INVERT_E0_DIR false
+	#else
+      #define INVERT_E0_DIR true
+    #endif
 #endif
 
 #if ENABLED(Anet_E12)
@@ -486,8 +582,12 @@
     #define INVERT_X_DIR false
     #define INVERT_Y_DIR true
     #define INVERT_Z_DIR true
-    #define INVERT_E0_DIR true
-#endif //end Anet model settings
+    #if ENABLED(TITAN_EXTRUDER)
+      #define INVERT_E0_DIR false
+	#else
+      #define INVERT_E0_DIR true
+    #endif
+#endif //End Anet model settings
 
 #if ENABLED(CR10S) || ENABLED(CR10S_MINI) || ENABLED(CR10S_S4) || ENABLED(CR10S_S5) || ENABLED(CR10) || ENABLED(CR10_MINI) || ENABLED(CR10_S4) || ENABLED(CR10_S5)
   #if ENABLED(CR10_VOLCANO)
@@ -775,24 +875,12 @@
   #define GRID_MAX_POINTS_X EZABL_POINTS
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
   
-  //#if ENABLED(ENDER2)
-	  //#define LEFT_PROBE_BED_POSITION (max(20, X_PROBE_OFFSET_FROM_EXTRUDER))
-	  //#define RIGHT_PROBE_BED_POSITION (min(X_BED_SIZE - 20, X_BED_SIZE + X_PROBE_OFFSET_FROM_EXTRUDER))
-	  //#define FRONT_PROBE_BED_POSITION (max(20, Y_PROBE_OFFSET_FROM_EXTRUDER))
-	  //#define BACK_PROBE_BED_POSITION (min(Y_BED_SIZE - 20, Y_BED_SIZE + Y_PROBE_OFFSET_FROM_EXTRUDER))
-  //#elif ENABLED(Anet_A2)||ENABLED(Anet_A6)||ENABLED(Anet_A8)||ENABLED(Anet_E10)||ENABLED(Anet_E12)
-    //#define LEFT_PROBE_BED_POSITION (max(30, X_PROBE_OFFSET_FROM_EXTRUDER))
-    //#define RIGHT_PROBE_BED_POSITION (min(X_BED_SIZE - 30, X_BED_SIZE + X_PROBE_OFFSET_FROM_EXTRUDER))
-    //#define FRONT_PROBE_BED_POSITION (max(30, Y_PROBE_OFFSET_FROM_EXTRUDER))
-    //#define BACK_PROBE_BED_POSITION (min(Y_BED_SIZE - 30, Y_BED_SIZE + Y_PROBE_OFFSET_FROM_EXTRUDER))
-  //#else
-	  #define LEFT_PROBE_BED_POSITION (max(15, X_PROBE_OFFSET_FROM_EXTRUDER))
-	  #define RIGHT_PROBE_BED_POSITION (min(X_BED_SIZE - 15, X_BED_SIZE + X_PROBE_OFFSET_FROM_EXTRUDER))
-	  #define FRONT_PROBE_BED_POSITION (max(15, Y_PROBE_OFFSET_FROM_EXTRUDER))
-	  #define BACK_PROBE_BED_POSITION (min(Y_BED_SIZE - 15, Y_BED_SIZE + Y_PROBE_OFFSET_FROM_EXTRUDER))
-  //#endif
+  #define LEFT_PROBE_BED_POSITION (max(EZABL_PROBE_EDGE, X_PROBE_OFFSET_FROM_EXTRUDER))
+  #define RIGHT_PROBE_BED_POSITION (min(X_BED_SIZE - EZABL_PROBE_EDGE, X_BED_SIZE + X_PROBE_OFFSET_FROM_EXTRUDER))
+  #define FRONT_PROBE_BED_POSITION (max(EZABL_PROBE_EDGE, Y_PROBE_OFFSET_FROM_EXTRUDER))
+  #define BACK_PROBE_BED_POSITION (min(Y_BED_SIZE - EZABL_PROBE_EDGE, Y_BED_SIZE + Y_PROBE_OFFSET_FROM_EXTRUDER))
   
-  #define MIN_PROBE_EDGE 10
+  #define MIN_PROBE_EDGE 15
 
   #if ENABLED(AUTO_BED_LEVELING_BILINEAR)
     #define EXTRAPOLATE_BEYOND_GRID
@@ -829,7 +917,7 @@
 #define NOZZLE_PARK_FEATURE
 
 #if ENABLED(NOZZLE_PARK_FEATURE)
-  #define NOZZLE_PARK_POINT { (X_MIN_POS + 2), (Y_MIN_POS + 2), 10 }
+  #define NOZZLE_PARK_POINT { 10, 10, 10 }
   #define NOZZLE_PARK_XY_FEEDRATE 100  
   #define NOZZLE_PARK_Z_FEEDRATE 5  
 #endif

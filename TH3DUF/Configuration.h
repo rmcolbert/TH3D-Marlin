@@ -184,6 +184,11 @@
 // DO NOT DISABLE THIS. LEAVE UNCOMMENTED EVEN IF NOT USING EZABL.
 #define EZABL_POINTS 4
 
+// If you want to probe in on the bed more than 15mm change this below. Do not
+// use 30mm for the Standard CR-10/s or the S4 as you will be on the bed screws.
+// Try 50mm to avoid the binder clips if you use them. Do NOT go under 15mm here.
+#define EZABL_PROBE_EDGE 15
+
 // If you are having leveling issues with the EZABL try uncommenting the below
 // line. This will change the leveling type from bilinear to linear. Some printers
 // do better with linear leveling instead of bilinear.
@@ -223,6 +228,9 @@
 
 // Allow bed to stay pause probing to recover hear during probing - will slow down probing but make it more accurate
 //#define HEATER_RECOVERY
+
+// If you are using a NC sensor instead of NO (EZABL Default) enable this option
+//#define NC_SENSOR
 
 //===========================================================================
 // IF YOU HAVE A CUSTOM PROBE MOUNT OR ONE THAT IS NOT PRE-SUPPORTED
