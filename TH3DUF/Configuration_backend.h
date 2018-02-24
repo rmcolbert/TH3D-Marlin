@@ -14,11 +14,11 @@
   #define X_MIN_ENDSTOP_INVERTING false
   #define Y_MIN_ENDSTOP_INVERTING false
   #if ENABLED(EZABL_ENABLE)
-	#if ENABLED(NC_SENSOR)
-		#define Z_MIN_ENDSTOP_INVERTING false
-	#else
-		#define Z_MIN_ENDSTOP_INVERTING true
-	#endif
+	  #if ENABLED(NC_SENSOR)
+		  #define Z_MIN_ENDSTOP_INVERTING false
+	  #else
+		  #define Z_MIN_ENDSTOP_INVERTING true
+	  #endif
   #else
     #define Z_MIN_ENDSTOP_INVERTING false
   #endif
@@ -27,10 +27,10 @@
   #define Z_MAX_ENDSTOP_INVERTING false
   #if ENABLED(EZABL_ENABLE)
     #if ENABLED(NC_SENSOR)
-		#define Z_MIN_PROBE_ENDSTOP_INVERTING false
-	#else
-		#define Z_MIN_PROBE_ENDSTOP_INVERTING true
-	#endif
+		  #define Z_MIN_PROBE_ENDSTOP_INVERTING false
+	  #else
+		  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
+	  #endif
   #else
     #define Z_MIN_PROBE_ENDSTOP_INVERTING false
   #endif
@@ -39,10 +39,10 @@
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, TITAN_EXTRUDER_STEPS }
   #else
     #if ENABLED(CUSTOM_ESTEPS)
-		#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS }
+		  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS }
 	  #else
-        #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
-	#endif
+      #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
+	  #endif
   #endif
   #define DEFAULT_MAX_FEEDRATE          { 500, 500, 15, 25 }
   #define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 1000, 5000 }
@@ -121,10 +121,10 @@
   #define Z_MAX_ENDSTOP_INVERTING false
   #if ENABLED(EZABL_ENABLE)
     #if ENABLED(NC_SENSOR)
-		#define Z_MIN_PROBE_ENDSTOP_INVERTING false
-	#else
-		#define Z_MIN_PROBE_ENDSTOP_INVERTING true
-	#endif
+		  #define Z_MIN_PROBE_ENDSTOP_INVERTING false
+	  #else
+		  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
+	  #endif
   #else
     #define Z_MIN_PROBE_ENDSTOP_INVERTING false
   #endif
@@ -133,10 +133,10 @@
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, TITAN_EXTRUDER_STEPS }
   #else
     #if ENABLED(CUSTOM_ESTEPS)
-	  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS }
-	#else
+	    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS }
+	  #else
       #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
-	#endif
+	  #endif
   #endif
   #define DEFAULT_MAX_FEEDRATE          { 500, 500, 15, 25 }
   #define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 1000, 5000 }
@@ -202,11 +202,11 @@
   #define X_MIN_ENDSTOP_INVERTING false
   #define Y_MIN_ENDSTOP_INVERTING false
   #if ENABLED(EZABL_ENABLE)
-	#if ENABLED(NC_SENSOR)
-		#define Z_MIN_ENDSTOP_INVERTING false
-	#else
-		#define Z_MIN_ENDSTOP_INVERTING true
-	#endif
+	  #if ENABLED(NC_SENSOR)
+  		#define Z_MIN_ENDSTOP_INVERTING false
+	  #else
+		  #define Z_MIN_ENDSTOP_INVERTING true
+	  #endif
   #else
     #define Z_MIN_ENDSTOP_INVERTING false
   #endif
@@ -215,10 +215,10 @@
   #define Z_MAX_ENDSTOP_INVERTING false
   #if ENABLED(EZABL_ENABLE)
     #if ENABLED(NC_SENSOR)
-		#define Z_MIN_PROBE_ENDSTOP_INVERTING false
-	#else
-		#define Z_MIN_PROBE_ENDSTOP_INVERTING true
-	#endif
+		  #define Z_MIN_PROBE_ENDSTOP_INVERTING false
+	  #else
+		  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
+	  #endif
   #else
     #define Z_MIN_PROBE_ENDSTOP_INVERTING false
   #endif
@@ -227,10 +227,10 @@
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, TITAN_EXTRUDER_STEPS }
   #else
     #if ENABLED(CUSTOM_ESTEPS)
-	  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS }
-	#else
+	    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS }
+	  #else
       #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
-	#endif
+	  #endif
   #endif
   #define DEFAULT_MAX_FEEDRATE          { 500, 500, 15, 25 }
   #define DEFAULT_MAX_ACCELERATION      { 2000, 2000, 1000, 5000 }
@@ -285,10 +285,10 @@
   #define Z_MAX_ENDSTOP_INVERTING false
   #if ENABLED(EZABL_ENABLE)
     #if ENABLED(NC_SENSOR)
-		#define Z_MIN_PROBE_ENDSTOP_INVERTING false
-	#else
-		#define Z_MIN_PROBE_ENDSTOP_INVERTING true
-	#endif
+		  #define Z_MIN_PROBE_ENDSTOP_INVERTING false
+	  #else
+		  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
+  	#endif
   #else
     #define Z_MIN_PROBE_ENDSTOP_INVERTING true
   #endif
@@ -296,11 +296,11 @@
   #if ENABLED(TITAN_EXTRUDER)
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, TITAN_EXTRUDER_STEPS }
   #else
-	#if ENABLED(CUSTOM_ESTEPS)
-	  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS }
-	#else
+	  #if ENABLED(CUSTOM_ESTEPS)
+	    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS }
+	  #else
       #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 400 }
-	#endif
+	  #endif
   #endif
   #define DEFAULT_MAX_FEEDRATE          { 500, 500, 15, 25 }
   #define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 1000, 5000 }
@@ -341,11 +341,11 @@
   #define X_MIN_ENDSTOP_INVERTING true
   #define Y_MIN_ENDSTOP_INVERTING true
   #if ENABLED(EZABL_ENABLE)
-	#if ENABLED(NC_SENSOR)
-		#define Z_MIN_ENDSTOP_INVERTING false
-	#else
-		#define Z_MIN_ENDSTOP_INVERTING true
-	#endif
+	  #if ENABLED(NC_SENSOR)
+  		#define Z_MIN_ENDSTOP_INVERTING false
+	  #else
+  		#define Z_MIN_ENDSTOP_INVERTING true
+	  #endif
   #else
     #define Z_MIN_ENDSTOP_INVERTING true
   #endif
@@ -354,19 +354,19 @@
   #define Z_MAX_ENDSTOP_INVERTING false
   #if ENABLED(EZABL_ENABLE)
     #if ENABLED(NC_SENSOR)
-		#define Z_MIN_PROBE_ENDSTOP_INVERTING false
-	#else
-		#define Z_MIN_PROBE_ENDSTOP_INVERTING true
-	#endif
+		  #define Z_MIN_PROBE_ENDSTOP_INVERTING false
+	  #else
+		  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
+	  #endif
   #else
     #define Z_MIN_PROBE_ENDSTOP_INVERTING true
   #endif
   
   #if ENABLED(CUSTOM_ESTEPS)
-	#define DEFAULT_AXIS_STEPS_PER_UNIT {100.5,100.5,1600,CUSTOM_ESTEPS}
+	  #define DEFAULT_AXIS_STEPS_PER_UNIT {100.5,100.5,1600,CUSTOM_ESTEPS}
   #else
     #define DEFAULT_AXIS_STEPS_PER_UNIT {100.5,100.5,1600,830}
-  #end
+  #endif
   
   #define DEFAULT_MAX_FEEDRATE {300, 300, 3, 25}
 
@@ -397,8 +397,8 @@
   #define Z_MAX_POS 250
 #endif //end taz5
 
-//ANET Model Settings - Base Settings from Pete, Tweaked by TH3D
-#if ENABLED(Anet_A2) || ENABLED(Anet_A6) || ENABLED(Anet_A8) || ENABLED(Anet_E10) || ENABLED(Anet_E12)
+//ANET Model Settings
+#if ENABLED(ANET_A2) || ENABLED(ANET_A6) || ENABLED(ANET_A8) || ENABLED(ANET_E10) || ENABLED(ANET_E12)
   #define SLIM_1284P
   #ifndef MOTHERBOARD
     #define MOTHERBOARD BOARD_ANET_10 
@@ -408,11 +408,11 @@
   #define X_MIN_ENDSTOP_INVERTING true
   #define Y_MIN_ENDSTOP_INVERTING true
   #if ENABLED(EZABL_ENABLE)
-	#if ENABLED(NC_SENSOR)
-		#define Z_MIN_ENDSTOP_INVERTING false
-	#else
-		#define Z_MIN_ENDSTOP_INVERTING true
-	#endif
+	  #if ENABLED(NC_SENSOR)
+  		#define Z_MIN_ENDSTOP_INVERTING false
+  	#else
+		  #define Z_MIN_ENDSTOP_INVERTING true
+	  #endif
   #else
     #define Z_MIN_ENDSTOP_INVERTING true
   #endif
@@ -421,15 +421,15 @@
   #define Z_MAX_ENDSTOP_INVERTING false
   #if ENABLED(EZABL_ENABLE)
     #if ENABLED(NC_SENSOR)
-		#define Z_MIN_PROBE_ENDSTOP_INVERTING false
-	#else
-		#define Z_MIN_PROBE_ENDSTOP_INVERTING true
-	#endif
+		  #define Z_MIN_PROBE_ENDSTOP_INVERTING false
+	  #else
+		  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
+	  #endif
   #else
     #define Z_MIN_PROBE_ENDSTOP_INVERTING true
   #endif
   
-  #if ENABLED(Anet_A2) || ENABLED(Anet_A6) || ENABLED(Anet_A8)
+  #if ENABLED(ANET_A2) || ENABLED(ANET_A6) || ENABLED(ANET_A8)
     #if ENABLED(TITAN_EXTRUDER)
       #define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 400, TITAN_EXTRUDER_STEPS }
 	  #else
@@ -439,15 +439,14 @@
         #define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 400, 95 }
       #endif
 	  #endif
-	#endif
-  #else
+	#else
 	  #if ENABLED(TITAN_EXTRUDER)
       #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, TITAN_EXTRUDER_STEPS }
 	  #else
 	    #if ENABLED(CUSTOM_ESTEPS)
-		   #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS }
+		    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS }
 	    #else
-       #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
+        #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
 	    #endif
 	  #endif
   #endif
@@ -467,10 +466,10 @@
      #define FIX_MOUNTED_PROBE
   #endif
 
-  #if ENABLED(Anet_Lcd2004)
+  #if ENABLED(ANET_LCD2004)
     #define ZONESTAR_LCD  
   #endif
-  #if ENABLED(Anet_Lcd12864)
+  #if ENABLED(ANET_LCD12864)
    #define ANET_FULL_GRAPHICS_LCD
     #define LCD_SET_PROGRESS_MANUALLY
     #define PRINTJOB_TIMER_AUTOSTART
@@ -482,7 +481,7 @@
   
 #endif
 
-#if ENABLED(A2_Small_Bed)   
+#if ENABLED(A2_SMALL_BED)   
     #define X_MIN_POS 0
     #define Y_MIN_POS 0
     #define X_BED_SIZE 220
@@ -505,7 +504,7 @@
     #endif 
 #endif
 
-#if ENABLED(A2_Large_Bed)
+#if ENABLED(A2_LARGE_BED)
     #define X_MIN_POS 0
     #define Y_MIN_POS 0
     #define X_BED_SIZE 220
@@ -527,7 +526,7 @@
     #endif
 #endif
 
-#if ENABLED(Anet_A6)
+#if ENABLED(ANET_A6)
     #define X_MIN_POS 0
     #define Y_MIN_POS 0
     #define X_BED_SIZE 220
@@ -549,7 +548,7 @@
     #endif
 #endif
 
-#if ENABLED(Anet_A8)
+#if ENABLED(ANET_A8)
     #define X_MIN_POS -33
     #define Y_MIN_POS -10
     #define X_BED_SIZE 220
@@ -571,7 +570,7 @@
     #endif
 #endif
 
-#if ENABLED(Anet_E10)
+#if ENABLED(ANET_E10)
     #define X_MIN_POS -1.5
     #define Y_MIN_POS -7.5
     #define X_BED_SIZE 220
@@ -593,7 +592,7 @@
     #endif
 #endif
 
-#if ENABLED(Anet_E12)
+#if ENABLED(ANET_E12)
     #define X_MIN_POS -1.5
     #define Y_MIN_POS -7.5
     #define X_BED_SIZE 300
@@ -613,7 +612,7 @@
 	#else
       #define INVERT_E0_DIR true
     #endif
-#endif //End Anet model settings
+#endif //End ANET model settings
 
 #if ENABLED(CR10S) || ENABLED(CR10S_MINI) || ENABLED(CR10S_S4) || ENABLED(CR10S_S5) || ENABLED(CR10) || ENABLED(CR10_MINI) || ENABLED(CR10_S4) || ENABLED(CR10_S5)
   #if ENABLED(CR10_VOLCANO)
@@ -686,7 +685,7 @@
 #if (ENABLED(EZABL_ENABLE) && ENABLED(SLIM_1284P) && ENABLED(LINEAR_LEVELING)) || (ENABLED(SKEW_CORRECTION) && ENABLED(EZABL_ENABLE) && ENABLED(SLIM_1284P) && ENABLED(LINEAR_LEVELING))
   //#define SHOW_BOOTSCREEN
 #else
-  #if DISABLED(Anet_Lcd2004)
+  #if DISABLED(ANET_LCD2004)
     #define SHOW_BOOTSCREEN
   #endif
 #endif

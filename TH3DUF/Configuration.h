@@ -14,7 +14,7 @@
 * 
 * For the Tornado, TAZ5, and CR-10S select Tools > Board > Arduino Mega 2560
 * For the Ender 2 and CR-10 select Tools > Board > Sanguino(1284P Boards)
-* For the Anet Printers select Tools > Board > Anet V1.0
+* For the ANET Printers select Tools > Board > ANET V1.0
 * 
 * Then select the COM port your printer is on from the Tools menu.
 * 
@@ -147,24 +147,24 @@
 //#define CUSTOM_PROBE
 
 //===========================================================================
-// Anet Printers Options - Select Anet 1.0 from Tools > Board
+// ANET Printers Options - Select ANET 1.0 from Tools > Board
 //===========================================================================
 
-// Uncomment the Anet Model you are using
-//#define Anet_A2 //** please see option below to choose bed size for the A2 only!!
-//#define Anet_A6
-//#define Anet_A8
-//#define Anet_E10
-//#define Anet_E12
+// Uncomment the ANET Model you are using
+//#define ANET_A2 //** please see option below to choose bed size for the A2 only!!
+//#define ANET_A6
+//#define ANET_A8
+//#define ANET_E10
+//#define ANET_E12
 
 // Choose bed size for A2 only
 // IGNORE THESE OPTIONS FOR MACHINES OTHER THAN THE A2
-//#define A2_Small_Bed //(220x220)
-//#define A2_Large_Bed //(220x270)
+//#define A2_SMALL_BED //(220x220)
+//#define A2_LARGE_BED //(220x270)
 
-// Choose which type of lcd you have (Select One option)
-//#define Anet_Lcd12864 //This is the larger lcd with the rotary controller found on most Anet machines
-//#define Anet_Lcd2004 //This is the lcd with the 5 button keypad usually found on A8 and some A2 machines
+// Choose which type of LCD you have (Select One option)
+//#define ANET_LCD12864 //This is the larger LCD with the rotary controller found on most ANET machines
+//#define ANET_LCD2004 //This is the LCD with the 5 button keypad usually found on A8 and some A2 machines
 
 // EZABL Settings - Uncomment #define EZABL_ENABLE and uncomment your mount 
 // type you are using to enable EZABL Bed Leveing features
@@ -195,7 +195,7 @@
 //#define LINEAR_LEVELING
 
 // If you want to change the esteps for your printer you can uncomment this and set to what you want
-// For example the Tornado is 400, Creality & Anet Machines are 95
+// For example the Tornado is 400, Creality & ANET Machines are 95
 // USE WHOLE NUMBERS ONLY
 //#define CUSTOM_ESTEPS 95
 

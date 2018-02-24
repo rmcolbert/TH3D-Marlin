@@ -242,7 +242,7 @@
                                       // Note: Only affects SCROLL_LONG_FILENAMES with SDSORT_CACHE_NAMES but not SDSORT_DYNAMIC_RAM.
   #endif
 
-  #if DISABLED(Anet_Lcd2004)
+  #if DISABLED(ANET_LCD2004)
     #define LCD_SET_PROGRESS_MANUALLY
   #endif
   
