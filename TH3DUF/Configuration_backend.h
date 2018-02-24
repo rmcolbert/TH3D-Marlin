@@ -397,8 +397,8 @@
   #define Z_MAX_POS 250
 #endif //end taz5
 
-//ANET Model Settings - Thank you Pete for the Anet Printer settings.
-#if ENABLED(Anet_A2)||ENABLED(Anet_A6)||ENABLED(Anet_A8)||ENABLED(Anet_E10)||ENABLED(Anet_E12)
+//ANET Model Settings - Base Settings from Pete, Tweaked by TH3D
+#if ENABLED(Anet_A2) || ENABLED(Anet_A6) || ENABLED(Anet_A8) || ENABLED(Anet_E10) || ENABLED(Anet_E12)
   #define SLIM_1284P
   #ifndef MOTHERBOARD
     #define MOTHERBOARD BOARD_ANET_10 
