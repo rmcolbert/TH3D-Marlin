@@ -62,6 +62,7 @@
 //#define CR10_V6HEAVYDUTY
 //#define CR10_OEM
 //#define CR10_FANG
+//#define TM3DAERO
 //#define CUSTOM_PROBE
 
 //===========================================================================
@@ -99,6 +100,7 @@
 //#define CR10_V6HEAVYDUTY
 //#define CR10_OEM
 //#define CR10_FANG
+//#define TM3DAERO
 //#define CUSTOM_PROBE
 
 //===========================================================================
@@ -113,6 +115,7 @@
 // Probe Mounts
 //#define ENDER2_OEM
 //#define ENDER2_V6
+//#define TM3DAERO
 //#define CUSTOM_PROBE
 
 //===========================================================================
@@ -128,6 +131,7 @@
 //#define TORNADO_OEM
 //#define TORNADO_VOLCANO
 //#define TORNADO_V6HEAVYDUTY
+//#define TM3DAERO
 //#define CUSTOM_PROBE
 
 // Use Tornado Bootscreen instead of TH3D
@@ -171,11 +175,11 @@
 //#define EZABL_ENABLE
 
 // Probe Mounts
-//#define OEM_MOUNT
+//#define ANET_OEM
 //#define CUSTOM_PROBE
 
 //===========================================================================
-// TH3D EXTRAS
+// EZABL Advanced Settings
 //===========================================================================
 
 // If you want more or less EZABL probe points change the number below
@@ -189,10 +193,23 @@
 // Try 50mm to avoid the binder clips if you use them. Do NOT go under 15mm here.
 #define EZABL_PROBE_EDGE 15
 
+// If you want to speed up the probing process you can try using the Fast Probe option
+// DO NOTE: Not all machines will be accurate at the quicker speeds. If you are noticing
+// that after enabling this option your Z height is not as consistent as before then
+// do not use this on your machine.
+//#define EZABL_FASTPROBE
+
+// This can help if you have a shaky Z axis. This will add a 500MS delay before the probe starts
+//#define EZABL_STABILIZE
+
 // If you are having leveling issues with the EZABL try uncommenting the below
 // line. This will change the leveling type from bilinear to linear. Some printers
 // do better with linear leveling instead of bilinear.
 //#define LINEAR_LEVELING
+
+//===========================================================================
+// TH3D EXTRAS
+//===========================================================================
 
 // If you want to change the esteps for your printer you can uncomment this and set to what you want
 // For example the Tornado is 400, Creality & ANET Machines are 95
@@ -231,11 +248,16 @@
 // heat up times uncomment below to switch back to the old "bang-bang" method that cycles it on and off slower.
 //#define PIDBED_DISABLE
 
-// Allow bed to stay pause probing to recover hear during probing - will slow down probing but make it more accurate
+// Allow bed to pause probing to recover heat during probing - will slow down probing but make it more accurate
 //#define HEATER_RECOVERY
 
 // If you are using a NC sensor instead of NO (EZABL Default) enable this option
 //#define NC_SENSOR
+
+// If you want to use manual mesh leveling you can enable the below option. TH3D does NOT provide free support
+// to help you use this feature. This is for generating a MANUAL mesh WITHOUT a probe. See the link below for more details.
+// Mesh Bed Leveling Documentation: http://marlinfw.org/docs/gcode/G029-mbl.html
+//#define MANUAL_MESH_LEVELING
 
 //===========================================================================
 // IF YOU HAVE A CUSTOM PROBE MOUNT OR ONE THAT IS NOT PRE-SUPPORTED
@@ -262,7 +284,7 @@
   *    (0,0)
   */
   #define X_PROBE_OFFSET_FROM_EXTRUDER 10  // X offset: -left  +right  [of the nozzle]
-  #define Y_PROBE_OFFSET_FROM_EXTRUDER 10  // Y offset: -front +behind [the nozzle]1
+  #define Y_PROBE_OFFSET_FROM_EXTRUDER 10  // Y offset: -front +behind [the nozzle]
 #endif
 
 /**
