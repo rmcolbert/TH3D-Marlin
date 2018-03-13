@@ -179,6 +179,25 @@
 //#define CUSTOM_PROBE
 
 //===========================================================================
+// Wanhao i3 Options - Select Sanguino(1284P) from Tools > Board
+//===========================================================================
+
+// Uncomment the Wanhao Model you are using
+//#define WANHAO_I3
+
+// If your thermistor temperatures are off please uncomment the 10K option below (some older
+// boards use a 10K pullup instead of a 4.7K pullup) to fix temps being off
+//#define WANHAO_10K_THERMISTOR
+
+// EZABL Settings - Uncomment #define EZABL_ENABLE and uncomment your mount 
+// type you are using to enable EZABL Bed Leveing features
+//#define EZABL_ENABLE
+
+// Probe Mounts
+//#define WANHAO_I3_OEM
+//#define CUSTOM_PROBE
+
+//===========================================================================
 // EZABL Advanced Settings
 //===========================================================================
 
@@ -191,6 +210,7 @@
 // If you want to probe in on the bed more than 15mm change this below. Do not
 // use 30mm for the Standard CR-10/s or the S4 as you will be on the bed screws.
 // Try 50mm to avoid the binder clips if you use them. Do NOT go under 15mm here.
+// You can do down to 10mm on the Wanhao i3 since it cannot print on the entire bed.
 #define EZABL_PROBE_EDGE 15
 
 // If you want to speed up the probing process you can try using the Fast Probe option
@@ -227,6 +247,10 @@
 // If you are using the Keenovo bed with a SSR and the Keenovo temperature sensor uncomment
 // the below line to enable the changes to use the Keenovo thermistor
 //#define KEENOVO_TEMPSENSOR
+
+// If you are using the TH3D 5015 High Flow Layer Fan enable this to allow the firmware
+// to properly control the fan speed. If this is not enabled then the fan may not spin at low speeds.
+//#define FAN_KICKSTART
 
 // If you are using an E3D or TH3D Titan Extruder uncomment the below line 
 // to setup the firmware to the correct steps and direction
@@ -287,6 +311,10 @@
   #define Y_PROBE_OFFSET_FROM_EXTRUDER 10  // Y offset: -front +behind [the nozzle]
 #endif
 
+//===========================================================================
+// Language
+//===========================================================================
+
 /**
  * LCD LANGUAGE
  *
@@ -295,18 +323,14 @@
  *    en, an, bg, ca, cn, cz, cz_utf8, de, el, el-gr, es, eu, fi, fr, fr_utf8, gl,
  *    hr, it, kana, kana_utf8, nl, pl, pt, pt_utf8, pt-br, pt-br_utf8, ru, sk_utf8,
  *    tr, uk, zh_CN, zh_TW, test
- *
- * :{ 'en':'English', 'an':'Aragonese', 'bg':'Bulgarian', 'ca':'Catalan', 'cn':'Chinese', 
- * 'cz':'Czech', 'cz_utf8':'Czech (UTF8)', 'de':'German', 'el':'Greek', 'el-gr':'Greek (Greece)', 
- * 'es':'Spanish', 'eu':'Basque-Euskera', 'fi':'Finnish', 'fr':'French', 'fr_utf8':'French (UTF8)', 
- * 'gl':'Galician', 'hr':'Croatian', 'it':'Italian', 'kana':'Japanese', 'kana_utf8':'Japanese (UTF8)', 
- * 'nl':'Dutch', 'pl':'Polish', 'pt':'Portuguese', 'pt-br':'Portuguese (Brazilian)', 
- * 'pt-br_utf8':'Portuguese (Brazilian UTF8)', 'pt_utf8':'Portuguese (UTF8)', 'ru':'Russian', 
- * 'sk_utf8':'Slovak (UTF8)', 'tr':'Turkish', 'uk':'Ukrainian', 'zh_CN':'Chinese (Simplified)', 
- * 'zh_TW':'Chinese (Taiwan)', test':'TEST' }
  */
-#define LCD_LANGUAGE en
 
+ #define LCD_LANGUAGE en
+
+//===========================================================================
+// Bed Skew Setup
+//===========================================================================
+  
 /**
  * Bed Skew Compensation
  *

@@ -67,6 +67,8 @@
   #define THERMISTOR_NAME "Hephestos 2"
 #elif THERMISTOR_ID == 75
   #define THERMISTOR_NAME "MGB18"
+#elif THERMISTOR_ID == 99
+  #define THERMISTOR_NAME "Wanhao Duplicator i3"
 
 // Modified thermistors
 #elif THERMISTOR_ID == 51

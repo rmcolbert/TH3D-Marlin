@@ -6,6 +6,87 @@
 //==================== DO NOT MODIFY BELOW THIS LINE ========================
 //===========================================================================
 
+//Wanhao i3 Model Settings
+#if ENABLED(WANHAO_I3)
+	#define SLIM_1284P
+  #define BAUDRATE 115200
+  
+	#ifndef MOTHERBOARD
+    #define MOTHERBOARD BOARD_MELZI_MAKR3D
+  #endif
+  #define IS_WANHAO_DI3
+
+  #define X_MIN_ENDSTOP_INVERTING true
+  #define Y_MIN_ENDSTOP_INVERTING true
+  #if ENABLED(EZABL_ENABLE)
+    #if ENABLED(NC_SENSOR)
+      #define Z_MIN_ENDSTOP_INVERTING false
+    #else
+      #define Z_MIN_ENDSTOP_INVERTING true
+    #endif
+  #else
+    #define Z_MIN_ENDSTOP_INVERTING true
+  #endif
+  #define X_MAX_ENDSTOP_INVERTING false
+  #define Y_MAX_ENDSTOP_INVERTING false
+  #define Z_MAX_ENDSTOP_INVERTING false
+  #if ENABLED(EZABL_ENABLE)
+    #if ENABLED(NC_SENSOR)
+      #define Z_MIN_PROBE_ENDSTOP_INVERTING false
+    #else
+      #define Z_MIN_PROBE_ENDSTOP_INVERTING true
+    #endif
+  #else
+    #define Z_MIN_PROBE_ENDSTOP_INVERTING true
+  #endif
+
+  #if ENABLED(TITAN_EXTRUDER)
+    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, TITAN_EXTRUDER_STEPS }
+  #else
+    #if ENABLED(CUSTOM_ESTEPS)
+      #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS }
+    #else
+      #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 100 }
+    #endif
+  #endif
+  
+  #define DEFAULT_MAX_FEEDRATE          { 300, 300, 15, 25 }
+
+  #define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 100, 10000 }
+  
+  #define DEFAULT_ACCELERATION          700    
+  #define DEFAULT_RETRACT_ACCELERATION  3000   
+  #define DEFAULT_TRAVEL_ACCELERATION   700    
+
+  #define X_BED_SIZE 200
+  #define Y_BED_SIZE 200
+  #define Z_MAX_POS 180
+
+  #define X_MIN_POS 0
+  #define Y_MIN_POS 0
+
+  #define DEFAULT_XJERK                 10.0
+  #define DEFAULT_YJERK                 10.0
+  #define DEFAULT_ZJERK                  0.4
+  #define DEFAULT_EJERK                  5.0
+
+  #define INVERT_X_DIR false
+  #define INVERT_Y_DIR false
+  #define INVERT_Z_DIR true
+
+  #if ENABLED(TITAN_EXTRUDER)
+    #define INVERT_E0_DIR false
+  #else
+    #define INVERT_E0_DIR true
+  #endif
+
+  #define ST7920_DELAY_1 DELAY_0_NOP
+  #define ST7920_DELAY_2 DELAY_3_NOP
+  #define ST7920_DELAY_3 DELAY_0_NOP
+
+  #define LCD_FOR_MELZI
+#endif
+
 //CR-10 Model Settings
 #if ENABLED(CR10) || ENABLED(CR10_MINI) || ENABLED(CR10_S4) || ENABLED(CR10_S5)
   #define SLIM_1284P
@@ -659,6 +740,10 @@
   #define X_PROBE_OFFSET_FROM_EXTRUDER -52
   #define Y_PROBE_OFFSET_FROM_EXTRUDER 15
 #endif
+#if ENABLED(WANHAO_I3_OEM)
+  #define X_PROBE_OFFSET_FROM_EXTRUDER -25
+  #define Y_PROBE_OFFSET_FROM_EXTRUDER -38
+#endif
 
 //Misc Settings
 #if defined(USER_PRINTER_NAME)
@@ -698,6 +783,8 @@
 
 #if ENABLED(V6_HOTEND)
   #define TEMP_SENSOR_0 5
+#elif ENABLED(WANHAO_10K_THERMISTOR)
+  #define TEMP_SENSOR_0 99
 #else
   #define TEMP_SENSOR_0 1
 #endif
@@ -712,7 +799,15 @@
 #elif ENABLED(KEENOVO_TEMPSENSOR)
   #define TEMP_SENSOR_BED 11
 #else
+ #if ENABLED(WANHAO_I3)
+  #if ENABLED(WANHAO_10K_THERMISTOR)
+    #define TEMP_SENSOR_BED 99
+  #else
+    #define TEMP_SENSOR_BED 1
+  #endif
+ #else
   #define TEMP_SENSOR_BED 5
+ #endif
 #endif
 
 #define TEMP_RESIDENCY_TIME 10  
@@ -971,7 +1066,7 @@
   #define LEVEL_BED_CORNERS
 #endif
 
-#if DISABLED(ENDER2) || DISABLED(EZOUT_ENABLE)
+#if DISABLED(ENDER2) || DISABLED(EZOUT_ENABLE) || DISABLED(WANHAO_I3)
   #define SPEAKER
 #endif
 

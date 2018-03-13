@@ -114,15 +114,17 @@
   #define DIGIPOT_I2C_MOTOR_CURRENTS { 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0 }  
 #endif
 
-// When first starting the main fan, run it at full speed for the
-// given number of milliseconds.  This gets the fan spinning reliably
-// before setting a PWM value. (Does not work with software PWM for fan on Sanguinololu)
-//#define FAN_KICKSTART_TIME 100
+#if ENABLED(FAN_KICKSTART)
+  // When first starting the main fan, run it at full speed for the
+  // given number of milliseconds.  This gets the fan spinning reliably
+  // before setting a PWM value. (Does not work with software PWM for fan on Sanguinololu)
+  #define FAN_KICKSTART_TIME 250
 
-// This defines the minimal speed for the main fan, run in PWM mode
-// to enable uncomment and set minimal PWM speed for reliable running (1-255)
-// if fan speed is [1 - (FAN_MIN_PWM-1)] it is set to FAN_MIN_PWM
-//#define FAN_MIN_PWM 50
+  // This defines the minimal speed for the main fan, run in PWM mode
+  // to enable uncomment and set minimal PWM speed for reliable running (1-255)
+  // if fan speed is [1 - (FAN_MIN_PWM-1)] it is set to FAN_MIN_PWM
+  #define FAN_MIN_PWM 175
+#endif
 
 #if ENABLED(TORNADO)
 #define E0_AUTO_FAN_PIN 7
