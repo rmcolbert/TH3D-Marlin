@@ -195,6 +195,7 @@
 
 // Probe Mounts
 //#define WANHAO_I3_OEM
+//#define WANHAO_I3_DIIICOOLER
 //#define CUSTOM_PROBE
 
 //===========================================================================
