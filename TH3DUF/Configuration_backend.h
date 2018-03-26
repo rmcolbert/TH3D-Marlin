@@ -652,8 +652,8 @@
 #endif
 
 #if ENABLED(ANET_E10)
-    #define X_MIN_POS -1.5
-    #define Y_MIN_POS -7.5
+    #define X_MIN_POS -2
+    #define Y_MIN_POS -8
     #define X_BED_SIZE 220
     #define Y_BED_SIZE 270
     #define Z_MAX_POS 300
@@ -674,8 +674,8 @@
 #endif
 
 #if ENABLED(ANET_E12)
-    #define X_MIN_POS -1.5
-    #define Y_MIN_POS -7.5
+    #define X_MIN_POS -2
+    #define Y_MIN_POS -8
     #define X_BED_SIZE 300
     #define Y_BED_SIZE 300
     #define Z_MAX_POS 400

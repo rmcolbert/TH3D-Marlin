@@ -132,7 +132,11 @@
 #define SDSS               31
 
 #if ENABLED(IS_MELZI)
-  #define LED_PIN          27
+  #if ENABLED(WANHAO_I3)
+    #define LED_PIN           -1
+  #else
+    #define LED_PIN          27
+  #endif
 #elif MB(STB_11)
   #define LCD_BACKLIGHT_PIN 17 // LCD backlight LED
 #endif
