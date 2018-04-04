@@ -54,7 +54,7 @@
 //#define EZOUT_ENABLE
 
 // EZABL Settings - Uncomment #define EZABL_ENABLE and uncomment your mount 
-// type you are using to enable EZABL Bed Leveing features
+// type you are using to enable EZABL Bed Leveling features
 //#define EZABL_ENABLE
 
 // Probe Mounts
@@ -92,7 +92,7 @@
 //#define EZOUT_ENABLE
 
 // EZABL Settings - Uncomment #define EZABL_ENABLE and uncomment your mount 
-// type you are using to enable EZABL Bed Leveing features
+// type you are using to enable EZABL Bed Leveling features
 //#define EZABL_ENABLE
 
 // Probe Mounts
@@ -109,7 +109,7 @@
 //#define ENDER2
 
 // EZABL Settings - Uncomment #define EZABL_ENABLE and uncomment your mount 
-// type you are using to enable EZABL Bed Leveing features
+// type you are using to enable EZABL Bed Leveling features
 //#define EZABL_ENABLE
 
 // Probe Mounts
@@ -124,7 +124,7 @@
 //#define TORNADO
 
 // EZABL Settings - Uncomment #define EZABL_ENABLE and uncomment your mount 
-// type you are using to enable EZABL Bed Leveing features
+// type you are using to enable EZABL Bed Leveling features
 //#define EZABL_ENABLE
 
 // Probe Mounts
@@ -143,7 +143,7 @@
 //#define TAZ5
 
 // EZABL Settings - Uncomment #define EZABL_ENABLE and uncomment your mount 
-// type you are using to enable EZABL Bed Leveing features
+// type you are using to enable EZABL Bed Leveling features
 //#define EZABL_ENABLE
 
 // Probe Mounts
@@ -171,7 +171,7 @@
 //#define ANET_LCD2004 //This is the LCD with the 5 button keypad usually found on A8 and some A2 machines
 
 // EZABL Settings - Uncomment #define EZABL_ENABLE and uncomment your mount 
-// type you are using to enable EZABL Bed Leveing features
+// type you are using to enable EZABL Bed Leveling features
 //#define EZABL_ENABLE
 
 // Probe Mounts
@@ -190,7 +190,7 @@
 //#define WANHAO_10K_THERMISTOR
 
 // EZABL Settings - Uncomment #define EZABL_ENABLE and uncomment your mount 
-// type you are using to enable EZABL Bed Leveing features
+// type you are using to enable EZABL Bed Leveling features
 //#define EZABL_ENABLE
 
 // Probe Mounts
@@ -220,7 +220,8 @@
 // do not use this on your machine.
 //#define EZABL_FASTPROBE
 
-// This can help if you have a shaky Z axis. This will add a 500MS delay before the probe starts
+// This can help if you have a shaky Z axis or can help with AC bed interference.
+// This will add a 500MS delay before the probe starts.
 //#define EZABL_STABILIZE
 
 // If you are having leveling issues with the EZABL try uncommenting the below

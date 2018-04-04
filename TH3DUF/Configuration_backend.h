@@ -50,7 +50,7 @@
     #endif
   #endif
   
-  #define DEFAULT_MAX_FEEDRATE          { 300, 300, 15, 25 }
+  #define DEFAULT_MAX_FEEDRATE          { 300, 300, 15, 50 }
 
   #define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 100, 10000 }
   
@@ -125,7 +125,7 @@
       #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
 	  #endif
   #endif
-  #define DEFAULT_MAX_FEEDRATE          { 500, 500, 15, 25 }
+  #define DEFAULT_MAX_FEEDRATE          { 500, 500, 15, 50 }
   #define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 100, 5000 }
 
   #define DEFAULT_ACCELERATION          500   
@@ -219,7 +219,7 @@
       #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
 	  #endif
   #endif
-  #define DEFAULT_MAX_FEEDRATE          { 500, 500, 15, 25 }
+  #define DEFAULT_MAX_FEEDRATE          { 500, 500, 15, 50 }
   #define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 100, 5000 }
 
   #define DEFAULT_ACCELERATION          500    
@@ -313,7 +313,7 @@
       #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
 	  #endif
   #endif
-  #define DEFAULT_MAX_FEEDRATE          { 500, 500, 15, 25 }
+  #define DEFAULT_MAX_FEEDRATE          { 500, 500, 15, 50 }
   #define DEFAULT_MAX_ACCELERATION      { 2000, 2000, 100, 5000 }
 
   #define DEFAULT_ACCELERATION          1000    
@@ -383,7 +383,7 @@
       #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 400 }
 	  #endif
   #endif
-  #define DEFAULT_MAX_FEEDRATE          { 500, 500, 15, 25 }
+  #define DEFAULT_MAX_FEEDRATE          { 500, 500, 15, 50 }
   #define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 100, 5000 }
 
   #define DEFAULT_ACCELERATION          500    
@@ -449,7 +449,7 @@
     #define DEFAULT_AXIS_STEPS_PER_UNIT {100.5,100.5,1600,830}
   #endif
   
-  #define DEFAULT_MAX_FEEDRATE {300, 300, 3, 25}
+  #define DEFAULT_MAX_FEEDRATE {300, 300, 3, 50}
 
   #define DEFAULT_MAX_ACCELERATION {9000,9000,100,10000}
 
@@ -531,7 +531,7 @@
 	    #endif
 	  #endif
   #endif
-  #define DEFAULT_MAX_FEEDRATE          { 500, 500, 15, 25 }
+  #define DEFAULT_MAX_FEEDRATE          { 500, 500, 15, 50 }
   #define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 100, 5000 }
 
   #define DEFAULT_ACCELERATION          500   
