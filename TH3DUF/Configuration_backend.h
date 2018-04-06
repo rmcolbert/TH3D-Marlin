@@ -6,12 +6,87 @@
 //==================== DO NOT MODIFY BELOW THIS LINE ========================
 //===========================================================================
 
+//Wanhao i3 Mini Model Settings
+#if ENABLED(WANHAO_I3MINI)
+  #define BAUDRATE 250000
+
+  #ifndef MOTHERBOARD
+    #define MOTHERBOARD BOARD_ONEPLUS1_wanhao
+  #endif
+  
+  #define X_MIN_ENDSTOP_INVERTING true
+  #define Y_MIN_ENDSTOP_INVERTING true
+  #if ENABLED(EZABL_ENABLE)
+	  #if ENABLED(NC_SENSOR)
+  		#define Z_MIN_ENDSTOP_INVERTING false
+	  #else
+		  #define Z_MIN_ENDSTOP_INVERTING true
+	  #endif
+  #else
+    #define Z_MIN_ENDSTOP_INVERTING true
+  #endif
+  #define X_MAX_ENDSTOP_INVERTING true
+  #define Y_MAX_ENDSTOP_INVERTING true
+  #define Z_MAX_ENDSTOP_INVERTING true
+  #if ENABLED(EZABL_ENABLE)
+    #if ENABLED(NC_SENSOR)
+		  #define Z_MIN_PROBE_ENDSTOP_INVERTING false
+	  #else
+		  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
+	  #endif
+  #else
+    #define Z_MIN_PROBE_ENDSTOP_INVERTING true
+  #endif
+    
+  #if ENABLED(TITAN_EXTRUDER)
+    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, TITAN_EXTRUDER_STEPS }
+  #else
+    #if ENABLED(CUSTOM_ESTEPS)
+      #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS }
+    #else
+      #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 94 }
+    #endif
+  #endif
+  #define DEFAULT_MAX_FEEDRATE          { 400, 400, 5, 25 }
+  #define DEFAULT_MAX_ACCELERATION      { 3000, 3000, 100, 3000 }
+  
+  #define DEFAULT_ACCELERATION          800    // X, Y, Z and E acceleration for printing moves
+  #define DEFAULT_RETRACT_ACCELERATION  800    // E acceleration for retracts
+  #define DEFAULT_TRAVEL_ACCELERATION   1000    // X, Y, Z acceleration for travel (non printing) moves
+
+  #define DEFAULT_XJERK                 10.0
+  #define DEFAULT_YJERK                 10.0
+  #define DEFAULT_ZJERK                  0.3
+  #define DEFAULT_EJERK                  5.0
+
+  #define X_BED_SIZE 125
+  #define Y_BED_SIZE 140
+  #define Z_MAX_POS 100
+
+  #define X_MIN_POS 0
+  #define Y_MIN_POS 0
+  
+  #define INVERT_X_DIR true
+  #define INVERT_Y_DIR false
+  #define INVERT_Z_DIR false
+  
+  #if ENABLED(TITAN_EXTRUDER)
+    #define INVERT_E0_DIR false
+  #else
+    #define INVERT_E0_DIR true
+  #endif
+
+  #define ENCODER_PULSES_PER_STEP 4
+  #define ENCODER_STEPS_PER_MENU_ITEM 1
+#endif
+//end i3 Mini Settings
+
 //Wanhao i3 Model Settings
 #if ENABLED(WANHAO_I3)
 	#define SLIM_1284P
   #define BAUDRATE 115200
   
-	#ifndef MOTHERBOARD
+  #ifndef MOTHERBOARD
     #define MOTHERBOARD BOARD_MELZI_MAKR3D
   #endif
   #define IS_WANHAO_DI3
@@ -789,6 +864,8 @@
   #define TEMP_SENSOR_0 5
 #elif ENABLED(WANHAO_10K_THERMISTOR)
   #define TEMP_SENSOR_0 99
+#elif ENABLED(WANHAO_I3MINI)
+  #define TEMP_SENSOR_0 13
 #else
   #define TEMP_SENSOR_0 1
 #endif
@@ -796,7 +873,7 @@
 #define TEMP_SENSOR_2 0
 #define TEMP_SENSOR_3 0
 #define TEMP_SENSOR_4 0
-#if ENABLED(AC_BED)
+#if ENABLED(AC_BED) || ENABLED(WANHAO_I3MINI)
   #define TEMP_SENSOR_BED 0
 #elif ENABLED(TAZ5)
   #define TEMP_SENSOR_BED 7
@@ -879,15 +956,17 @@
 #define THERMAL_PROTECTION_HOTENDS 
 #define THERMAL_PROTECTION_BED     
 
-#define USE_XMIN_PLUG
-#define USE_YMIN_PLUG
-#define USE_ZMIN_PLUG
+#if ENABLED(WANHAO_I3MINI)
+  #define USE_YMIN_PLUG
+  #define USE_ZMIN_PLUG
+  #define USE_XMAX_PLUG
+#else
+  #define USE_XMIN_PLUG
+  #define USE_YMIN_PLUG
+  #define USE_ZMIN_PLUG
+#endif
 
 #define ENDSTOPPULLUPS
-
-#define X_MAX_ENDSTOP_INVERTING false
-#define Y_MAX_ENDSTOP_INVERTING false
-#define Z_MAX_ENDSTOP_INVERTING false
 
 #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
 
@@ -940,10 +1019,16 @@
 #define INVERT_E3_DIR false
 #define INVERT_E4_DIR false
 
-#define X_HOME_DIR -1
-#define Y_HOME_DIR -1
-#define Z_HOME_DIR -1
-
+#if ENABLED(WANHAO_I3MINI)
+  #define X_HOME_DIR 1
+  #define Y_HOME_DIR -1
+  #define Z_HOME_DIR -1
+#else
+  #define X_HOME_DIR -1
+  #define Y_HOME_DIR -1
+  #define Z_HOME_DIR -1
+#endif
+  
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
@@ -1082,7 +1167,7 @@
   #endif
 #endif
 
-#if ENABLED(ENDER2)
+#if ENABLED(ENDER2) || ENABLED(WANHAO_I3MINI)
   #define MINIPANEL
 #endif
 

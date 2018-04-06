@@ -98,6 +98,7 @@
 #define BOARD_GT2560_REV_A      74    // Geeetech GT2560 Rev. A
 #define BOARD_GT2560_REV_A_PLUS 75    // Geeetech GT2560 Rev. A+ (with auto level probe)
 #define BOARD_CR10S             476   // Creality CR-10S Board
+#define	BOARD_ONEPLUS1_wanhao	511   // Wanhao i3 Mini Board
 
 //
 // ATmega1281, ATmega2561

@@ -174,6 +174,8 @@
   #include "pins_SILVER_GATE.h"       // ATmega2561
 #elif MB(CR10S)
   #include "pins_RAMPS_CR10S.h"       // ATmega2560
+#elif MB(ONEPLUS1_wanhao)
+  #include "pins_ONEPLUS1_wanhao.h"   // ATmega2560
 
 //
 // ATmega1281, ATmega2561

@@ -181,8 +181,6 @@
 //===========================================================================
 // Wanhao i3 Options - Select Sanguino(1284P) from Tools > Board
 //===========================================================================
-
-// Uncomment the Wanhao Model you are using
 //#define WANHAO_I3
 
 // If your thermistor temperatures are off please uncomment the 10K option below (some older
@@ -196,6 +194,19 @@
 // Probe Mounts
 //#define WANHAO_I3_OEM
 //#define WANHAO_I3_DIIICOOLER
+//#define CUSTOM_PROBE
+
+//===========================================================================
+// Wanhao i3 MINI Options - Select Arduino Mega 2560 from Tools > Board
+//===========================================================================
+#define WANHAO_I3MINI
+
+// EZABL Settings - Uncomment #define EZABL_ENABLE and uncomment your mount 
+// type you are using to enable EZABL Bed Leveling features
+//#define EZABL_ENABLE
+
+// Probe Mounts
+//#define WANHAO_I3MINI_OEM
 //#define CUSTOM_PROBE
 
 //===========================================================================
