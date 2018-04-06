@@ -199,7 +199,7 @@
 //===========================================================================
 // Wanhao i3 MINI Options - Select Arduino Mega 2560 from Tools > Board
 //===========================================================================
-#define WANHAO_I3MINI
+//#define WANHAO_I3MINI
 
 // EZABL Settings - Uncomment #define EZABL_ENABLE and uncomment your mount 
 // type you are using to enable EZABL Bed Leveling features
