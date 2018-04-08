@@ -3,7 +3,7 @@
 *
 * Uncomment means removing the 2 // in front of #define.
 * 
-* If you have EZABL uncomment #define EZABL_ENABLE and then uncommend the mount
+* If you have EZABL uncomment #define EZABL_ENABLE and then uncomment the mount
 * you are using with the printer. 
 * 
 * If you have a custom/unsupported mount uncomment #define CUSTOM_MOUNT
@@ -184,7 +184,7 @@
 //#define WANHAO_I3
 
 // If your thermistor temperatures are off please uncomment the 10K option below (some older
-// boards use a 10K pullup instead of a 4.7K pullup) to fix temps being off
+// boards use a 10K pull-up instead of a 4.7K pull-up) to fix temps being off
 //#define WANHAO_10K_THERMISTOR
 
 // EZABL Settings - Uncomment #define EZABL_ENABLE and uncomment your mount 
@@ -214,16 +214,17 @@
 // EZABL Advanced Settings
 //===========================================================================
 
-// If you want more or less EZABL probe points change the number below
+// If you want more or less EZABL probe points change the number below (only used if EZABL enabled)
 // Default is 4 which gives you 4x4 grid. Do not go over 10 here.
 // Ender 2 will be best with a 3x3 grid, change to a 3 for Ender 2
-// DO NOT DISABLE THIS. LEAVE UNCOMMENTED EVEN IF NOT USING EZABL.
 #define EZABL_POINTS 4
 
 // If you want to probe in on the bed more than 15mm change this below. Do not
 // use 30mm for the Standard CR-10/s or the S4 as you will be on the bed screws.
 // Try 50mm to avoid the binder clips if you use them. Do NOT go under 15mm here.
 // You can do down to 10mm on the Wanhao i3 since it cannot print on the entire bed.
+// You can do down to 5mm on the Wanhao i3 Mini since it cannot print on the entire bed.
+// (only used if EZABL enabled)
 #define EZABL_PROBE_EDGE 15
 
 // If you want to speed up the probing process you can try using the Fast Probe option
@@ -269,8 +270,7 @@
 // If you are using an E3D or TH3D Titan Extruder uncomment the below line 
 // to setup the firmware to the correct steps and direction
 //#define TITAN_EXTRUDER
-// If your titan uses steps/mm other than 463 change it below, this works for most Titans
-// DO NOT DISABLE THIS. ONLY USED IF YOU ENABLE TITAN_EXTRUDER.
+// If your titan uses steps/mm other than 463 change it below, this works for most Titans (not used if titan is disabled).
 #define TITAN_EXTRUDER_STEPS 463
 
 // Use TinyMachines Bootscreen instead of TH3D
