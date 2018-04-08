@@ -207,6 +207,7 @@
 
 // Probe Mounts
 //#define WANHAO_I3MINI_OEM
+//#define WANHAO_I3MINI_OEM_EZMINI
 //#define CUSTOM_PROBE
 
 //===========================================================================
