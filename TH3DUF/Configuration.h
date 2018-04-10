@@ -242,6 +242,9 @@
 // do better with linear leveling instead of bilinear.
 //#define LINEAR_LEVELING
 
+// If you want babystepping to modify the Z Offset uncomment the below line. 
+//#define BABYSTEP_OFFSET
+
 //===========================================================================
 // TH3D EXTRAS
 //===========================================================================
