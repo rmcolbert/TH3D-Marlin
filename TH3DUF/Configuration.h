@@ -80,8 +80,7 @@
 
 // If you want to use the CR-10 LCD with the CR-10S board uncomment the below line
 // then connect the LCD cable to EXP1 on the CR-10S board but rotate it 180 degrees.
-// You will have to force it in but it will fit and work. If you also have an EZOUT
-// this makes rotating the cable painless since the EZOut is not keyed.
+// You will have to force it in but it will fit and work.
 //#define CR10LCD_CR10S
 
 // If you are using our EZOut filament sensor kit please follow the install guide
