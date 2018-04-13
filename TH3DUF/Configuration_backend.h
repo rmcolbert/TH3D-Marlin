@@ -47,7 +47,7 @@
       #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 94 }
     #endif
   #endif
-  #define DEFAULT_MAX_FEEDRATE          { 400, 400, 15, 25 }
+  #define DEFAULT_MAX_FEEDRATE          { 400, 400, 15, 50 }
   #define DEFAULT_MAX_ACCELERATION      { 3000, 3000, 100, 3000 }
   
   #define DEFAULT_ACCELERATION          800    // X, Y, Z and E acceleration for printing moves
