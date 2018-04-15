@@ -111,14 +111,18 @@
 // type you are using to enable EZABL Bed Leveling features
 //#define EZABL_ENABLE
 
-// Probe Mounts
+// Probe Mounts (Ender 2 can use the same mounts as CR-10, Ender 2 Specific mounts minimize distance from probe to nozzle for max probing area)
 //#define ENDER2_OEM
 //#define ENDER2_V6
+//#define CR10_VOLCANO
+//#define CR10_V6HEAVYDUTY
+//#define CR10_OEM
+//#define CR10_FANG
 //#define TM3DAERO
 //#define CUSTOM_PROBE
 
 //===========================================================================
-// Creality ENDER3 Options - Select Sanguino(1284P) from Tools > Board
+// Creality Ender 3 Options - Select Sanguino(1284P) from Tools > Board
 //===========================================================================
 //#define ENDER3
 
@@ -268,7 +272,7 @@
 // TH3D EXTRAS
 //===========================================================================
 
-// If you want to change the esteps for your printer you can uncomment this and set to what you want
+// If you want to change the Esteps for your printer you can uncomment this and set to what you want
 // For example the Tornado is 400, Creality & ANET Machines are 95
 // USE WHOLE NUMBERS ONLY
 //#define CUSTOM_ESTEPS 95
