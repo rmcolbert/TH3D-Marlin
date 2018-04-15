@@ -162,8 +162,8 @@
   #define LCD_FOR_MELZI
 #endif
 
-//CR-10 Model Settings
-#if ENABLED(CR10) || ENABLED(CR10_MINI) || ENABLED(CR10_S4) || ENABLED(CR10_S5)
+//CR-10 and Ender 3 Model Settings
+#if ENABLED(CR10) || ENABLED(CR10_MINI) || ENABLED(CR10_S4) || ENABLED(CR10_S5) || ENABLED(ENDER3)
   #define SLIM_1284P
   #define BAUDRATE 115200
 
@@ -247,6 +247,12 @@
     #define X_BED_SIZE 500
     #define Y_BED_SIZE 500
     #define Z_MAX_POS 500
+  #endif
+  
+  #if ENABLED(ENDER3)
+    #define X_BED_SIZE 220
+    #define Y_BED_SIZE 220
+    #define Z_MAX_POS 250
   #endif
 
   #define X_MIN_POS 0

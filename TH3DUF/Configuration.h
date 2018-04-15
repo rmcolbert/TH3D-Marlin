@@ -118,6 +118,27 @@
 //#define CUSTOM_PROBE
 
 //===========================================================================
+// Creality ENDER3 Options - Select Sanguino(1284P) from Tools > Board
+//===========================================================================
+//#define ENDER3
+
+// If you are using our EZOut filament sensor kit please follow the install guide
+// and then uncomment the #define EZOUT_ENABLE line below.
+//#define EZOUT_ENABLE
+
+// EZABL Settings - Uncomment #define EZABL_ENABLE and uncomment your mount 
+// type you are using to enable EZABL Bed Leveling features
+//#define EZABL_ENABLE
+
+// Probe Mounts (Ender 3 uses the same mounts as CR-10)
+//#define CR10_VOLCANO
+//#define CR10_V6HEAVYDUTY
+//#define CR10_OEM
+//#define CR10_FANG
+//#define TM3DAERO
+//#define CUSTOM_PROBE
+
+//===========================================================================
 // TEVO Tornado Options - Select Arduino Mega 2560 from Tools > Board
 //===========================================================================
 //#define TORNADO
@@ -205,7 +226,6 @@
 //#define EZABL_ENABLE
 
 // Probe Mounts
-//#define WANHAO_I3MINI_OEM
 //#define WANHAO_I3MINI_OEM_EZMINI
 //#define CUSTOM_PROBE
 
