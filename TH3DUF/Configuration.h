@@ -63,6 +63,7 @@
 //#define CR10_OEM
 //#define CR10_FANG
 //#define TM3DAERO
+//#define PETSFANG
 //#define CUSTOM_PROBE
 
 //===========================================================================
@@ -100,6 +101,7 @@
 //#define CR10_OEM
 //#define CR10_FANG
 //#define TM3DAERO
+//#define PETSFANG
 //#define CUSTOM_PROBE
 
 //===========================================================================
@@ -119,6 +121,7 @@
 //#define CR10_OEM
 //#define CR10_FANG
 //#define TM3DAERO
+//#define PETSFANG
 //#define CUSTOM_PROBE
 
 //===========================================================================
@@ -140,6 +143,7 @@
 //#define CR10_OEM
 //#define CR10_FANG
 //#define TM3DAERO
+//#define PETSFANG
 //#define CUSTOM_PROBE
 
 //===========================================================================
@@ -156,6 +160,7 @@
 //#define TORNADO_VOLCANO
 //#define TORNADO_V6HEAVYDUTY
 //#define TM3DAERO
+//#define PETSFANG
 //#define CUSTOM_PROBE
 
 // Use Tornado Bootscreen instead of TH3D
