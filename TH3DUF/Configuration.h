@@ -311,14 +311,14 @@
 // Use your own printer name
 //#define USER_PRINTER_NAME "Change Me" 
 
-// If you want to keep your heaters ON during probing uncomment the below line. We do NOT recommend doing this on AC beds.
+// If you want to keep your heaters ON during probing uncomment the below line - only use if directed to by support. We do NOT recommend doing this on AC beds.
 //#define HEATERS_ON_DURING_PROBING
 
 // If your bed pulsing from PID is causing your lights to dim (mainly with AC beds)or you want slightly quicker bed 
 // heat up times uncomment below to switch back to the old "bang-bang" method that cycles it on and off slower.
 //#define PIDBED_DISABLE
 
-// Allow bed to pause probing to recover heat during probing - will slow down probing but make it more accurate
+// Allow bed to pause probing to recover heat during probing - only use if directed to by support.
 //#define HEATER_RECOVERY
 
 // If you are using a NC sensor instead of NO (EZABL Default) enable this option

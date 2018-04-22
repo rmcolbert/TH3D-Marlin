@@ -839,7 +839,7 @@
 #endif
 #if ENABLED(PETSFANG)
   #define X_PROBE_OFFSET_FROM_EXTRUDER +48
-  #defint Y_PROBE_OFFSET_FROM_EXTRUDER -2
+  #define Y_PROBE_OFFSET_FROM_EXTRUDER -2
 #endif
 
 //Misc Settings
