@@ -278,10 +278,13 @@
 // TH3D EXTRAS
 //===========================================================================
 
-// If you want to change the Esteps for your printer you can uncomment this and set to what you want
+// If you want to change the Esteps for your printer you can uncomment this and 
+// set CUSTOM_ESTEPS_VALUE to what you want
 // For example the Tornado is 400, Creality & ANET Machines are 95
 // USE WHOLE NUMBERS ONLY
-//#define CUSTOM_ESTEPS 95
+//#define CUSTOM_ESTEPS
+// This is only used if you enable CUSTOM_ESTEPS above.
+#define CUSTOM_ESTEPS_VALUE 999
 
 // If you are using a V6 Hotend with the V6 Thermistor 
 // uncomment the below line  to set the correct thermistor settings
