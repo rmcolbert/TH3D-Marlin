@@ -6,6 +6,81 @@
 //==================== DO NOT MODIFY BELOW THIS LINE ========================
 //===========================================================================
 
+//Alfawise U10 Model Settings
+#if ENABLED(ALFAWISE_U10)
+  #define BAUDRATE 250000
+
+  #ifndef MOTHERBOARD
+    #define MOTHERBOARD BOARD_RAMPSPLUS2
+  #endif
+  
+  #define X_MIN_ENDSTOP_INVERTING true
+  #define Y_MIN_ENDSTOP_INVERTING true
+  #if ENABLED(EZABL_ENABLE)
+	  #if ENABLED(NC_SENSOR)
+  		#define Z_MIN_ENDSTOP_INVERTING false
+	  #else
+		  #define Z_MIN_ENDSTOP_INVERTING true
+	  #endif
+  #else
+    #define Z_MIN_ENDSTOP_INVERTING true
+  #endif
+  #define X_MAX_ENDSTOP_INVERTING true
+  #define Y_MAX_ENDSTOP_INVERTING true
+  #define Z_MAX_ENDSTOP_INVERTING true
+  #if ENABLED(EZABL_ENABLE)
+    #if ENABLED(NC_SENSOR)
+		  #define Z_MIN_PROBE_ENDSTOP_INVERTING false
+	  #else
+		  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
+	  #endif
+  #else
+    #define Z_MIN_PROBE_ENDSTOP_INVERTING true
+  #endif
+    
+  #if ENABLED(TITAN_EXTRUDER)
+    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, TITAN_EXTRUDER_STEPS }
+  #else
+    #if ENABLED(CUSTOM_ESTEPS)
+      #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS_VALUE }
+    #else
+      #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
+    #endif
+  #endif
+  #define DEFAULT_MAX_FEEDRATE          { 400, 400, 15, 50 }
+  #define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 100, 3000 }
+  
+  #define DEFAULT_ACCELERATION          500    // X, Y, Z and E acceleration for printing moves
+  #define DEFAULT_RETRACT_ACCELERATION  500    // E acceleration for retracts
+  #define DEFAULT_TRAVEL_ACCELERATION   500    // X, Y, Z acceleration for travel (non printing) moves
+
+  #define DEFAULT_XJERK                 10.0
+  #define DEFAULT_YJERK                 10.0
+  #define DEFAULT_ZJERK                  0.3
+  #define DEFAULT_EJERK                  5.0
+
+  #define X_BED_SIZE 400
+  #define Y_BED_SIZE 400
+  #define Z_MAX_POS 500
+
+  #define X_MIN_POS 0
+  #define Y_MIN_POS 0
+  
+  #define INVERT_X_DIR true
+  #define INVERT_Y_DIR true
+  #define INVERT_Z_DIR true
+  
+  #if ENABLED(TITAN_EXTRUDER)
+    #define INVERT_E0_DIR false
+  #else
+    #define INVERT_E0_DIR true
+  #endif
+
+  //#define ENCODER_PULSES_PER_STEP 4
+  //#define ENCODER_STEPS_PER_MENU_ITEM 1
+#endif
+//End U10 Settings
+
 //Wanhao i3 Mini Model Settings
 #if ENABLED(WANHAO_I3MINI)
   #define BAUDRATE 250000
@@ -907,7 +982,7 @@
 #elif ENABLED(KEENOVO_TEMPSENSOR)
   #define TEMP_SENSOR_BED 11
 #else
- #if ENABLED(WANHAO_I3)
+ #if ENABLED(WANHAO_I3) || ENABLED(ALFAWISE_U10)
   #if ENABLED(WANHAO_10K_THERMISTOR)
     #define TEMP_SENSOR_BED 99
   #else
@@ -1071,7 +1146,7 @@
   #define MAX_SOFTWARE_ENDSTOP_Z
 #endif
 
-#if ENABLED(EZOUT_ENABLE) || (ENABLED(CR10S) && DISABLED(CR10S_NOFILAMENTSENSOR)) || (ENABLED(CR10S_MINI) && DISABLED(CR10S_NOFILAMENTSENSOR))  || (ENABLED(CR10S_S4) && DISABLED(CR10S_NOFILAMENTSENSOR)) || (ENABLED(CR10S_S5) && DISABLED(CR10S_NOFILAMENTSENSOR)) 
+#if ENABLED(EZOUT_ENABLE) || (ENABLED(CR10S) && DISABLED(CR10S_NOFILAMENTSENSOR)) || (ENABLED(CR10S_MINI) && DISABLED(CR10S_NOFILAMENTSENSOR))  || (ENABLED(CR10S_S4) && DISABLED(CR10S_NOFILAMENTSENSOR)) || (ENABLED(CR10S_S5) && DISABLED(CR10S_NOFILAMENTSENSOR)) || ENABLED(ALFAWISE_U10)
   #define FILAMENT_RUNOUT_SENSOR
   #if ENABLED(FILAMENT_RUNOUT_SENSOR)
     #if ENABLED(EZOUT_ENABLE)
@@ -1184,7 +1259,7 @@
   #define SPEAKER
 #endif
 
-#if ENABLED(CR10) || ENABLED(CR10_MINI) || ENABLED(CR10_S4) || ENABLED(CR10_S5) || ENABLED(CR10S) || ENABLED(CR10S_MINI) || ENABLED(CR10S_S4) || ENABLED(CR10S_S5) || ENABLED(TORNADO) || ENABLED(TAZ5) || ENABLED(ENDER3)
+#if ENABLED(CR10) || ENABLED(CR10_MINI) || ENABLED(CR10_S4) || ENABLED(CR10_S5) || ENABLED(CR10S) || ENABLED(CR10S_MINI) || ENABLED(CR10S_S4) || ENABLED(CR10S_S5) || ENABLED(TORNADO) || ENABLED(TAZ5) || ENABLED(ENDER3) || ENABLED(ALFAWISE_U10)
   #if ENABLED(CR10LCD_CR10S)
     #define CR10_STOCKDISPLAY
   #else

@@ -12,7 +12,7 @@
 * There are other features in the TH3D Extras section so look there for V6 Hotend,
 * Bootscreen settings, Titan Extruder and more. You only need to edit this file.
 * 
-* For the Tornado, TAZ5, and CR-10S select Tools > Board > Arduino Mega 2560
+* For the Tornado, TAZ5, Wanhao i3 Mini, Alfawise U10, and CR-10S select Tools > Board > Arduino Mega 2560
 * For the Ender 2 and CR-10 select Tools > Board > Sanguino(1284P Boards)
 * For the ANET Printers select Tools > Board > ANET V1.0
 * 
@@ -238,6 +238,23 @@
 //#define WANHAO_I3MINI_OEM
 //#define WANHAO_I3MINI_OEM_EZABLMINI
 //#define CUSTOM_PROBE
+
+//===========================================================================
+// Alfawise U10 Options - Select Arduino Mega 2560 from Tools > Board
+//===========================================================================
+//#define ALFAWISE_U10
+
+// THERE IS NO STOCK PROBE MOUNT FOR THIS MACHINE YET. 
+// YOU CAN USE A CUSTOM ONE BELOW USING THE CUSTOM_PROBE OPTION.
+// EZABL Settings - Uncomment #define EZABL_ENABLE and uncomment your mount 
+// type you are using to enable EZABL Bed Leveling features
+//#define EZABL_ENABLE
+
+// Probe Mounts
+//#define CUSTOM_PROBE
+
+// NOT SUPPORTED - LISTED FOR FUTURE USE
+//#define ALFAWISEU10_OEM - NOT SUPPORTED YET, WORK IN PROGRESS
 
 //===========================================================================
 // EZABL Advanced Settings

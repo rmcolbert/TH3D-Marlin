@@ -255,6 +255,8 @@
 #elif MB(5DPRINT)
   #include "pins_5DPRINT.h"           // AT90USB1286
 
+#elif MB(RAMPSPLUS2)
+  #include "pins_RAMPSPLUS2.h"
 #else
   #error "Unknown MOTHERBOARD value set in Configuration.h"
 #endif
