@@ -169,6 +169,7 @@
 
   #define X_MIN_ENDSTOP_INVERTING false
   #define Y_MIN_ENDSTOP_INVERTING false
+  
   #if ENABLED(EZABL_ENABLE)
 	  #if ENABLED(NC_SENSOR)
 		  #define Z_MIN_ENDSTOP_INVERTING false
@@ -178,15 +179,17 @@
   #else
     #define Z_MIN_ENDSTOP_INVERTING false
   #endif
+  
   #define X_MAX_ENDSTOP_INVERTING false
   #define Y_MAX_ENDSTOP_INVERTING false
   #define Z_MAX_ENDSTOP_INVERTING false
+  
   #if ENABLED(EZABL_ENABLE)
     #if ENABLED(NC_SENSOR)
-		  #define Z_MIN_PROBE_ENDSTOP_INVERTING false
-	  #else
-		  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
-	  #endif
+	  #define Z_MIN_PROBE_ENDSTOP_INVERTING false
+	#else
+	  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
+	#endif
   #else
     #define Z_MIN_PROBE_ENDSTOP_INVERTING false
   #endif
@@ -195,11 +198,12 @@
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, TITAN_EXTRUDER_STEPS }
   #else
     #if ENABLED(CUSTOM_ESTEPS)
-		  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS }
-	  #else
+	  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS }
+	#else
       #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
-	  #endif
+	#endif
   #endif
+  
   #define DEFAULT_MAX_FEEDRATE          { 500, 500, 15, 50 }
   #define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 100, 5000 }
 
@@ -215,6 +219,7 @@
   #define INVERT_X_DIR true
   #define INVERT_Y_DIR true
   #define INVERT_Z_DIR false
+  
   #if ENABLED(TITAN_EXTRUDER)
     #define INVERT_E0_DIR false
   #else
@@ -269,24 +274,27 @@
 
   #define X_MIN_ENDSTOP_INVERTING false
   #define Y_MIN_ENDSTOP_INVERTING false
+  
   #if ENABLED(EZABL_ENABLE)
-	#if ENABLED(NC_SENSOR)
-		#define Z_MIN_ENDSTOP_INVERTING false
-	#else
-		#define Z_MIN_ENDSTOP_INVERTING true
-	#endif
+	  #if ENABLED(NC_SENSOR)
+		  #define Z_MIN_ENDSTOP_INVERTING false
+	  #else
+		  #define Z_MIN_ENDSTOP_INVERTING true
+	  #endif
   #else
     #define Z_MIN_ENDSTOP_INVERTING false
   #endif
+  
   #define X_MAX_ENDSTOP_INVERTING false
   #define Y_MAX_ENDSTOP_INVERTING false
   #define Z_MAX_ENDSTOP_INVERTING false
+  
   #if ENABLED(EZABL_ENABLE)
     #if ENABLED(NC_SENSOR)
-		  #define Z_MIN_PROBE_ENDSTOP_INVERTING false
-	  #else
-		  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
-	  #endif
+	  #define Z_MIN_PROBE_ENDSTOP_INVERTING false
+	#else
+	  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
+	#endif
   #else
     #define Z_MIN_PROBE_ENDSTOP_INVERTING false
   #endif
@@ -295,11 +303,12 @@
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, TITAN_EXTRUDER_STEPS }
   #else
     #if ENABLED(CUSTOM_ESTEPS)
-	    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS }
-	  #else
+	  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS }
+	#else
       #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
-	  #endif
+	#endif
   #endif
+  
   #define DEFAULT_MAX_FEEDRATE          { 500, 500, 15, 50 }
   #define DEFAULT_MAX_ACCELERATION      { 1000, 1000, 100, 5000 }
 
