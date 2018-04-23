@@ -244,17 +244,13 @@
 //===========================================================================
 //#define ALFAWISE_U10
 
-// THERE IS NO STOCK PROBE MOUNT FOR THIS MACHINE YET. 
-// YOU CAN USE A CUSTOM ONE BELOW USING THE CUSTOM_PROBE OPTION.
 // EZABL Settings - Uncomment #define EZABL_ENABLE and uncomment your mount 
 // type you are using to enable EZABL Bed Leveling features
 //#define EZABL_ENABLE
 
 // Probe Mounts
+//#define ALFAWISEU10_OEM
 //#define CUSTOM_PROBE
-
-// NOT SUPPORTED - LISTED FOR FUTURE USE
-//#define ALFAWISEU10_OEM - NOT SUPPORTED YET, WORK IN PROGRESS
 
 //===========================================================================
 // EZABL Advanced Settings
