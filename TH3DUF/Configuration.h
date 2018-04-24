@@ -312,7 +312,7 @@
 //#define KEENOVO_TEMPSENSOR
 
 // If you are using the TH3D 5015 High Flow Layer Fan enable this to allow the firmware
-// to properly control the fan speed. If this is not enabled then the fan may not spin at low speeds.
+// to properly control the fan speed. If this is not enabled then the fan may not spin and/or make noise at low speeds.
 //#define FAN_KICKSTART
 
 // If you are using an E3D or TH3D Titan Extruder uncomment the below line 

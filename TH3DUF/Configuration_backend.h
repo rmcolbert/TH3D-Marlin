@@ -1275,6 +1275,11 @@
   #define MINIPANEL
 #endif
 
-#define SOFT_PWM_SCALE 0
+#if ENABLED(FAN_KICKSTART)
+  #define FAN_SOFT_PWM
+  #define SOFT_PWM_SCALE 1
+#else
+  #define SOFT_PWM_SCALE 0
+#endif
 
 #endif // CONFIGURATION_BACKEND_H
