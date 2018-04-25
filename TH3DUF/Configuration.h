@@ -114,6 +114,8 @@
 //#define EZABL_ENABLE
 
 // Probe Mounts (Ender 2 can use the same mounts as CR-10, Ender 2 Specific mounts minimize distance from probe to nozzle for max probing area)
+// If you have issues with the non-Ender 2 mounts then please print them off and switch to one of them before contacting support. 
+// This is because the probeable area on the non-Ender 2 mounts is too small typically to get a good result.
 //#define ENDER2_OEM
 //#define ENDER2_V6
 //#define CR10_VOLCANO
