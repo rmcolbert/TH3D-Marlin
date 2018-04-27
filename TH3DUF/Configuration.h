@@ -284,6 +284,7 @@
 // If you are having leveling issues with the EZABL try uncommenting the below
 // line. This will change the leveling type from bilinear to linear. Some printers
 // do better with linear leveling instead of bilinear.
+// If used with a 1284P board like the CR-10, Ender 2, Ender 3, or Wanhao the bootscreen will be disabled to save space.
 //#define LINEAR_LEVELING
 
 // If you want babystepping to modify the Z Offset uncomment the below line. 
@@ -345,6 +346,7 @@
 // If you want to use manual mesh leveling you can enable the below option. TH3D does NOT provide free support
 // to help you use this feature. This is for generating a MANUAL mesh WITHOUT a probe. See the link below for more details.
 // Mesh Bed Leveling Documentation: http://marlinfw.org/docs/gcode/G029-mbl.html
+// If used with a 1284P board like the CR-10, Ender 2, Ender 3, or Wanhao the bootscreen will be disabled to save space.
 //#define MANUAL_MESH_LEVELING
 
 //===========================================================================
