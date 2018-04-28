@@ -33,7 +33,7 @@
 
 #ifndef CONFIGURATION_H
 #define CONFIGURATION_H
-#define CONFIGURATION_H_VERSION 010110
+#define CONFIGURATION_H_VERSION 010107
 
 //===========================================================================
 //============================ TH3D Configuration ===========================
@@ -293,6 +293,14 @@
 //===========================================================================
 // TH3D EXTRAS
 //===========================================================================
+
+// Power loss recovery for SD prints - This feature tores the current state to 
+// the SD Card at the start of each layer during SD printing. If the recovery 
+// file is found at boot time, present an option on the LCD screen to continue 
+// the print from the last-known point in the file.
+// THIS FEATURE WILL CAUSE MORE WEAR ON THE SD CARD. THIS CAN POSSIBLY CAUSE
+// THE SD CARD TO NOT LAST AS LONG AS USUAL. USE ONLY IF YOU UNDERSTAND THIS RISK.
+//#define SD_POWER_RESUME
 
 // If you want to change the Esteps for your printer you can uncomment this and 
 // set CUSTOM_ESTEPS_VALUE to what you want
