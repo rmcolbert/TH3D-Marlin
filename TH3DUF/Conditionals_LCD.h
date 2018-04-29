@@ -139,11 +139,7 @@
   #if ENABLED(MAKRPANEL) || ENABLED(MINIPANEL)
     #define DOGLCD
     #define ULTIPANEL
-    #if ENABLED(WANHAO_I3MINI)
-	    #define DEFAULT_LCD_CONTRAST 255
-    #else
-      #define DEFAULT_LCD_CONTRAST 17
-  	#endif
+    #define DEFAULT_LCD_CONTRAST 17
   #endif
 
   #if ENABLED(ULTI_CONTROLLER)
@@ -354,7 +350,6 @@
         ENABLED(MAKRPANEL) \
      || ENABLED(CARTESIO_UI) \
      || ENABLED(VIKI2) \
-     || ENABLED(WANHAO_I3MINI) \
      || ENABLED(miniVIKI) \
      || ENABLED(ELB_FULL_GRAPHIC_CONTROLLER) \
     )
@@ -364,18 +359,10 @@
         #define LCD_CONTRAST_MIN 0
       #endif
       #ifndef LCD_CONTRAST_MAX
-        #if ENABLED(WANHAO_I3MINI)
-    		  #define LCD_CONTRAST_MAX 255
-    		#else
-          #define LCD_CONTRAST_MAX 63
-    		#endif
+        #define LCD_CONTRAST_MAX 63
       #endif
       #ifndef DEFAULT_LCD_CONTRAST
-        #if ENABLED(WANHAO_I3MINI)
-    		  #define DEFAULT_LCD_CONTRAST 255
-		    #else
-          #define DEFAULT_LCD_CONTRAST 32
-    		#endif
+        #define DEFAULT_LCD_CONTRAST 32
       #endif
     #endif
   #endif
