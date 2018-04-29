@@ -133,12 +133,11 @@
 // LCD / Controller
 //
 #if ENABLED(MINIPANEL)
-
   #define BEEPER_PIN       46
   // Pins for DOGM SPI LCD Support
   #define DOGLCD_A0        47
   #define DOGLCD_CS        45
-  #define LCD_BACKLIGHT_PIN 44   // backlight LED on PA3
+  #define LCD_BACKLIGHT_PIN 44  // backlight LED on PA3
 
   #define KILL_PIN         12
   // GLCD features
@@ -153,12 +152,11 @@
   #define BTN_ENC          10
 
   #define SD_DETECT_PIN    49
-
 #endif // MINIPANEL
 
 //
 // M3/M4/M5 - Spindle/Laser Control
 //
-#define SPINDLE_LASER_PWM_PIN     6   // MUST BE HARDWARE PWM
-#define SPINDLE_LASER_ENABLE_PIN  7   // Pin should have a pullup!
+#define SPINDLE_LASER_PWM_PIN     6  // MUST BE HARDWARE PWM
+#define SPINDLE_LASER_ENABLE_PIN  7  // Pin should have a pullup!
 #define SPINDLE_DIR_PIN           8

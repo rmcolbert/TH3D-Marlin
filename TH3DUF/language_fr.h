@@ -253,6 +253,7 @@
 #define MSG_DWELL                           _UxGT("Repos...")
 #define MSG_USERWAIT                        _UxGT("Atten. de l'util.")
 #define MSG_PRINT_PAUSED                    _UxGT("Impr. en pause")
+#define MSG_RESUMING                        _UxGT("Repri. de l'impr.")
 #define MSG_PRINT_ABORTED                   _UxGT("Impr. Annulee")
 #define MSG_NO_MOVE                         _UxGT("Moteurs bloques.")
 #define MSG_KILLED                          _UxGT("MORT.")
@@ -293,7 +294,8 @@
 #define MSG_ERR_MINTEMP                     _UxGT("Err: TEMP. MIN")
 #define MSG_ERR_MAXTEMP_BED                 _UxGT("Err: TEMP. MAX LIT")
 #define MSG_ERR_MINTEMP_BED                 _UxGT("Err: TEMP. MIN LIT")
-#define MSG_ERR_Z_HOMING                    MSG_HOME _UxGT(" ") MSG_X MSG_Y _UxGT(" ") MSG_FIRST
+#define MSG_ERR_Z_HOMING                    _UxGT("G28 Z interdit")
+
 #define MSG_HALTED                          _UxGT("IMPR. STOPPEE")
 #define MSG_PLEASE_RESET                    _UxGT("RaZ. SVP")
 #define MSG_SHORT_DAY                       _UxGT("j") // One character only
@@ -301,7 +303,9 @@
 #define MSG_SHORT_MINUTE                    _UxGT("m") // One character only
 
 #define MSG_HEATING                         _UxGT("En chauffe...")
-#define MSG_BED_HEATING                     _UxGT("Lit en chauffe...")
+#define MSG_HEATING_COMPLETE                _UxGT("Chauffe terminee")
+#define MSG_BED_HEATING                     _UxGT("Lit en chauffe..")
+#define MSG_BED_DONE                        _UxGT("Chauffe lit terminee")
 #define MSG_DELTA_CALIBRATE                 _UxGT("Calibration Delta")
 #define MSG_DELTA_CALIBRATE_X               _UxGT("Calibrer X")
 #define MSG_DELTA_CALIBRATE_Y               _UxGT("Calibrer Y")
@@ -357,6 +361,7 @@
 #define MSG_FILAMENT_CHANGE_OPTION_HEADER   _UxGT("OPTIONS REPRISE:")
 #define MSG_FILAMENT_CHANGE_OPTION_PURGE    _UxGT("Purger encore")
 #define MSG_FILAMENT_CHANGE_OPTION_RESUME   _UxGT("Reprendre impr.")
+#define MSG_FILAMENT_CHANGE_MINTEMP         _UxGT("La temp. minimum est ")
 #define MSG_FILAMENT_CHANGE_NOZZLE          _UxGT("  Buse: ")
 #define MSG_ERR_HOMING_FAILED               _UxGT("Echec origine")
 #define MSG_ERR_PROBING_FAILED              _UxGT("Echec sonde")
@@ -388,6 +393,7 @@
   #define MSG_FILAMENT_CHANGE_UNLOAD_1      _UxGT("Ejection...")
   #define MSG_FILAMENT_CHANGE_INSERT_1      _UxGT("Inserer et clic")
   #define MSG_FILAMENT_CHANGE_LOAD_1        _UxGT("Chargement...")
+  #define MSG_FILAMENT_CHANGE_EXTRUDE_1     _UxGT("Extrusion...")
   #define MSG_FILAMENT_CHANGE_RESUME_1      _UxGT("Reprise...")
 #endif // LCD_HEIGHT < 4
 

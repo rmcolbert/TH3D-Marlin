@@ -38,14 +38,11 @@
   License along with this library; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
-
-#include "MarlinConfig.h"
+#include <math.h>
+#include "Marlin.h"
 
 #if HAS_ABL
-
 #include "vector_3.h"
-#include "serial.h"
-#include <math.h>
 
 vector_3::vector_3() : x(0), y(0), z(0) { }
 
@@ -146,10 +143,7 @@ matrix_3x3 matrix_3x3::transpose(matrix_3x3 original) {
 }
 
 void matrix_3x3::debug(const char * const title) {
-  if (title != NULL) {
-    serialprintPGM(title);
-    SERIAL_EOL();
-  }
+  serialprintPGM(title);
   uint8_t count = 0;
   for (uint8_t i = 0; i < 3; i++) {
     for (uint8_t j = 0; j < 3; j++) {
@@ -163,3 +157,4 @@ void matrix_3x3::debug(const char * const title) {
 }
 
 #endif // HAS_ABL
+

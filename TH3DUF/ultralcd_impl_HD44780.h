@@ -73,12 +73,13 @@ extern volatile uint8_t buttons;  //an extended version of the last checked butt
     #define B_DW (BUTTON_DOWN<<B_I2C_BTN_OFFSET)
     #define B_RI (BUTTON_RIGHT<<B_I2C_BTN_OFFSET)
 
-    #undef LCD_CLICKED
     #if BUTTON_EXISTS(ENC)
       // the pause/stop/restart button is connected to BTN_ENC when used
       #define B_ST (EN_C)                            // Map the pause/stop/resume button into its normalized functional name
+      #undef LCD_CLICKED
       #define LCD_CLICKED (buttons&(B_MI|B_RI|B_ST)) // pause/stop button also acts as click until we implement proper pause/stop.
     #else
+      #undef LCD_CLICKED
       #define LCD_CLICKED (buttons&(B_MI|B_RI))
     #endif
 
@@ -115,7 +116,7 @@ extern volatile uint8_t buttons;  //an extended version of the last checked butt
     #define B_DW (_BV(BL_DW))
     #define B_RI (_BV(BL_RI))
     #define B_ST (_BV(BL_ST))
-    #define LCD_CLICKED (buttons & (B_MI|B_ST))
+    #define LCD_CLICKED ((buttons & B_MI) || (buttons & B_ST))
   #endif
 
 #endif // ULTIPANEL
@@ -334,40 +335,6 @@ static void lcd_set_custom_characters(
     B00000
   };
 
-  #if ENABLED(LCD_PROGRESS_BAR)
-
-    // CHARSET_INFO
-    const static PROGMEM byte progress[3][8] = { {
-      B00000,
-      B10000,
-      B10000,
-      B10000,
-      B10000,
-      B10000,
-      B10000,
-      B00000
-    }, {
-      B00000,
-      B10100,
-      B10100,
-      B10100,
-      B10100,
-      B10100,
-      B10100,
-      B00000
-    }, {
-      B00000,
-      B10101,
-      B10101,
-      B10101,
-      B10101,
-      B10101,
-      B10101,
-      B00000
-    } };
-
-  #endif // LCD_PROGRESS_BAR
-
   #if ENABLED(SDSUPPORT)
 
     // CHARSET_MENU
@@ -392,39 +359,87 @@ static void lcd_set_custom_characters(
       B00000
     };
 
+    #if ENABLED(LCD_PROGRESS_BAR)
+
+      // CHARSET_INFO
+      const static PROGMEM byte progress[3][8] = { {
+        B00000,
+        B10000,
+        B10000,
+        B10000,
+        B10000,
+        B10000,
+        B10000,
+        B00000
+      }, {
+        B00000,
+        B10100,
+        B10100,
+        B10100,
+        B10100,
+        B10100,
+        B10100,
+        B00000
+      }, {
+        B00000,
+        B10101,
+        B10101,
+        B10101,
+        B10101,
+        B10101,
+        B10101,
+        B00000
+      } };
+
+    #endif // LCD_PROGRESS_BAR
+
   #endif // SDSUPPORT
 
-  #if ENABLED(SHOW_BOOTSCREEN)
-    // Set boot screen corner characters
-    if (screen_charset == CHARSET_BOOT) {
-      for (uint8_t i = 4; i--;)
-        createChar_P(i, corner[i]);
-    }
-    else
+  #if ENABLED(SHOW_BOOTSCREEN) || ENABLED(LCD_PROGRESS_BAR)
+    static uint8_t char_mode = CHARSET_MENU;
+    #define CHAR_COND (screen_charset != char_mode)
+  #else
+    #define CHAR_COND true
   #endif
-    { // Info Screen uses 5 special characters
-      createChar_P(LCD_BEDTEMP_CHAR, bedTemp);
-      createChar_P(LCD_DEGREE_CHAR, degree);
-      createChar_P(LCD_STR_THERMOMETER[0], thermometer);
-      createChar_P(LCD_FEEDRATE_CHAR, feedrate);
-      createChar_P(LCD_CLOCK_CHAR, clock);
 
-      #if ENABLED(LCD_PROGRESS_BAR)
-        if (screen_charset == CHARSET_INFO) { // 3 Progress bar characters for info screen
-          for (int16_t i = 3; i--;)
-            createChar_P(LCD_STR_PROGRESS[i], progress[i]);
+  if (CHAR_COND) {
+    #if ENABLED(SHOW_BOOTSCREEN) || ENABLED(LCD_PROGRESS_BAR)
+      char_mode = screen_charset;
+      #if ENABLED(SHOW_BOOTSCREEN)
+        // Set boot screen corner characters
+        if (screen_charset == CHARSET_BOOT) {
+          for (uint8_t i = 4; i--;)
+            createChar_P(i, corner[i]);
         }
         else
       #endif
-        {
-          createChar_P(LCD_UPLEVEL_CHAR, uplevel);
+    #endif
+        { // Info Screen uses 5 special characters
+          createChar_P(LCD_BEDTEMP_CHAR, bedTemp);
+          createChar_P(LCD_DEGREE_CHAR, degree);
+          createChar_P(LCD_STR_THERMOMETER[0], thermometer);
+          createChar_P(LCD_FEEDRATE_CHAR, feedrate);
+          createChar_P(LCD_CLOCK_CHAR, clock);
+
           #if ENABLED(SDSUPPORT)
-            // SD Card sub-menu special characters
-            createChar_P(LCD_STR_REFRESH[0], refresh);
-            createChar_P(LCD_STR_FOLDER[0], folder);
+            #if ENABLED(LCD_PROGRESS_BAR)
+              if (screen_charset == CHARSET_INFO) { // 3 Progress bar characters for info screen
+                for (int16_t i = 3; i--;)
+                  createChar_P(LCD_STR_PROGRESS[i], progress[i]);
+              }
+              else
+            #endif
+              { // SD Card sub-menu special characters
+                createChar_P(LCD_UPLEVEL_CHAR, uplevel);
+                createChar_P(LCD_STR_REFRESH[0], refresh);
+                createChar_P(LCD_STR_FOLDER[0], folder);
+              }
+          #else
+            // With no SD support, only need the uplevel character
+            createChar_P(LCD_UPLEVEL_CHAR, uplevel);
           #endif
         }
-    }
+  }
 }
 
 static void lcd_implementation_init(
@@ -520,7 +535,7 @@ void lcd_printPGM_utf(const char *str, uint8_t n=LCD_WIDTH) {
       lcd_erase_line(3); \
       if (strlen(STRING) <= LCD_WIDTH) { \
         lcd.setCursor((LCD_WIDTH - lcd_strlen_P(PSTR(STRING))) / 2, 3); \
-        lcd_printPGM_utf(PSTR(STRING)); \
+        lcd_printPGM(PSTR(STRING)); \
         safe_delay(DELAY); \
       } \
       else { \
@@ -593,10 +608,10 @@ void lcd_kill_screen() {
     lcd.setCursor(0, 2);
   #else
     lcd.setCursor(0, 2);
-    lcd_printPGM_utf(PSTR(MSG_HALTED));
+    lcd_printPGM(PSTR(MSG_HALTED));
     lcd.setCursor(0, 3);
   #endif
-  lcd_printPGM_utf(PSTR(MSG_PLEASE_RESET));
+  lcd_printPGM(PSTR(MSG_PLEASE_RESET));
 }
 
 FORCE_INLINE void _draw_axis_label(const AxisEnum axis, const char* const pstr, const bool blink) {
@@ -617,13 +632,10 @@ FORCE_INLINE void _draw_axis_label(const AxisEnum axis, const char* const pstr, 
 }
 
 FORCE_INLINE void _draw_heater_status(const int8_t heater, const char prefix, const bool blink) {
-  #if HAS_HEATED_BED
-    const bool isBed = heater < 0;
-    const float t1 = (isBed ? thermalManager.degBed()       : thermalManager.degHotend(heater)),
-                t2 = (isBed ? thermalManager.degTargetBed() : thermalManager.degTargetHotend(heater));
-  #else
-    const float t1 = thermalManager.degHotend(heater), t2 = thermalManager.degTargetHotend(heater);
-  #endif
+  const bool isBed = heater < 0;
+
+  const float t1 = (isBed ? thermalManager.degBed()       : thermalManager.degHotend(heater)),
+              t2 = (isBed ? thermalManager.degTargetBed() : thermalManager.degTargetHotend(heater));
 
   if (prefix >= 0) lcd.print(prefix);
 
@@ -633,11 +645,12 @@ FORCE_INLINE void _draw_heater_status(const int8_t heater, const char prefix, co
   #if !HEATER_IDLE_HANDLER
     UNUSED(blink);
   #else
-    const bool is_idle = (
-      #if HAS_HEATED_BED
-        isBed ? thermalManager.is_bed_idle() :
+    const bool is_idle = (!isBed ? thermalManager.is_heater_idle(heater) :
+      #if HAS_TEMP_BED
+        thermalManager.is_bed_idle()
+      #else
+        false
       #endif
-      thermalManager.is_heater_idle(heater)
     );
 
     if (!blink && is_idle) {
@@ -719,7 +732,7 @@ static void lcd_implementation_status_screen() {
     //
     // Hotend 1 or Bed Temperature
     //
-    #if HOTENDS > 1 || TEMP_SENSOR_BED
+    #if HOTENDS > 1 || TEMP_SENSOR_BED != 0
 
       lcd.setCursor(8, 0);
       #if HOTENDS > 1
@@ -730,7 +743,7 @@ static void lcd_implementation_status_screen() {
         _draw_heater_status(-1, -1, blink);
       #endif
 
-    #endif // HOTENDS > 1 || TEMP_SENSOR_BED
+    #endif // HOTENDS > 1 || TEMP_SENSOR_BED != 0
 
   #else // LCD_WIDTH >= 20
 
@@ -742,17 +755,12 @@ static void lcd_implementation_status_screen() {
     //
     // Hotend 1 or Bed Temperature
     //
-    #if HOTENDS > 1 || TEMP_SENSOR_BED
+    #if HOTENDS > 1 || TEMP_SENSOR_BED != 0
       lcd.setCursor(10, 0);
       #if HOTENDS > 1
         _draw_heater_status(1, LCD_STR_THERMOMETER[0], blink);
       #else
-        _draw_heater_status(-1, (
-          #if HAS_LEVELING
-            planner.leveling_active && blink ? '_' :
-          #endif
-          LCD_BEDTEMP_CHAR
-        ), blink);
+        _draw_heater_status(-1, LCD_BEDTEMP_CHAR, blink);
       #endif
 
     #endif // HOTENDS > 1 || TEMP_SENSOR_BED != 0
@@ -781,24 +789,14 @@ static void lcd_implementation_status_screen() {
 
       lcd.setCursor(0, 1);
 
-      // If the first line has two extruder temps,
-      // show more temperatures on the next line
+      #if HOTENDS > 1 && TEMP_SENSOR_BED != 0
 
-      #if HOTENDS > 2 || (HOTENDS > 1 && TEMP_SENSOR_BED)
+        // If we both have a 2nd extruder and a heated bed,
+        // show the heated bed temp on the left,
+        // since the first line is filled with extruder temps
+      _draw_heater_status(-1, LCD_BEDTEMP_CHAR, blink);
 
-        #if HOTENDS > 2
-          _draw_heater_status(2, LCD_STR_THERMOMETER[0], blink);
-          lcd.setCursor(10, 1);
-        #endif
-
-        _draw_heater_status(-1, (
-          #if HAS_LEVELING
-            planner.leveling_active && blink ? '_' :
-          #endif
-          LCD_BEDTEMP_CHAR
-        ), blink);
-
-      #else // HOTENDS <= 2 && (HOTENDS <= 1 || !TEMP_SENSOR_BED)
+      #else
         // Before homing the axis letters are blinking 'X' <-> '?'.
         // When axis is homed but axis_known_position is false the axis letters are blinking 'X' <-> ' '.
         // When everything is ok you see a constant 'X'.
@@ -811,15 +809,15 @@ static void lcd_implementation_status_screen() {
         _draw_axis_label(Y_AXIS, PSTR(MSG_Y), blink);
         lcd.print(ftostr4sign(LOGICAL_Y_POSITION(current_position[Y_AXIS])));
 
-      #endif // HOTENDS <= 2 && (HOTENDS <= 1 || !TEMP_SENSOR_BED)
+      #endif // HOTENDS > 1 || TEMP_SENSOR_BED != 0
 
     #endif // LCD_WIDTH >= 20
 
     lcd.setCursor(LCD_WIDTH - 8, 1);
     _draw_axis_label(Z_AXIS, PSTR(MSG_Z), blink);
-    lcd.print(ftostr52sp(FIXFLOAT(LOGICAL_Z_POSITION(current_position[Z_AXIS]))));
+    lcd.print(ftostr52sp(FIXFLOAT(current_position[Z_AXIS])));
 
-    #if HAS_LEVELING && !TEMP_SENSOR_BED
+    #if HAS_LEVELING
       lcd.write(planner.leveling_active || blink ? '_' : ' ');
     #endif
 
@@ -933,10 +931,10 @@ static void lcd_implementation_status_screen() {
 
   #if ENABLED(ADVANCED_PAUSE_FEATURE)
 
-    static void lcd_implementation_hotend_status(const uint8_t row, const uint8_t extruder=active_extruder) {
+    static void lcd_implementation_hotend_status(const uint8_t row) {
       if (row < LCD_HEIGHT) {
         lcd.setCursor(LCD_WIDTH - 9, row);
-        _draw_heater_status(extruder, LCD_STR_THERMOMETER[0], lcd_blink());
+        _draw_heater_status(active_extruder, LCD_STR_THERMOMETER[0], lcd_blink());
       }
     }
 
@@ -1007,7 +1005,7 @@ static void lcd_implementation_status_screen() {
 
   void lcd_implementation_drawedit(const char* pstr, const char* const value=NULL) {
     lcd.setCursor(1, 1);
-    lcd_printPGM_utf(pstr);
+    lcd_printPGM(pstr);
     if (value != NULL) {
       lcd.write(':');
       const uint8_t valrow = (lcd_strlen_P(pstr) + 1 + lcd_strlen(value) + 1) > (LCD_WIDTH - 2) ? 2 : 1;  // Value on the next row if it won't fit
@@ -1306,18 +1304,18 @@ static void lcd_implementation_status_screen() {
         }
 
         clear_custom_char(&new_char);
-        new_char.custom_char_bits[0] = 0b11111U;              // char #0 is used for the top line of the box
+        new_char.custom_char_bits[0] = 0B11111U;              // char #0 is used for the top line of the box
         lcd.createChar(0, (uint8_t*)&new_char);
 
         clear_custom_char(&new_char);
         k = (GRID_MAX_POINTS_Y) * pixels_per_y_mesh_pnt + 1;  // row of pixels for the bottom box line
         l = k % (ULTRA_Y_PIXELS_PER_CHAR);                    // row within relevant character cell
-        new_char.custom_char_bits[l] = 0b11111U;              // char #1 is used for the bottom line of the box
+        new_char.custom_char_bits[l] = 0B11111U;              // char #1 is used for the bottom line of the box
         lcd.createChar(1, (uint8_t*)&new_char);
 
         clear_custom_char(&new_char);
         for (j = 0; j < ULTRA_Y_PIXELS_PER_CHAR; j++)
-          new_char.custom_char_bits[j] = 0b10000U;            // char #2 is used for the left edge of the box
+          new_char.custom_char_bits[j] = 0B10000U;            // char #2 is used for the left edge of the box
         lcd.createChar(2, (uint8_t*)&new_char);
 
         clear_custom_char(&new_char);

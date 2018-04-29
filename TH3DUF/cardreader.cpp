@@ -29,11 +29,6 @@
 #include "ultralcd.h"
 #include "stepper.h"
 #include "language.h"
-#include "printcounter.h"
-
-#if ENABLED(POWER_LOSS_RECOVERY)
-  #include "power_loss_recovery.h"
-#endif
 
 #define LONGEST_FILENAME (longFilename[0] ? longFilename : filename)
 
@@ -145,7 +140,7 @@ void CardReader::lsDive(const char *prepend, SdFile parent, const char * const m
 
         case LS_SerialPrint:
           createFilename(filename, p);
-          if (prepend) SERIAL_PROTOCOL(prepend);
+          SERIAL_PROTOCOL(prepend);
           SERIAL_PROTOCOL(filename);
           SERIAL_PROTOCOLCHAR(' ');
           SERIAL_PROTOCOLLN(p.fileSize);
@@ -168,7 +163,7 @@ void CardReader::lsDive(const char *prepend, SdFile parent, const char * const m
 void CardReader::ls() {
   lsAction = LS_SerialPrint;
   root.rewind();
-  lsDive(NULL, root);
+  lsDive("", root);
 }
 
 #if ENABLED(LONG_FILENAME_HOST_SUPPORT)
@@ -203,7 +198,7 @@ void CardReader::ls() {
 
       // Find the item, setting the long filename
       diveDir.rewind();
-      lsDive(NULL, diveDir, segment);
+      lsDive("", diveDir, segment);
 
       // Print /LongNamePart to serial output
       SERIAL_PROTOCOLCHAR('/');
@@ -233,28 +228,6 @@ void CardReader::ls() {
   }
 
 #endif // LONG_FILENAME_HOST_SUPPORT
-
-/**
- * Echo the DOS 8.3 filename (and long filename, if any)
- */
-void CardReader::printFilename() {
-  if (file.isOpen()) {
-    char lfilename[FILENAME_LENGTH];
-    file.getFilename(lfilename);
-    SERIAL_ECHO(lfilename);
-    #if ENABLED(LONG_FILENAME_HOST_SUPPORT)
-      getfilename(0, lfilename);
-      if (longFilename[0]) {
-        SERIAL_ECHO(' ');
-        SERIAL_ECHO(longFilename);
-      }
-    #endif
-  }
-  else
-    SERIAL_ECHOPGM("(no file)");
-
-  SERIAL_EOL();
-}
 
 void CardReader::initsd() {
   cardOK = false;
@@ -309,32 +282,22 @@ void CardReader::openAndPrintFile(const char *name) {
   char cmd[4 + strlen(name) + 1]; // Room for "M23 ", filename, and null
   sprintf_P(cmd, PSTR("M23 %s"), name);
   for (char *c = &cmd[4]; *c; c++) *c = tolower(*c);
-  enqueue_and_echo_command_now(cmd);
+  enqueue_and_echo_command(cmd);
   enqueue_and_echo_commands_P(PSTR("M24"));
 }
 
 void CardReader::startFileprint() {
   if (cardOK) {
     sdprinting = true;
-    #if SD_RESORT
+    #if ENABLED(SDCARD_SORT_ALPHA)
       flush_presort();
     #endif
   }
 }
 
-void CardReader::stopSDPrint(
-  #if SD_RESORT
-    const bool re_sort/*=false*/
-  #endif
-) {
-  #if ENABLED(ADVANCED_PAUSE_FEATURE)
-    did_pause_print = 0;
-  #endif
+void CardReader::stopSDPrint() {
   sdprinting = false;
   if (isFileOpen()) file.close();
-  #if SD_RESORT
-    if (re_sort) presort();
-  #endif
 }
 
 void CardReader::openLogFile(char* name) {
@@ -372,7 +335,7 @@ void CardReader::openFile(char* name, const bool read, const bool subcall/*=fals
       if (file_subcall_ctr > SD_PROCEDURE_DEPTH - 1) {
         SERIAL_ERROR_START();
         SERIAL_ERRORPGM("trying to call sub-gcode files with too many levels. MAX level is:");
-        SERIAL_ERRORLN((int)SD_PROCEDURE_DEPTH);
+        SERIAL_ERRORLN(SD_PROCEDURE_DEPTH);
         kill(PSTR(MSG_KILLED));
         return;
       }
@@ -424,7 +387,8 @@ void CardReader::openFile(char* name, const bool read, const bool subcall/*=fals
         strncpy(subdirname, dirname_start, dirname_end - dirname_start);
         subdirname[dirname_end - dirname_start] = '\0';
         if (!myDir.open(curDir, subdirname, O_READ)) {
-          SERIAL_PROTOCOLPAIR(MSG_SD_OPEN_FILE_FAIL, subdirname);
+          SERIAL_PROTOCOLPGM(MSG_SD_OPEN_FILE_FAIL);
+          SERIAL_PROTOCOL(subdirname);
           SERIAL_PROTOCOLCHAR('.');
           return;
         }
@@ -453,12 +417,8 @@ void CardReader::openFile(char* name, const bool read, const bool subcall/*=fals
       SERIAL_PROTOCOLPAIR(MSG_SD_FILE_OPENED, fname);
       SERIAL_PROTOCOLLNPAIR(MSG_SD_SIZE, filesize);
       SERIAL_PROTOCOLLNPGM(MSG_SD_FILE_SELECTED);
-
       getfilename(0, fname);
       lcd_setstatus(longFilename[0] ? longFilename : fname);
-      //if (longFilename[0]) {
-      //  SERIAL_PROTOCOLPAIR(MSG_SD_FILE_LONG_NAME, longFilename);
-      //}
     }
     else {
       SERIAL_PROTOCOLPAIR(MSG_SD_OPEN_FILE_FAIL, fname);
@@ -536,7 +496,7 @@ void CardReader::removeFile(const char * const name) {
 }
 
 void CardReader::getStatus() {
-  if (cardOK && sdprinting) {
+  if (cardOK) {
     SERIAL_PROTOCOLPGM(MSG_SD_PRINTING_BYTE);
     SERIAL_PROTOCOL(sdpos);
     SERIAL_PROTOCOLCHAR('/');
@@ -632,7 +592,7 @@ void CardReader::getfilename(uint16_t nr, const char * const match/*=NULL*/) {
   lsAction = LS_GetFilename;
   nrFile_index = nr;
   curDir->rewind();
-  lsDive(NULL, *curDir, match);
+  lsDive("", *curDir, match);
 }
 
 uint16_t CardReader::getnrfilenames() {
@@ -640,7 +600,7 @@ uint16_t CardReader::getnrfilenames() {
   lsAction = LS_Count;
   nrFiles = 0;
   curDir->rewind();
-  lsDive(NULL, *curDir);
+  lsDive("", *curDir);
   //SERIAL_ECHOLN(nrFiles);
   return nrFiles;
 }
@@ -700,13 +660,13 @@ int8_t CardReader::updir() {
    */
   void CardReader::presort() {
 
-    // Throw away old sort index
-    flush_presort();
-
     // Sorting may be turned off
     #if ENABLED(SDSORT_GCODE)
       if (!sort_alpha) return;
     #endif
+
+    // Throw away old sort index
+    flush_presort();
 
     // If there are files, sort up to the limit
     uint16_t fileCnt = getnrfilenames();
@@ -931,15 +891,6 @@ void CardReader::printingHasFinished() {
   }
   else {
     sdprinting = false;
-
-    #if ENABLED(POWER_LOSS_RECOVERY)
-      openJobRecoveryFile(false);
-      job_recovery_info.valid_head = job_recovery_info.valid_foot = 0;
-      (void)saveJobRecoveryInfo();
-      closeJobRecoveryFile();
-      job_recovery_commands_count = 0;
-    #endif
-
     #if ENABLED(SD_FINISHED_STEPPERRELEASE) && defined(SD_FINISHED_RELEASECOMMAND)
       stepper.cleaning_buffer_counter = 1; // The command will fire from the Stepper ISR
     #endif
@@ -949,68 +900,11 @@ void CardReader::printingHasFinished() {
     #if ENABLED(SDCARD_SORT_ALPHA)
       presort();
     #endif
-    #if ENABLED(ULTRA_LCD) && ENABLED(LCD_SET_PROGRESS_MANUALLY)
-      progress_bar_percent = 0;
-    #endif
+
     #if ENABLED(SD_REPRINT_LAST_SELECTED_FILE)
       lcd_reselect_last_file();
     #endif
   }
 }
-
-#if ENABLED(AUTO_REPORT_SD_STATUS)
-  uint8_t CardReader::auto_report_sd_interval = 0;
-  millis_t CardReader::next_sd_report_ms;
-
-  void CardReader::auto_report_sd_status() {
-    millis_t current_ms = millis();
-    if (auto_report_sd_interval && ELAPSED(current_ms, next_sd_report_ms)) {
-      next_sd_report_ms = current_ms + 1000UL * auto_report_sd_interval;
-      getStatus();
-    }
-  }
-#endif // AUTO_REPORT_SD_STATUS
-
-#if ENABLED(POWER_LOSS_RECOVERY)
-
-  char job_recovery_file_name[4] = "bin";
-
-  void CardReader::openJobRecoveryFile(const bool read) {
-    if (!cardOK) return;
-    if (jobRecoveryFile.isOpen()) return;
-    if (!jobRecoveryFile.open(&root, job_recovery_file_name, read ? O_READ : O_CREAT | O_WRITE | O_TRUNC | O_SYNC)) {
-      SERIAL_PROTOCOLPAIR(MSG_SD_OPEN_FILE_FAIL, job_recovery_file_name);
-      SERIAL_PROTOCOLCHAR('.');
-      SERIAL_EOL();
-    }
-    else
-      SERIAL_PROTOCOLLNPAIR(MSG_SD_WRITE_TO_FILE, job_recovery_file_name);
-  }
-
-  void CardReader::closeJobRecoveryFile() { jobRecoveryFile.close(); }
-
-  bool CardReader::jobRecoverFileExists() {
-    return jobRecoveryFile.open(&root, job_recovery_file_name, O_READ);
-  }
-
-  int16_t CardReader::saveJobRecoveryInfo() {
-    jobRecoveryFile.seekSet(0);
-    const int16_t ret = jobRecoveryFile.write(&job_recovery_info, sizeof(job_recovery_info));
-    if (ret == -1) SERIAL_PROTOCOLLNPGM("Power-loss file write failed.");
-    return ret;
-  }
-
-  int16_t CardReader::loadJobRecoveryInfo() {
-    return jobRecoveryFile.read(&job_recovery_info, sizeof(job_recovery_info));
-  }
-
-  void CardReader::removeJobRecoveryFile() {
-    if (jobRecoveryFile.remove(&root, job_recovery_file_name))
-      SERIAL_PROTOCOLLNPGM("Power-loss file deleted.");
-    else
-      SERIAL_PROTOCOLLNPGM("Power-loss file delete failed.");
-  }
-
-#endif // POWER_LOSS_RECOVERY
 
 #endif // SDSUPPORT

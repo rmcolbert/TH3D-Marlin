@@ -24,13 +24,9 @@
 #define MACROS_H
 
 #define NUM_AXIS 4
-#define ABCE 4
 #define XYZE 4
 #define ABC  3
 #define XYZ  3
-
-// For use in macros that take a single axis letter
-#define _AXIS(AXIS) AXIS ##_AXIS
 
 #define _XMIN_ 100
 #define _YMIN_ 200
@@ -60,10 +56,10 @@
 // Highly granular delays for step pulses, etc.
 #define DELAY_0_NOP NOOP
 #define DELAY_1_NOP __asm__("nop\n\t")
-#define DELAY_2_NOP do{ DELAY_1_NOP; DELAY_1_NOP; }while(0)
-#define DELAY_3_NOP do{ DELAY_1_NOP; DELAY_2_NOP; }while(0)
-#define DELAY_4_NOP do{ DELAY_1_NOP; DELAY_3_NOP; }while(0)
-#define DELAY_5_NOP do{ DELAY_1_NOP; DELAY_4_NOP; }while(0)
+#define DELAY_2_NOP DELAY_1_NOP; DELAY_1_NOP
+#define DELAY_3_NOP DELAY_1_NOP; DELAY_2_NOP
+#define DELAY_4_NOP DELAY_1_NOP; DELAY_3_NOP
+#define DELAY_5_NOP DELAY_1_NOP; DELAY_4_NOP
 
 #define DELAY_NOPS(X) \
   switch (X) { \
@@ -79,23 +75,23 @@
     case 2:  DELAY_1_NOP; case 1:  DELAY_1_NOP; \
   }
 
-#define DELAY_10_NOP do{ DELAY_5_NOP;  DELAY_5_NOP;  }while(0)
-#define DELAY_20_NOP do{ DELAY_10_NOP; DELAY_10_NOP; }while(0)
+#define DELAY_10_NOP DELAY_5_NOP;  DELAY_5_NOP
+#define DELAY_20_NOP DELAY_10_NOP; DELAY_10_NOP
 
 #if CYCLES_PER_MICROSECOND == 16
-  #define DELAY_1US do { DELAY_10_NOP; DELAY_5_NOP; DELAY_1_NOP; }while(0)
+  #define DELAY_1US DELAY_10_NOP; DELAY_5_NOP; DELAY_1_NOP
 #else
   #define DELAY_1US DELAY_20_NOP
 #endif
-#define DELAY_2US  do{ DELAY_1US; DELAY_1US; }while(0)
-#define DELAY_3US  do{ DELAY_1US; DELAY_2US; }while(0)
-#define DELAY_4US  do{ DELAY_1US; DELAY_3US; }while(0)
-#define DELAY_5US  do{ DELAY_1US; DELAY_4US; }while(0)
-#define DELAY_6US  do{ DELAY_1US; DELAY_5US; }while(0)
-#define DELAY_7US  do{ DELAY_1US; DELAY_6US; }while(0)
-#define DELAY_8US  do{ DELAY_1US; DELAY_7US; }while(0)
-#define DELAY_9US  do{ DELAY_1US; DELAY_8US; }while(0)
-#define DELAY_10US do{ DELAY_1US; DELAY_9US; }while(0)
+#define DELAY_2US  DELAY_1US; DELAY_1US
+#define DELAY_3US  DELAY_1US; DELAY_2US
+#define DELAY_4US  DELAY_1US; DELAY_3US
+#define DELAY_5US  DELAY_1US; DELAY_4US
+#define DELAY_6US  DELAY_1US; DELAY_5US
+#define DELAY_7US  DELAY_1US; DELAY_6US
+#define DELAY_8US  DELAY_1US; DELAY_7US
+#define DELAY_9US  DELAY_1US; DELAY_8US
+#define DELAY_10US DELAY_1US; DELAY_9US
 
 // Remove compiler warning on an unused variable
 #define UNUSED(x) (void) (x)
@@ -105,16 +101,10 @@
 #define STRINGIFY(M) STRINGIFY_(M)
 
 // Macros for bit masks
-#undef _BV
-#define _BV(b) (1<<(b))
-#define TEST(n,b) !!((n)&_BV(b))
+#define TEST(n,b) (((n)&_BV(b))!=0)
 #define SBI(n,b) (n |= _BV(b))
 #define CBI(n,b) (n &= ~_BV(b))
-
-#define _BV32(b) (1UL << (b))
-#define TEST32(n,b) !!((n)&_BV32(b))
-#define SBI32(n,b) (n |= _BV32(b))
-#define CBI32(n,b) (n &= ~_BV32(b))
+#define SET_BIT(n,b,value) (n) ^= ((-value)^(n)) & (_BV(b))
 
 // Macro to check that a number if a power if 2
 #define IS_POWER_OF_2(x) ((x) && !((x) & ((x) - 1)))
@@ -217,7 +207,7 @@
 #define NEAR(x,y) NEAR_ZERO((x)-(y))
 
 #define RECIPROCAL(x) (NEAR_ZERO(x) ? 0.0 : 1.0 / (x))
-#define FIXFLOAT(f) (f + (f < 0.0 ? -0.00001 : 0.00001))
+#define FIXFLOAT(f) (f + 0.00001)
 
 //
 // Maths macros that can be overridden by HAL
