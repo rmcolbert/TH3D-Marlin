@@ -230,9 +230,13 @@
     #define INVERT_E0_DIR true
   #endif
 
-  #define ST7920_DELAY_1 DELAY_0_NOP
-  #define ST7920_DELAY_2 DELAY_3_NOP
-  #define ST7920_DELAY_3 DELAY_0_NOP
+  //testing LCD fix for some i3 models
+  #define ST7920_DELAY_1 DELAY_2_NOP
+  #define ST7920_DELAY_2 DELAY_2_NOP
+  #define ST7920_DELAY_3 DELAY_2_NOP
+  //#define ST7920_DELAY_1 DELAY_0_NOP
+  //#define ST7920_DELAY_2 DELAY_3_NOP
+  //#define ST7920_DELAY_3 DELAY_0_NOP
 
   #define LCD_FOR_MELZI
 #endif
