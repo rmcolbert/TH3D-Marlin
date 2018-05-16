@@ -176,6 +176,8 @@
   #include "pins_RAMPS_CR10S.h"       // ATmega2560
 #elif MB(ONEPLUS1_wanhao)
   #include "pins_ONEPLUS1_wanhao.h"   // ATmega2560
+#elif MB(I3_PLUS)
+  #include "pins_I3_PLUS.h"           // ATmega2560
 
 //
 // ATmega1281, ATmega2561

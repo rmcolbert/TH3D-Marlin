@@ -100,6 +100,7 @@
 #define BOARD_CR10S             476   // Creality CR-10S Board
 #define	BOARD_ONEPLUS1_wanhao	511   // Wanhao i3 Mini Board
 #define BOARD_RAMPSPLUS2		512	  // Alfawise U10 RampsPlus2 Board
+#define BOARD_I3_PLUS           888   // Wanhao Duplicator i3 Plus
 
 //
 // ATmega1281, ATmega2561

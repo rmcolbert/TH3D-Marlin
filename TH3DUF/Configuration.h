@@ -235,6 +235,19 @@
 //#define CUSTOM_PROBE
 
 //===========================================================================
+// Wanhao i3 PLUS Options - Select Arduino Mega 2560 from Tools > Board
+//===========================================================================
+//#define WANHAO_I3PLUS
+
+// EZABL Settings - Uncomment #define PROBEMOUNT for your mount
+// type you are using to enable EZABL Bed Leveling features
+
+// Probe Mounts
+//#define WANHAO_I3_OEM
+//#define WANHAO_I3_DIIICOOLER
+//#define CUSTOM_PROBE
+
+//===========================================================================
 // Alfawise U10 Options - Select Arduino Mega 2560 from Tools > Board
 //===========================================================================
 //#define ALFAWISE_U10

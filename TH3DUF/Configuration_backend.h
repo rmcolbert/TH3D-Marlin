@@ -6,6 +6,11 @@
 //==================== DO NOT MODIFY BELOW THIS LINE ========================
 //===========================================================================
 
+//Wanhao i3 Plus Model Settings
+#if ENABLED(WANHAO_I3PLUS)
+
+#endif
+
 //Alfawise U10 Model Settings
 #if ENABLED(ALFAWISE_U10)
   #define BAUDRATE 250000
