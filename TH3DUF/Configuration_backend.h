@@ -6,11 +6,6 @@
 //==================== DO NOT MODIFY BELOW THIS LINE ========================
 //===========================================================================
 
-//Wanhao i3 Plus Model Settings
-#if ENABLED(WANHAO_I3PLUS)
-
-#endif
-
 //Alfawise U10 Model Settings
 #if ENABLED(ALFAWISE_U10)
   #define BAUDRATE 250000
@@ -235,9 +230,13 @@
     #define INVERT_E0_DIR true
   #endif
 
+  //testing LCD fix for some i3 models
   #define ST7920_DELAY_1 DELAY_2_NOP
   #define ST7920_DELAY_2 DELAY_2_NOP
   #define ST7920_DELAY_3 DELAY_2_NOP
+  //#define ST7920_DELAY_1 DELAY_0_NOP
+  //#define ST7920_DELAY_2 DELAY_3_NOP
+  //#define ST7920_DELAY_3 DELAY_0_NOP
 
   #define LCD_FOR_MELZI
 #endif
@@ -712,6 +711,10 @@
   #define DEFAULT_YJERK                 10.0
   #define DEFAULT_ZJERK                  0.4
   #define DEFAULT_EJERK                  5.0
+  
+  #if ENABLED(ANET_OEM)
+     #define FIX_MOUNTED_PROBE
+  #endif
 
   #if ENABLED(ANET_LCD2004)
     #define ZONESTAR_LCD  
@@ -736,7 +739,7 @@
     #define Z_MAX_POS 230
  
     #if ENABLED(ANET_OEM)
-       #define EZABL_ENABLE
+    #define FIX_MOUNTED_PROBE
        #define X_PROBE_OFFSET_FROM_EXTRUDER -33
        #define Y_PROBE_OFFSET_FROM_EXTRUDER -22
     #endif
@@ -759,7 +762,7 @@
     #define Z_MAX_POS 230
     
     #if ENABLED(ANET_OEM)
-        #define EZABL_ENABLE
+    #define FIX_MOUNTED_PROBE
         #define X_PROBE_OFFSET_FROM_EXTRUDER -33
         #define Y_PROBE_OFFSET_FROM_EXTRUDER -22
     #endif
@@ -781,7 +784,7 @@
     #define Z_MAX_POS 250
 
     #if ENABLED(ANET_OEM)
-        #define EZABL_ENABLE
+    #define FIX_MOUNTED_PROBE
         #define X_PROBE_OFFSET_FROM_EXTRUDER -1
         #define Y_PROBE_OFFSET_FROM_EXTRUDER -54
     #endif
@@ -803,7 +806,7 @@
     #define Z_MAX_POS 240
     
    #if ENABLED(ANET_OEM)
-      #define EZABL_ENABLE
+   #define FIX_MOUNTED_PROBE
       #define X_PROBE_OFFSET_FROM_EXTRUDER -26
       #define Y_PROBE_OFFSET_FROM_EXTRUDER -40
    #endif
@@ -825,7 +828,7 @@
     #define Z_MAX_POS 300
 
     #if ENABLED(ANET_OEM)
-        #define EZABL_ENABLE
+        #define FIX_MOUNTED_PROBE
         #define X_PROBE_OFFSET_FROM_EXTRUDER -38
         #define Y_PROBE_OFFSET_FROM_EXTRUDER -12
     #endif
@@ -847,7 +850,7 @@
     #define Z_MAX_POS 400
 
     #if ENABLED(ANET_OEM)
-       #define EZABL_ENABLE
+    #define FIX_MOUNTED_PROBE
        #define X_PROBE_OFFSET_FROM_EXTRUDER -38
        #define Y_PROBE_OFFSET_FROM_EXTRUDER -12
     #endif
@@ -863,87 +866,70 @@
 
 //Sensor Mounts
 #if ENABLED(CR10_VOLCANO)
-  #define EZABL_ENABLE
   #define X_PROBE_OFFSET_FROM_EXTRUDER 30
   #define Y_PROBE_OFFSET_FROM_EXTRUDER 12
 #endif
 #if ENABLED(CR10_V6HEAVYDUTY)
-  #define EZABL_ENABLE
   #define X_PROBE_OFFSET_FROM_EXTRUDER 63
   #define Y_PROBE_OFFSET_FROM_EXTRUDER 0
 #endif
 #if ENABLED(CR10_OEM)
-  #define EZABL_ENABLE
   #define X_PROBE_OFFSET_FROM_EXTRUDER -44
   #define Y_PROBE_OFFSET_FROM_EXTRUDER -10
 #endif
 #if ENABLED(CR10_FANG)
-  #define EZABL_ENABLE
   #define X_PROBE_OFFSET_FROM_EXTRUDER 48
   #define Y_PROBE_OFFSET_FROM_EXTRUDER -11
 #endif
 #if ENABLED(TM3DAERO)
-  #define EZABL_ENABLE
   #define X_PROBE_OFFSET_FROM_EXTRUDER -51
   #define Y_PROBE_OFFSET_FROM_EXTRUDER -7
 #endif
 #if ENABLED(ENDER2_OEM)
-  #define EZABL_ENABLE
   #define X_PROBE_OFFSET_FROM_EXTRUDER -33
   #define Y_PROBE_OFFSET_FROM_EXTRUDER -10
 #endif
 #if ENABLED(ENDER2_V6)
-  #define EZABL_ENABLE
   #define X_PROBE_OFFSET_FROM_EXTRUDER -35
   #define Y_PROBE_OFFSET_FROM_EXTRUDER -2
 #endif
 #if ENABLED(TORNADO_OEM)
-  #define EZABL_ENABLE
   #define X_PROBE_OFFSET_FROM_EXTRUDER -37
   #define Y_PROBE_OFFSET_FROM_EXTRUDER -10
 #endif
 #if ENABLED(TORNADO_VOLCANO)
-  #define EZABL_ENABLE
   #define X_PROBE_OFFSET_FROM_EXTRUDER 30
   #define Y_PROBE_OFFSET_FROM_EXTRUDER 12
 #endif
 #if ENABLED(TORNADO_V6HEAVYDUTY)
-  #define EZABL_ENABLE
   #define X_PROBE_OFFSET_FROM_EXTRUDER 63
   #define Y_PROBE_OFFSET_FROM_EXTRUDER 0
 #endif
 #if ENABLED(TAZ5_OEM)
-  #define EZABL_ENABLE
   #define X_PROBE_OFFSET_FROM_EXTRUDER -52
   #define Y_PROBE_OFFSET_FROM_EXTRUDER 15
 #endif
 #if ENABLED(WANHAO_I3_OEM)
-  #define EZABL_ENABLE
   #define X_PROBE_OFFSET_FROM_EXTRUDER -25
   #define Y_PROBE_OFFSET_FROM_EXTRUDER -38
 #endif
 #if ENABLED(WANHAO_I3_DIIICOOLER)
-  #define EZABL_ENABLE
   #define X_PROBE_OFFSET_FROM_EXTRUDER -36
   #define Y_PROBE_OFFSET_FROM_EXTRUDER -37
 #endif
 #if ENABLED(WANHAO_I3MINI_OEM_EZABLMINI)
-  #define EZABL_ENABLE
   #define X_PROBE_OFFSET_FROM_EXTRUDER -32
   #define Y_PROBE_OFFSET_FROM_EXTRUDER 0
 #endif
 #if ENABLED(WANHAO_I3MINI_OEM)
-  #define EZABL_ENABLE
   #define X_PROBE_OFFSET_FROM_EXTRUDER -36
   #define Y_PROBE_OFFSET_FROM_EXTRUDER 0
 #endif
 #if ENABLED(PETSFANG)
-  #define EZABL_ENABLE
   #define X_PROBE_OFFSET_FROM_EXTRUDER +48
   #define Y_PROBE_OFFSET_FROM_EXTRUDER -2
 #endif
 #if ENABLED(ALFAWISEU10_OEM)
-  #define EZABL_ENABLE
   #define X_PROBE_OFFSET_FROM_EXTRUDER +39
   #define Y_PROBE_OFFSET_FROM_EXTRUDER -47
 #endif
@@ -1053,7 +1039,11 @@
 #endif // PIDTEMP
 
 #if DISABLED(PIDBED_DISABLE)
-  #define PIDTEMPBED
+  #if DISABLED(TORNADO)
+	#if DISABLED(KEENOVO_TEMPSENSOR)
+	  #define PIDTEMPBED
+	#endif
+  #endif
 #endif
 
 #define MAX_BED_POWER 255

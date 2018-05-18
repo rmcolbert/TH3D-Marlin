@@ -260,9 +260,6 @@
 #include "duration_t.h"
 #include "types.h"
 #include "gcode.h"
-#if ENABLED(WANHAO_I3PLUS)
-  #include "advi3pp.h"
-#endif
 
 #if HAS_ABL
   #include "vector_3.h"
@@ -14205,9 +14202,6 @@ void idle(
   #endif  // MAX7219_DEBUG
 
   lcd_update();
-  #if ENABLED(WANHAO_I3PLUS)
-    advi3pp::Printer::task();
-  #endif
 
   host_keepalive();
 

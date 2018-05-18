@@ -30,9 +30,6 @@
 #include "ultralcd.h"
 #include "planner.h"
 #include "language.h"
-#if ENABLED(WANHAO_I3PLUS)
-  #include "advi3pp.h"
-#endif
 
 #if ENABLED(HEATER_0_USES_MAX6675)
   #include "MarlinSPI.h"
@@ -427,10 +424,7 @@ uint8_t Temperature::soft_pwm_amount[HOTENDS],
       if (ELAPSED(ms, next_temp_ms)) {
         #if HAS_TEMP_HOTEND || HAS_TEMP_BED
           print_heaterstates();
-		  #if ENABLED(WANHAO_I3PLUS)
-            advi3pp::Printer::send_temperatures_data();
-		  #endif
-        SERIAL_EOL();
+          SERIAL_EOL();
         #endif
 
         next_temp_ms = ms + 2000UL;
@@ -495,9 +489,6 @@ uint8_t Temperature::soft_pwm_amount[HOTENDS],
             _SET_BED_PID();
           #endif
         }
-  		#if ENABLED(WANHAO_I3PLUS)
-          advi3pp::Printer::auto_pid_finished();
-		#endif
         return;
       }
       lcd_update();
@@ -555,9 +546,6 @@ int Temperature::getHeaterPower(int heater) {
 //
 void Temperature::_temp_error(const int8_t e, const char * const serial_msg, const char * const lcd_msg) {
   static bool killed = false;
-  #if ENABLED(WANHAO_I3PLUS)
-    advi3pp::Printer::temperature_error();
-  #endif
   if (IsRunning()) {
     SERIAL_ERROR_START();
     serialprintPGM(serial_msg);

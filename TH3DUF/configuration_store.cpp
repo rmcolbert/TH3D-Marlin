@@ -196,9 +196,6 @@ MarlinSettings settings;
 #include "planner.h"
 #include "temperature.h"
 #include "ultralcd.h"
-#if ENABLED(WANHAO_I3PLUS)
-  #include "advi3pp.h"
-#endif
 #include "stepper.h"
 #include "gcode.h"
 
@@ -697,10 +694,6 @@ void MarlinSettings::postprocess() {
       EEPROM_WRITE(dummy);
     #endif
 
-    #if ENABLED(WANHAO_I3PLUS)
-      advi3pp::Printer::store_presets(&write_data, eeprom_index, working_crc);
-	#endif
-    
     #if HAS_MOTOR_CURRENT_PWM
       for (uint8_t q = 3; q--;) EEPROM_WRITE(stepper.motor_current_setting[q]);
     #else
@@ -1175,10 +1168,6 @@ void MarlinSettings::postprocess() {
         EEPROM_READ(dummy);
       #endif
 
-	  #if ENABLED(WANHAO_I3PLUS)
-        advi3pp::Printer::restore_presets(&read_data, eeprom_index, working_crc);
-	  #endif
-
       //
       // Motor Current PWM
       //
@@ -1405,10 +1394,6 @@ void MarlinSettings::reset() {
   planner.max_jerk[Z_AXIS] = DEFAULT_ZJERK;
   planner.max_jerk[E_AXIS] = DEFAULT_EJERK;
 
-  #if ENABLED(WANHAO_I3PLUS)
-    advi3pp::Printer::reset_presets();
-  #endif
-  
   #if HAS_HOME_OFFSET
     ZERO(home_offset);
   #endif

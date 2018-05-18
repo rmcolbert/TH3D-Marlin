@@ -53,8 +53,9 @@
 // and then uncomment the #define EZOUT_ENABLE line below.
 //#define EZOUT_ENABLE
 
-// EZABL Settings - Uncomment #define PROBEMOUNT for your mount
+// EZABL Settings - Uncomment #define EZABL_ENABLE and uncomment your mount 
 // type you are using to enable EZABL Bed Leveling features
+//#define EZABL_ENABLE
 
 // Probe Mounts
 //#define CR10_VOLCANO
@@ -90,11 +91,11 @@
 // THE EZOUT SENSOR MUST ALWAYS CONNECT TO THE EZOUT BOARD. SEE INSTALL GUIDE FOR DETAILS.
 //#define EZOUT_ENABLE
 
-// EZABL Settings - Uncomment #define PROBEMOUNT your mount 
+// EZABL Settings - Uncomment #define EZABL_ENABLE and uncomment your mount 
 // type you are using to enable EZABL Bed Leveling features
+//#define EZABL_ENABLE
 
 // Probe Mounts
-
 //#define CR10_VOLCANO
 //#define CR10_V6HEAVYDUTY
 //#define CR10_OEM
@@ -108,13 +109,13 @@
 //===========================================================================
 //#define ENDER2
 
-// EZABL Settings - Uncomment #define PROBEMOUNT for your mount 
+// EZABL Settings - Uncomment #define EZABL_ENABLE and uncomment your mount 
 // type you are using to enable EZABL Bed Leveling features
+//#define EZABL_ENABLE
 
 // Probe Mounts (Ender 2 can use the same mounts as CR-10, Ender 2 Specific mounts minimize distance from probe to nozzle for max probing area)
 // If you have issues with the non-Ender 2 mounts then please print them off and switch to one of them before contacting support. 
 // This is because the probeable area on the non-Ender 2 mounts is too small typically to get a good result.
-
 //#define ENDER2_OEM
 //#define ENDER2_V6
 //#define CR10_VOLCANO
@@ -134,8 +135,9 @@
 // and then uncomment the #define EZOUT_ENABLE line below.
 //#define EZOUT_ENABLE
 
-// EZABL Settings - Uncomment #define PROBEMOUNT for your mount 
+// EZABL Settings - Uncomment #define EZABL_ENABLE and uncomment your mount 
 // type you are using to enable EZABL Bed Leveling features
+//#define EZABL_ENABLE
 
 // Probe Mounts (Ender 3 uses the same mounts as CR-10)
 //#define CR10_VOLCANO
@@ -151,8 +153,9 @@
 //===========================================================================
 //#define TORNADO
 
-// EZABL Settings - Uncomment #define PROBEMOUNT for your mount 
+// EZABL Settings - Uncomment #define EZABL_ENABLE and uncomment your mount 
 // type you are using to enable EZABL Bed Leveling features
+//#define EZABL_ENABLE
 
 // Probe Mounts
 //#define TORNADO_OEM
@@ -170,8 +173,9 @@
 //===========================================================================
 //#define TAZ5
 
-// EZABL Settings - Uncomment #define PROBEMOUNT for your mount 
+// EZABL Settings - Uncomment #define EZABL_ENABLE and uncomment your mount 
 // type you are using to enable EZABL Bed Leveling features
+//#define EZABL_ENABLE
 
 // Probe Mounts
 //#define TAZ5_OEM
@@ -197,8 +201,9 @@
 //#define ANET_LCD12864 //This is the larger LCD with the rotary controller found on most ANET machines
 //#define ANET_LCD2004 //This is the LCD with the 5 button keypad usually found on A8 and some A2 machines
 
-// EZABL Settings - Uncomment #define PROBEMOUNT for your mount
+// EZABL Settings - Uncomment #define EZABL_ENABLE and uncomment your mount 
 // type you are using to enable EZABL Bed Leveling features
+//#define EZABL_ENABLE
 
 // Probe Mounts
 //#define ANET_OEM
@@ -213,8 +218,9 @@
 // boards use a 10K pull-up instead of a 4.7K pull-up) to fix temps being off
 //#define WANHAO_10K_THERMISTOR
 
-// EZABL Settings - Uncomment #define PROBEMOUNT for your mount
+// EZABL Settings - Uncomment #define EZABL_ENABLE and uncomment your mount 
 // type you are using to enable EZABL Bed Leveling features
+//#define EZABL_ENABLE
 
 // Probe Mounts
 //#define WANHAO_I3_OEM
@@ -226,8 +232,9 @@
 //===========================================================================
 //#define WANHAO_I3MINI
 
-// EZABL Settings - Uncomment #define PROBEMOUNT for your mount
+// EZABL Settings - Uncomment #define EZABL_ENABLE and uncomment your mount 
 // type you are using to enable EZABL Bed Leveling features
+//#define EZABL_ENABLE
 
 // Probe Mounts
 //#define WANHAO_I3MINI_OEM
@@ -235,25 +242,13 @@
 //#define CUSTOM_PROBE
 
 //===========================================================================
-// Wanhao i3 PLUS Options - Select Arduino Mega 2560 from Tools > Board
-//===========================================================================
-//#define WANHAO_I3PLUS
-
-// EZABL Settings - Uncomment #define PROBEMOUNT for your mount
-// type you are using to enable EZABL Bed Leveling features
-
-// Probe Mounts
-//#define WANHAO_I3_OEM
-//#define WANHAO_I3_DIIICOOLER
-//#define CUSTOM_PROBE
-
-//===========================================================================
 // Alfawise U10 Options - Select Arduino Mega 2560 from Tools > Board
 //===========================================================================
 //#define ALFAWISE_U10
 
-// EZABL Settings - Uncomment #define PROBEMOUNT for your mount
+// EZABL Settings - Uncomment #define EZABL_ENABLE and uncomment your mount 
 // type you are using to enable EZABL Bed Leveling features
+//#define EZABL_ENABLE
 
 // Probe Mounts
 //#define ALFAWISEU10_OEM
