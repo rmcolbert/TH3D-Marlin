@@ -306,6 +306,14 @@
 // uncomment the below line  to set the correct thermistor settings
 //#define V6_HOTEND
 
+// If you are using a Tough Hotend from TH3D or any thermistors TH3D sells for your hotend
+// uncomment the below line to set the thermistor type for any TH3D thermistor
+//#define TH3D_HOTEND_THERMISTOR
+
+// If you are using thermistors TH3D sells for your bed
+// uncomment the below line to set the thermistor type for any TH3D thermistor
+//#define TH3D_BED_THERMISTOR
+
 // If you are using an AC bed with a standalone controller (like the Keenovo heaters) 
 // uncomment the below line to disable the heated bed control in the firmware
 //#define AC_BED
