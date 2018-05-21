@@ -436,6 +436,53 @@
     #define Y_BED_SIZE 500
     #define Z_MAX_POS 500
   #endif
+  
+  //dual extrusion options
+  
+  //single hotend y adapter
+  #if ENABLED(SINGLE_HOTEND_YADAPTER)
+    #define CR10SDUALEBOARD
+    #define SINGLENOZZLE
+    
+    #if ENABLED(TITAN_EXTRUDER)
+      #define INVERT_E1_DIR true
+    #else
+      #define INVERT_E1_DIR false
+    #endif
+
+  #endif
+
+  //dual hotend dual nozzles
+  #if ENABLED(DUAL_HOTEND_DUAL_NOZZLES)
+    #define CR10SDUALEBOARD
+    
+    #if ENABLED(TITAN_EXTRUDER)
+      #define INVERT_E1_DIR true
+    #else
+      #define INVERT_E1_DIR false
+    #endif
+  
+  #endif
+
+  //dual hotend single mixing nozzle
+  #if ENABLED(DUAL_HOTEND_SINGLE_NOZZLE)
+    #define CR10SDUALEBOARD
+    #define SINGLENOZZLE
+    
+    #define MIXING_EXTRUDER
+    #if ENABLED(MIXING_EXTRUDER)
+      #define MIXING_STEPPERS 2        // Number of steppers in your mixing extruder
+      #define MIXING_VIRTUAL_TOOLS 16  // Use the Virtual Tool method with M163 and M164
+      //#define DIRECT_MIXING_IN_G1    // Allow ABCDHI mix factors in G1 movement commands
+    #endif
+    
+    #if ENABLED(TITAN_EXTRUDER)
+      #define INVERT_E1_DIR true
+    #else
+      #define INVERT_E1_DIR false
+    #endif
+
+  #endif
 
   #define X_MIN_POS 0
   #define Y_MIN_POS 0
@@ -964,7 +1011,11 @@
 
 #define SERIAL_PORT 0
 
-#define EXTRUDERS 1
+#if ENABLED(CR10SDUALEBOARD)
+  #define EXTRUDERS 2
+#else
+  #define EXTRUDERS 1
+#endif
 
 #define DEFAULT_NOMINAL_FILAMENT_DIA 1.75
 
@@ -981,7 +1032,12 @@
 #else
   #define TEMP_SENSOR_0 1
 #endif
-#define TEMP_SENSOR_1 0
+
+#if ENABLED(DUAL_HOTEND_DUAL_NOZZLES)
+  #define TEMP_SENSOR_1 1
+#else
+  #define TEMP_SENSOR_1 0
+#endif
 #define TEMP_SENSOR_2 0
 #define TEMP_SENSOR_3 0
 #define TEMP_SENSOR_4 0

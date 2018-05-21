@@ -187,23 +187,6 @@
 #endif
 
 //
-// Augmentation for auto-assigning RAMPS plugs
-//
-#if DISABLED(IS_RAMPS_EEB) && DISABLED(IS_RAMPS_EEF) && DISABLED(IS_RAMPS_EFB) && DISABLED(IS_RAMPS_EFF) && DISABLED(IS_RAMPS_SF) && !PIN_EXISTS(MOSFET_D)
-  #if HOTENDS > 1
-    #if TEMP_SENSOR_BED
-      #define IS_RAMPS_EEB
-    #else
-      #define IS_RAMPS_EEF
-    #endif
-  #elif TEMP_SENSOR_BED
-    #define IS_RAMPS_EFB
-  #else
-    #define IS_RAMPS_EFF
-  #endif
-#endif
-
-//
 // Heaters / Fans
 //
 #ifndef MOSFET_D_PIN
@@ -219,31 +202,10 @@
   #define RAMPS_D10_PIN 10
 #endif
 
-#define HEATER_0_PIN     RAMPS_D10_PIN
-
-#if ENABLED(IS_RAMPS_EFB)                      // Hotend, Fan, Bed
-  #define FAN_PIN        RAMPS_D9_PIN
-  #define HEATER_BED_PIN RAMPS_D8_PIN
-#elif ENABLED(IS_RAMPS_EEF)                    // Hotend, Hotend, Fan
-  #define HEATER_1_PIN   RAMPS_D9_PIN
-  #define FAN_PIN        RAMPS_D8_PIN
-#elif ENABLED(IS_RAMPS_EEB)                    // Hotend, Hotend, Bed
-  #define HEATER_1_PIN   RAMPS_D9_PIN
-  #define HEATER_BED_PIN RAMPS_D8_PIN
-#elif ENABLED(IS_RAMPS_EFF)                    // Hotend, Fan, Fan
-  #define FAN_PIN        RAMPS_D9_PIN
-  #define FAN1_PIN       RAMPS_D8_PIN
-#elif ENABLED(IS_RAMPS_SF)                     // Spindle, Fan
-  #define FAN_PIN        RAMPS_D8_PIN
-#else                                          // Non-specific are "EFB" (i.e., "EFBF" or "EFBE")
-  #define FAN_PIN        RAMPS_D9_PIN
-  #define HEATER_BED_PIN RAMPS_D8_PIN
-  #if HOTENDS == 1
-    #define FAN1_PIN     MOSFET_D_PIN
-  #else
-    #define HEATER_1_PIN MOSFET_D_PIN
-  #endif
-#endif
+#define HEATER_0_PIN   RAMPS_D10_PIN
+#define FAN_PIN        RAMPS_D9_PIN
+#define HEATER_BED_PIN RAMPS_D8_PIN
+#define HEATER_1_PIN   7
 
 #ifndef FAN_PIN
   #define FAN_PIN 4      // IO pin. Buffer needed

@@ -104,6 +104,18 @@
 //#define PETSFANG
 //#define CUSTOM_PROBE
 
+// Dual Extruder Options
+// This is for use with the TH3D CR-10S Board with dual extruder support.
+
+// If you are using a single hotend with the 2 into 1 adapter uncomment the below line
+//#define SINGLE_HOTEND_YADAPTER
+
+// If you are using a dual hotend with dual nozzles uncomment the below line
+//#define DUAL_HOTEND_DUAL_NOZZLES
+
+// If you are using a dual hotend with the single/mixing nozzle uncomment the below line
+//#define DUAL_HOTEND_SINGLE_NOZZLE
+
 //===========================================================================
 // Creality Ender 2 Options - Select Sanguino(1284P) from Tools > Board
 //===========================================================================
