@@ -461,6 +461,9 @@
     #else
       #define INVERT_E1_DIR false
     #endif
+        
+    #define HOTEND_OFFSET_X {0.0, 18.00} // (in mm) for each extruder, offset of the hotend on the X axis
+    #define HOTEND_OFFSET_Y {0.0, 0.00}  // (in mm) for each extruder, offset of the hotend on the Y axis
   
   #endif
 
@@ -475,7 +478,7 @@
       #define MIXING_VIRTUAL_TOOLS 16  // Use the Virtual Tool method with M163 and M164
       //#define DIRECT_MIXING_IN_G1    // Allow ABCDHI mix factors in G1 movement commands
     #endif
-    
+        
     #if ENABLED(TITAN_EXTRUDER)
       #define INVERT_E1_DIR true
     #else
