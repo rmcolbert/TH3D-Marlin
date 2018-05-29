@@ -16,27 +16,11 @@
   
   #define X_MIN_ENDSTOP_INVERTING true
   #define Y_MIN_ENDSTOP_INVERTING true
-  #if ENABLED(EZABL_ENABLE)
-	  #if ENABLED(NC_SENSOR)
-  		#define Z_MIN_ENDSTOP_INVERTING false
-	  #else
-		  #define Z_MIN_ENDSTOP_INVERTING true
-	  #endif
-  #else
-    #define Z_MIN_ENDSTOP_INVERTING true
-  #endif
+  #define Z_MIN_ENDSTOP_INVERTING true
   #define X_MAX_ENDSTOP_INVERTING true
   #define Y_MAX_ENDSTOP_INVERTING true
   #define Z_MAX_ENDSTOP_INVERTING true
-  #if ENABLED(EZABL_ENABLE)
-    #if ENABLED(NC_SENSOR)
-		  #define Z_MIN_PROBE_ENDSTOP_INVERTING false
-	  #else
-		  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
-	  #endif
-  #else
-    #define Z_MIN_PROBE_ENDSTOP_INVERTING true
-  #endif
+  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
     
   #if ENABLED(TITAN_EXTRUDER)
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, TITAN_EXTRUDER_STEPS }
@@ -96,27 +80,11 @@
   
   #define X_MIN_ENDSTOP_INVERTING true
   #define Y_MIN_ENDSTOP_INVERTING true
-  #if ENABLED(EZABL_ENABLE)
-	  #if ENABLED(NC_SENSOR)
-  		#define Z_MIN_ENDSTOP_INVERTING false
-	  #else
-		  #define Z_MIN_ENDSTOP_INVERTING true
-	  #endif
-  #else
-    #define Z_MIN_ENDSTOP_INVERTING true
-  #endif
+  #define Z_MIN_ENDSTOP_INVERTING true
   #define X_MAX_ENDSTOP_INVERTING true
   #define Y_MAX_ENDSTOP_INVERTING true
   #define Z_MAX_ENDSTOP_INVERTING true
-  #if ENABLED(EZABL_ENABLE)
-    #if ENABLED(NC_SENSOR)
-		  #define Z_MIN_PROBE_ENDSTOP_INVERTING false
-	  #else
-		  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
-	  #endif
-  #else
-    #define Z_MIN_PROBE_ENDSTOP_INVERTING true
-  #endif
+  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
     
   #if ENABLED(TITAN_EXTRUDER)
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, TITAN_EXTRUDER_STEPS }
@@ -178,27 +146,11 @@
 
   #define X_MIN_ENDSTOP_INVERTING true
   #define Y_MIN_ENDSTOP_INVERTING true
-  #if ENABLED(EZABL_ENABLE)
-    #if ENABLED(NC_SENSOR)
-      #define Z_MIN_ENDSTOP_INVERTING false
-    #else
-      #define Z_MIN_ENDSTOP_INVERTING true
-    #endif
-  #else
-    #define Z_MIN_ENDSTOP_INVERTING true
-  #endif
+  #define Z_MIN_ENDSTOP_INVERTING true
   #define X_MAX_ENDSTOP_INVERTING false
   #define Y_MAX_ENDSTOP_INVERTING false
   #define Z_MAX_ENDSTOP_INVERTING false
-  #if ENABLED(EZABL_ENABLE)
-    #if ENABLED(NC_SENSOR)
-      #define Z_MIN_PROBE_ENDSTOP_INVERTING false
-    #else
-      #define Z_MIN_PROBE_ENDSTOP_INVERTING true
-    #endif
-  #else
-    #define Z_MIN_PROBE_ENDSTOP_INVERTING true
-  #endif
+  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
 
   #if ENABLED(TITAN_EXTRUDER)
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, TITAN_EXTRUDER_STEPS }
@@ -265,11 +217,7 @@
   #define Y_MIN_ENDSTOP_INVERTING false
   
   #if ENABLED(EZABL_ENABLE)
-	  #if ENABLED(NC_SENSOR)
-		  #define Z_MIN_ENDSTOP_INVERTING false
-	  #else
-		  #define Z_MIN_ENDSTOP_INVERTING true
-	  #endif
+		#define Z_MIN_ENDSTOP_INVERTING true
   #else
     #define Z_MIN_ENDSTOP_INVERTING false
   #endif
@@ -279,11 +227,7 @@
   #define Z_MAX_ENDSTOP_INVERTING false
   
   #if ENABLED(EZABL_ENABLE)
-    #if ENABLED(NC_SENSOR)
-	  #define Z_MIN_PROBE_ENDSTOP_INVERTING false
-	#else
 	  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
-	#endif
   #else
     #define Z_MIN_PROBE_ENDSTOP_INVERTING false
   #endif
@@ -375,11 +319,7 @@
   #define Y_MIN_ENDSTOP_INVERTING false
   
   #if ENABLED(EZABL_ENABLE)
-	  #if ENABLED(NC_SENSOR)
-		  #define Z_MIN_ENDSTOP_INVERTING false
-	  #else
-		  #define Z_MIN_ENDSTOP_INVERTING true
-	  #endif
+	  #define Z_MIN_ENDSTOP_INVERTING true
   #else
     #define Z_MIN_ENDSTOP_INVERTING false
   #endif
@@ -389,11 +329,7 @@
   #define Z_MAX_ENDSTOP_INVERTING false
   
   #if ENABLED(EZABL_ENABLE)
-    #if ENABLED(NC_SENSOR)
-	  #define Z_MIN_PROBE_ENDSTOP_INVERTING false
-	#else
 	  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
-	#endif
   #else
     #define Z_MIN_PROBE_ENDSTOP_INVERTING false
   #endif
@@ -528,11 +464,7 @@
   #define X_MIN_ENDSTOP_INVERTING false
   #define Y_MIN_ENDSTOP_INVERTING false
   #if ENABLED(EZABL_ENABLE)
-	  #if ENABLED(NC_SENSOR)
-  		#define Z_MIN_ENDSTOP_INVERTING false
-	  #else
-		  #define Z_MIN_ENDSTOP_INVERTING true
-	  #endif
+		#define Z_MIN_ENDSTOP_INVERTING true
   #else
     #define Z_MIN_ENDSTOP_INVERTING false
   #endif
@@ -540,11 +472,7 @@
   #define Y_MAX_ENDSTOP_INVERTING false
   #define Z_MAX_ENDSTOP_INVERTING false
   #if ENABLED(EZABL_ENABLE)
-    #if ENABLED(NC_SENSOR)
-		  #define Z_MIN_PROBE_ENDSTOP_INVERTING false
-	  #else
-		  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
-	  #endif
+	  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
   #else
     #define Z_MIN_PROBE_ENDSTOP_INVERTING false
   #endif
@@ -603,27 +531,11 @@
 
   #define X_MIN_ENDSTOP_INVERTING true
   #define Y_MIN_ENDSTOP_INVERTING true
-  #if ENABLED(EZABL_ENABLE)
-	#if ENABLED(NC_SENSOR)
-		#define Z_MIN_ENDSTOP_INVERTING false
-	#else
-		#define Z_MIN_ENDSTOP_INVERTING true
-	#endif
-  #else
-    #define Z_MIN_ENDSTOP_INVERTING true
-  #endif
+  #define Z_MIN_ENDSTOP_INVERTING true
   #define X_MAX_ENDSTOP_INVERTING false
   #define Y_MAX_ENDSTOP_INVERTING false
   #define Z_MAX_ENDSTOP_INVERTING false
-  #if ENABLED(EZABL_ENABLE)
-    #if ENABLED(NC_SENSOR)
-		  #define Z_MIN_PROBE_ENDSTOP_INVERTING false
-	  #else
-		  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
-  	#endif
-  #else
-    #define Z_MIN_PROBE_ENDSTOP_INVERTING true
-  #endif
+  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
 
   #if ENABLED(TITAN_EXTRUDER)
     #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, TITAN_EXTRUDER_STEPS }
@@ -678,27 +590,12 @@
 
   #define X_MIN_ENDSTOP_INVERTING true
   #define Y_MIN_ENDSTOP_INVERTING true
-  #if ENABLED(EZABL_ENABLE)
-	  #if ENABLED(NC_SENSOR)
-  		#define Z_MIN_ENDSTOP_INVERTING false
-	  #else
-  		#define Z_MIN_ENDSTOP_INVERTING true
-	  #endif
-  #else
-    #define Z_MIN_ENDSTOP_INVERTING true
-  #endif
+  #define Z_MIN_ENDSTOP_INVERTING true
   #define X_MAX_ENDSTOP_INVERTING false
   #define Y_MAX_ENDSTOP_INVERTING false
   #define Z_MAX_ENDSTOP_INVERTING false
-  #if ENABLED(EZABL_ENABLE)
-    #if ENABLED(NC_SENSOR)
-		  #define Z_MIN_PROBE_ENDSTOP_INVERTING false
-	  #else
-		  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
-	  #endif
-  #else
-    #define Z_MIN_PROBE_ENDSTOP_INVERTING true
-  #endif
+  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
+
   
   #if ENABLED(CUSTOM_ESTEPS)
 	  #define DEFAULT_AXIS_STEPS_PER_UNIT {100.5,100.5,1600,CUSTOM_ESTEPS_VALUE}
@@ -751,27 +648,11 @@
 
   #define X_MIN_ENDSTOP_INVERTING true
   #define Y_MIN_ENDSTOP_INVERTING true
-  #if ENABLED(EZABL_ENABLE)
-	  #if ENABLED(NC_SENSOR)
-  		#define Z_MIN_ENDSTOP_INVERTING false
-  	#else
-		  #define Z_MIN_ENDSTOP_INVERTING true
-	  #endif
-  #else
-    #define Z_MIN_ENDSTOP_INVERTING true
-  #endif
+  #define Z_MIN_ENDSTOP_INVERTING true
   #define X_MAX_ENDSTOP_INVERTING false
   #define Y_MAX_ENDSTOP_INVERTING false
   #define Z_MAX_ENDSTOP_INVERTING false
-  #if ENABLED(EZABL_ENABLE)
-    #if ENABLED(NC_SENSOR)
-		  #define Z_MIN_PROBE_ENDSTOP_INVERTING false
-	  #else
-		  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
-	  #endif
-  #else
-    #define Z_MIN_PROBE_ENDSTOP_INVERTING true
-  #endif
+  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
   
   #if ENABLED(ANET_A2) || ENABLED(ANET_A6) || ENABLED(ANET_A8)
     #if ENABLED(TITAN_EXTRUDER)

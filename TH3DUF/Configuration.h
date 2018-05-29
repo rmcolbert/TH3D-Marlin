@@ -339,9 +339,6 @@
 // Use your own printer name
 //#define USER_PRINTER_NAME "Change Me" 
 
-// If you are using a NC sensor instead of NO (EZABL Default) enable this option. This is provided for convenience and is unsupported with included product support.
-//#define NC_SENSOR
-
 // If you want to use manual mesh leveling you can enable the below option. TH3D does NOT provide free support
 // to help you use this feature. This is for generating a MANUAL mesh WITHOUT a probe. 
 // Mesh Bed Leveling Documentation: http://marlinfw.org/docs/gcode/G029-mbl.html
