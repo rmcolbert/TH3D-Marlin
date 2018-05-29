@@ -63,8 +63,13 @@
   #define Y_BED_SIZE 400
   #define Z_MAX_POS 500
 
-  #define X_MIN_POS 0
-  #define Y_MIN_POS 0
+  #if ENABLED(HOME_ADJUST)
+    #define X_MIN_POS X_HOME_LOCATION
+    #define Y_MIN_POS Y_HOME_LOCATION
+  #else
+    #define X_MIN_POS 0
+    #define Y_MIN_POS 0
+  #endif
   
   #define INVERT_X_DIR true
   #define INVERT_Y_DIR true
@@ -138,8 +143,13 @@
   #define Y_BED_SIZE 140
   #define Z_MAX_POS 100
 
-  #define X_MIN_POS 0
-  #define Y_MIN_POS 0
+  #if ENABLED(HOME_ADJUST)
+    #define X_MIN_POS X_HOME_LOCATION
+    #define Y_MIN_POS Y_HOME_LOCATION
+  #else
+    #define X_MIN_POS 0
+    #define Y_MIN_POS 0
+  #endif
   
   #define INVERT_X_DIR true
   #define INVERT_Y_DIR false
@@ -212,8 +222,13 @@
   #define Y_BED_SIZE 200
   #define Z_MAX_POS 180
 
-  #define X_MIN_POS 0
-  #define Y_MIN_POS 0
+  #if ENABLED(HOME_ADJUST)
+    #define X_MIN_POS X_HOME_LOCATION
+    #define Y_MIN_POS Y_HOME_LOCATION
+  #else
+    #define X_MIN_POS 0
+    #define Y_MIN_POS 0
+  #endif
 
   #define DEFAULT_XJERK                 10.0
   #define DEFAULT_YJERK                 10.0
@@ -339,8 +354,13 @@
     #define Z_MAX_POS 250
   #endif
 
-  #define X_MIN_POS 0
-  #define Y_MIN_POS 0
+  #if ENABLED(HOME_ADJUST)
+    #define X_MIN_POS X_HOME_LOCATION
+    #define Y_MIN_POS Y_HOME_LOCATION
+  #else
+    #define X_MIN_POS 0
+    #define Y_MIN_POS 0
+  #endif
   
   #define ENCODER_PULSES_PER_STEP 4
   #define ENCODER_STEPS_PER_MENU_ITEM 1
@@ -487,8 +507,14 @@
 
   #endif
 
-  #define X_MIN_POS 0
-  #define Y_MIN_POS 0
+  #if ENABLED(HOME_ADJUST)
+    #define X_MIN_POS X_HOME_LOCATION
+    #define Y_MIN_POS Y_HOME_LOCATION
+  #else
+    #define X_MIN_POS 0
+    #define Y_MIN_POS 0
+  #endif
+  
   #define ENCODER_PULSES_PER_STEP 4
   #define ENCODER_STEPS_PER_MENU_ITEM 1
 
@@ -557,8 +583,14 @@
     #define MOTHERBOARD BOARD_MELZI_CREALITY_ENDER2
   #endif
 
-  #define X_MIN_POS 0
-  #define Y_MIN_POS 0
+  #if ENABLED(HOME_ADJUST)
+    #define X_MIN_POS X_HOME_LOCATION
+    #define Y_MIN_POS Y_HOME_LOCATION
+  #else
+    #define X_MIN_POS 0
+    #define Y_MIN_POS 0
+  #endif
+  
   #define X_BED_SIZE 160
   #define Y_BED_SIZE 150
   #define Z_MAX_POS 220
@@ -623,8 +655,14 @@
     #define MOTHERBOARD BOARD_MKS_BASE
   #endif
 
-  #define X_MIN_POS 0
-  #define Y_MIN_POS 0
+  #if ENABLED(HOME_ADJUST)
+    #define X_MIN_POS X_HOME_LOCATION
+    #define Y_MIN_POS Y_HOME_LOCATION
+  #else
+    #define X_MIN_POS 0
+    #define Y_MIN_POS 0
+  #endif
+  
   #define X_BED_SIZE 300
   #define Y_BED_SIZE 300
   #define Z_MAX_POS 400
@@ -690,8 +728,14 @@
     #define MOTHERBOARD BOARD_RAMBO
   #endif
 
-  #define X_MIN_POS 0
-  #define Y_MIN_POS 0
+  #if ENABLED(HOME_ADJUST)
+    #define X_MIN_POS X_HOME_LOCATION
+    #define Y_MIN_POS Y_HOME_LOCATION
+  #else
+    #define X_MIN_POS 0
+    #define Y_MIN_POS 0
+  #endif
+  
   #define X_BED_SIZE 295
   #define Y_BED_SIZE 295
   #define Z_MAX_POS 250
@@ -763,7 +807,7 @@
   #define DEFAULT_EJERK                  5.0
   
   #if ENABLED(ANET_OEM)
-     #define FIX_MOUNTED_PROBE
+     #define EZABL_ENABLE
   #endif
 
   #if ENABLED(ANET_LCD2004)
@@ -782,8 +826,14 @@
 #endif
 
 #if ENABLED(A2_SMALL_BED)   
-    #define X_MIN_POS 0
-    #define Y_MIN_POS 0
+    #if ENABLED(HOME_ADJUST)
+      #define X_MIN_POS X_HOME_LOCATION
+      #define Y_MIN_POS Y_HOME_LOCATION
+    #else
+      #define X_MIN_POS 0
+      #define Y_MIN_POS 0
+    #endif
+    
     #define X_BED_SIZE 220
     #define Y_BED_SIZE 220
     #define Z_MAX_POS 230
@@ -805,8 +855,14 @@
 #endif
 
 #if ENABLED(A2_LARGE_BED)
-    #define X_MIN_POS 0
-    #define Y_MIN_POS 0
+    #if ENABLED(HOME_ADJUST)
+      #define X_MIN_POS X_HOME_LOCATION
+      #define Y_MIN_POS Y_HOME_LOCATION
+    #else
+      #define X_MIN_POS 0
+      #define Y_MIN_POS 0
+    #endif
+    
     #define X_BED_SIZE 220
     #define Y_BED_SIZE 270
     #define Z_MAX_POS 230
@@ -827,8 +883,14 @@
 #endif
 
 #if ENABLED(ANET_A6)
-    #define X_MIN_POS 0
-    #define Y_MIN_POS 0
+    #if ENABLED(HOME_ADJUST)
+      #define X_MIN_POS X_HOME_LOCATION
+      #define Y_MIN_POS Y_HOME_LOCATION
+    #else
+      #define X_MIN_POS 0
+      #define Y_MIN_POS 0
+    #endif
+    
     #define X_BED_SIZE 220
     #define Y_BED_SIZE 220
     #define Z_MAX_POS 250
@@ -849,8 +911,14 @@
 #endif
 
 #if ENABLED(ANET_A8)
-    #define X_MIN_POS -33
-    #define Y_MIN_POS -10
+  #if ENABLED(HOME_ADJUST)
+      #define X_MIN_POS X_HOME_LOCATION
+      #define Y_MIN_POS Y_HOME_LOCATION
+    #else
+      #define X_MIN_POS -33
+      #define Y_MIN_POS -10
+    #endif
+    
     #define X_BED_SIZE 220
     #define Y_BED_SIZE 220
     #define Z_MAX_POS 240
@@ -871,8 +939,14 @@
 #endif
 
 #if ENABLED(ANET_E10)
-    #define X_MIN_POS -2
-    #define Y_MIN_POS -8
+    #if ENABLED(HOME_ADJUST)
+      #define X_MIN_POS X_HOME_LOCATION
+      #define Y_MIN_POS Y_HOME_LOCATION
+    #else
+      #define X_MIN_POS -2
+      #define Y_MIN_POS -8
+    #endif
+    
     #define X_BED_SIZE 220
     #define Y_BED_SIZE 270
     #define Z_MAX_POS 300
@@ -893,8 +967,14 @@
 #endif
 
 #if ENABLED(ANET_E12)
-    #define X_MIN_POS -2
-    #define Y_MIN_POS -8
+    #if ENABLED(HOME_ADJUST)
+      #define X_MIN_POS X_HOME_LOCATION
+      #define Y_MIN_POS Y_HOME_LOCATION
+    #else
+      #define X_MIN_POS -2
+      #define Y_MIN_POS -8
+    #endif
+    
     #define X_BED_SIZE 300
     #define Y_BED_SIZE 300
     #define Z_MAX_POS 400
@@ -918,70 +998,87 @@
 #if ENABLED(CR10_VOLCANO)
   #define X_PROBE_OFFSET_FROM_EXTRUDER 30
   #define Y_PROBE_OFFSET_FROM_EXTRUDER 12
+  #define EZABL_ENABLE
 #endif
 #if ENABLED(CR10_V6HEAVYDUTY)
   #define X_PROBE_OFFSET_FROM_EXTRUDER 63
   #define Y_PROBE_OFFSET_FROM_EXTRUDER 0
+  #define EZABL_ENABLE
 #endif
 #if ENABLED(CR10_OEM)
   #define X_PROBE_OFFSET_FROM_EXTRUDER -44
   #define Y_PROBE_OFFSET_FROM_EXTRUDER -10
+  #define EZABL_ENABLE
 #endif
 #if ENABLED(CR10_FANG)
   #define X_PROBE_OFFSET_FROM_EXTRUDER 48
   #define Y_PROBE_OFFSET_FROM_EXTRUDER -11
+  #define EZABL_ENABLE
 #endif
 #if ENABLED(TM3DAERO)
   #define X_PROBE_OFFSET_FROM_EXTRUDER -51
   #define Y_PROBE_OFFSET_FROM_EXTRUDER -7
+  #define EZABL_ENABLE
 #endif
 #if ENABLED(ENDER2_OEM)
   #define X_PROBE_OFFSET_FROM_EXTRUDER -33
   #define Y_PROBE_OFFSET_FROM_EXTRUDER -10
+  #define EZABL_ENABLE
 #endif
 #if ENABLED(ENDER2_V6)
   #define X_PROBE_OFFSET_FROM_EXTRUDER -35
   #define Y_PROBE_OFFSET_FROM_EXTRUDER -2
+  #define EZABL_ENABLE
 #endif
 #if ENABLED(TORNADO_OEM)
   #define X_PROBE_OFFSET_FROM_EXTRUDER -37
   #define Y_PROBE_OFFSET_FROM_EXTRUDER -10
+  #define EZABL_ENABLE
 #endif
 #if ENABLED(TORNADO_VOLCANO)
   #define X_PROBE_OFFSET_FROM_EXTRUDER 30
   #define Y_PROBE_OFFSET_FROM_EXTRUDER 12
+  #define EZABL_ENABLE
 #endif
 #if ENABLED(TORNADO_V6HEAVYDUTY)
   #define X_PROBE_OFFSET_FROM_EXTRUDER 63
   #define Y_PROBE_OFFSET_FROM_EXTRUDER 0
+  #define EZABL_ENABLE
 #endif
 #if ENABLED(TAZ5_OEM)
   #define X_PROBE_OFFSET_FROM_EXTRUDER -52
   #define Y_PROBE_OFFSET_FROM_EXTRUDER 15
+  #define EZABL_ENABLE
 #endif
 #if ENABLED(WANHAO_I3_OEM)
   #define X_PROBE_OFFSET_FROM_EXTRUDER -25
   #define Y_PROBE_OFFSET_FROM_EXTRUDER -38
+  #define EZABL_ENABLE
 #endif
 #if ENABLED(WANHAO_I3_DIIICOOLER)
   #define X_PROBE_OFFSET_FROM_EXTRUDER -36
   #define Y_PROBE_OFFSET_FROM_EXTRUDER -37
+  #define EZABL_ENABLE
 #endif
 #if ENABLED(WANHAO_I3MINI_OEM_EZABLMINI)
   #define X_PROBE_OFFSET_FROM_EXTRUDER -32
   #define Y_PROBE_OFFSET_FROM_EXTRUDER 0
+  #define EZABL_ENABLE
 #endif
 #if ENABLED(WANHAO_I3MINI_OEM)
   #define X_PROBE_OFFSET_FROM_EXTRUDER -36
   #define Y_PROBE_OFFSET_FROM_EXTRUDER 0
+  #define EZABL_ENABLE
 #endif
 #if ENABLED(PETSFANG)
-  #define X_PROBE_OFFSET_FROM_EXTRUDER +48
+  #define X_PROBE_OFFSET_FROM_EXTRUDER 48
   #define Y_PROBE_OFFSET_FROM_EXTRUDER -2
+  #define EZABL_ENABLE
 #endif
 #if ENABLED(ALFAWISEU10_OEM)
-  #define X_PROBE_OFFSET_FROM_EXTRUDER +39
+  #define X_PROBE_OFFSET_FROM_EXTRUDER 39
   #define Y_PROBE_OFFSET_FROM_EXTRUDER -47
+  #define EZABL_ENABLE
 #endif
 
 //Misc Settings

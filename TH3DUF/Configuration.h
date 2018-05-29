@@ -3,8 +3,7 @@
 *
 * Uncomment means removing the 2 // in front of #define.
 * 
-* If you have EZABL uncomment #define EZABL_ENABLE and then uncomment the mount
-* you are using with the printer. 
+* If you have EZABL uncomment the mount you are using with the printer. 
 * 
 * If you have a custom/unsupported mount uncomment #define CUSTOM_MOUNT
 * and enter your offsets below in the CUSTOM MOUNT section.
@@ -53,11 +52,7 @@
 // and then uncomment the #define EZOUT_ENABLE line below.
 //#define EZOUT_ENABLE
 
-// EZABL Settings - Uncomment #define EZABL_ENABLE and uncomment your mount 
-// type you are using to enable EZABL Bed Leveling features
-//#define EZABL_ENABLE
-
-// Probe Mounts
+// EZABL Probe Mounts
 //#define CR10_VOLCANO
 //#define CR10_V6HEAVYDUTY
 //#define CR10_OEM
@@ -91,11 +86,7 @@
 // THE EZOUT SENSOR MUST ALWAYS CONNECT TO THE EZOUT BOARD. SEE INSTALL GUIDE FOR DETAILS.
 //#define EZOUT_ENABLE
 
-// EZABL Settings - Uncomment #define EZABL_ENABLE and uncomment your mount 
-// type you are using to enable EZABL Bed Leveling features
-//#define EZABL_ENABLE
-
-// Probe Mounts
+// EZABL Probe Mounts
 //#define CR10_VOLCANO
 //#define CR10_V6HEAVYDUTY
 //#define CR10_OEM
@@ -121,11 +112,8 @@
 //===========================================================================
 //#define ENDER2
 
-// EZABL Settings - Uncomment #define EZABL_ENABLE and uncomment your mount 
-// type you are using to enable EZABL Bed Leveling features
-//#define EZABL_ENABLE
 
-// Probe Mounts (Ender 2 can use the same mounts as CR-10, Ender 2 Specific mounts minimize distance from probe to nozzle for max probing area)
+// EZABL Probe Mounts (Ender 2 can use the same mounts as CR-10, Ender 2 Specific mounts minimize distance from probe to nozzle for max probing area)
 // If you have issues with the non-Ender 2 mounts then please print them off and switch to one of them before contacting support. 
 // This is because the probeable area on the non-Ender 2 mounts is too small typically to get a good result.
 //#define ENDER2_OEM
@@ -147,11 +135,8 @@
 // and then uncomment the #define EZOUT_ENABLE line below.
 //#define EZOUT_ENABLE
 
-// EZABL Settings - Uncomment #define EZABL_ENABLE and uncomment your mount 
-// type you are using to enable EZABL Bed Leveling features
-//#define EZABL_ENABLE
 
-// Probe Mounts (Ender 3 uses the same mounts as CR-10)
+// EZABL Probe Mounts (Ender 3 uses the same mounts as CR-10)
 //#define CR10_VOLCANO
 //#define CR10_V6HEAVYDUTY
 //#define CR10_OEM
@@ -165,11 +150,7 @@
 //===========================================================================
 //#define TORNADO
 
-// EZABL Settings - Uncomment #define EZABL_ENABLE and uncomment your mount 
-// type you are using to enable EZABL Bed Leveling features
-//#define EZABL_ENABLE
-
-// Probe Mounts
+// EZABL Probe Mounts
 //#define TORNADO_OEM
 //#define TORNADO_VOLCANO
 //#define TORNADO_V6HEAVYDUTY
@@ -180,16 +161,15 @@
 // Use Tornado Bootscreen instead of TH3D
 //#define TORNADO_BOOT
 
+// Slow down the hotend fan and control box fans to reduce noise
+//#define TORNADO_QUIET
+
 //===========================================================================
 // Lulzbot TAZ5 Options - Select Arduino Mega 2560 from Tools > Board
 //===========================================================================
 //#define TAZ5
 
-// EZABL Settings - Uncomment #define EZABL_ENABLE and uncomment your mount 
-// type you are using to enable EZABL Bed Leveling features
-//#define EZABL_ENABLE
-
-// Probe Mounts
+// EZABL Probe Mounts
 //#define TAZ5_OEM
 //#define CUSTOM_PROBE
 
@@ -213,11 +193,7 @@
 //#define ANET_LCD12864 //This is the larger LCD with the rotary controller found on most ANET machines
 //#define ANET_LCD2004 //This is the LCD with the 5 button keypad usually found on A8 and some A2 machines
 
-// EZABL Settings - Uncomment #define EZABL_ENABLE and uncomment your mount 
-// type you are using to enable EZABL Bed Leveling features
-//#define EZABL_ENABLE
-
-// Probe Mounts
+// EZABL Probe Mounts
 //#define ANET_OEM
 //#define CUSTOM_PROBE
 
@@ -230,11 +206,7 @@
 // boards use a 10K pull-up instead of a 4.7K pull-up) to fix temps being off
 //#define WANHAO_10K_THERMISTOR
 
-// EZABL Settings - Uncomment #define EZABL_ENABLE and uncomment your mount 
-// type you are using to enable EZABL Bed Leveling features
-//#define EZABL_ENABLE
-
-// Probe Mounts
+// EZABL Probe Mounts
 //#define WANHAO_I3_OEM
 //#define WANHAO_I3_DIIICOOLER
 //#define CUSTOM_PROBE
@@ -244,11 +216,7 @@
 //===========================================================================
 //#define WANHAO_I3MINI
 
-// EZABL Settings - Uncomment #define EZABL_ENABLE and uncomment your mount 
-// type you are using to enable EZABL Bed Leveling features
-//#define EZABL_ENABLE
-
-// Probe Mounts
+// EZABL Probe Mounts
 //#define WANHAO_I3MINI_OEM
 //#define WANHAO_I3MINI_OEM_EZABLMINI
 //#define CUSTOM_PROBE
@@ -258,11 +226,7 @@
 //===========================================================================
 //#define ALFAWISE_U10
 
-// EZABL Settings - Uncomment #define EZABL_ENABLE and uncomment your mount 
-// type you are using to enable EZABL Bed Leveling features
-//#define EZABL_ENABLE
-
-// Probe Mounts
+// EZABL Probe Mounts
 //#define ALFAWISEU10_OEM
 //#define CUSTOM_PROBE
 
@@ -290,7 +254,7 @@
 //#define EZABL_FASTPROBE
 
 // This can help if you have a shaky Z axis or can help with AC bed interference.
-// This will add a 500MS delay before the probe starts.
+// This will add a 500MS delay before the probe starts - only use if directed to by support.
 //#define EZABL_STABILIZE
 
 // If you are having leveling issues with the EZABL try uncommenting the below
@@ -302,10 +266,17 @@
 // If you want babystepping to modify the Z Offset uncomment the below line. 
 //#define BABYSTEP_OFFSET
 
+// Allow bed to pause probing to recover heat during probing - only use if directed to by support.
+//#define HEATER_RECOVERY
+
+// If you want to keep your heaters ON during probing uncomment the below line - only use if directed to by support. We do NOT recommend doing this on AC beds.
+//#define HEATERS_ON_DURING_PROBING
+
 //===========================================================================
 // TH3D EXTRAS
 //===========================================================================
 
+// EXTRUDER SETTINGS --------------------------
 // If you want to change the Esteps for your printer you can uncomment this and 
 // set CUSTOM_ESTEPS_VALUE to what you want
 // For example the Tornado is 400, Creality & ANET Machines are 95
@@ -313,6 +284,14 @@
 //#define CUSTOM_ESTEPS
 // This is only used if you enable CUSTOM_ESTEPS above.
 #define CUSTOM_ESTEPS_VALUE 999
+
+// If you are using an E3D or TH3D Titan Extruder uncomment the below line 
+// to setup the firmware to the correct steps and direction
+//#define TITAN_EXTRUDER
+// If your titan uses steps/mm other than 463 change it below, this works for most Titans (not used if titan is disabled).
+#define TITAN_EXTRUDER_STEPS 463
+
+// THERMISTOR SETTINGS ------------------------
 
 // If you are using a V6 Hotend with the V6 Thermistor 
 // uncomment the below line  to set the correct thermistor settings
@@ -326,23 +305,33 @@
 // uncomment the below line to set the thermistor type for any TH3D thermistor
 //#define TH3D_BED_THERMISTOR
 
-// If you are using an AC bed with a standalone controller (like the Keenovo heaters) 
-// uncomment the below line to disable the heated bed control in the firmware
-//#define AC_BED
-
 // If you are using the Keenovo bed with a SSR and the Keenovo temperature sensor uncomment
 // the below line to enable the changes to use the Keenovo thermistor
 //#define KEENOVO_TEMPSENSOR
 
+// BED SETTINGS -------------------------------
+
+// If you are using an AC bed with a standalone controller (like the Keenovo heaters) 
+// uncomment the below line to disable the heated bed control in the firmware
+//#define AC_BED
+
+// If your bed pulsing from PID is causing your lights to dim (mainly with AC beds)or you want slightly quicker bed 
+// heat up times uncomment below to switch back to the old "bang-bang" method that cycles it on and off slower.
+//#define PIDBED_DISABLE
+
+// HOME SETTINGS ------------------------------
+
+// If you need to adjust your XY home offsets from defaults then you can uncomment the HOME_ADJUST line below and enter your
+// custom XY offsets. This is provided for convenience and is unsupported with included product support.
+//#define HOME_ADJUST
+#define X_HOME_LOCATION -10
+#define Y_HOME_LOCATION -10
+
+// MISC ------------------------------------
+
 // If you are using the TH3D 5015 High Flow Layer Fan enable this to allow the firmware
 // to properly control the fan speed. If this is not enabled then the fan may not spin and/or make noise at low speeds.
 //#define FAN_KICKSTART
-
-// If you are using an E3D or TH3D Titan Extruder uncomment the below line 
-// to setup the firmware to the correct steps and direction
-//#define TITAN_EXTRUDER
-// If your titan uses steps/mm other than 463 change it below, this works for most Titans (not used if titan is disabled).
-#define TITAN_EXTRUDER_STEPS 463
 
 // Use TinyMachines Bootscreen instead of TH3D
 //#define TM3D_BOOT
@@ -350,30 +339,21 @@
 // Use your own printer name
 //#define USER_PRINTER_NAME "Change Me" 
 
-// If you want to keep your heaters ON during probing uncomment the below line - only use if directed to by support. We do NOT recommend doing this on AC beds.
-//#define HEATERS_ON_DURING_PROBING
-
-// If your bed pulsing from PID is causing your lights to dim (mainly with AC beds)or you want slightly quicker bed 
-// heat up times uncomment below to switch back to the old "bang-bang" method that cycles it on and off slower.
-//#define PIDBED_DISABLE
-
-// Allow bed to pause probing to recover heat during probing - only use if directed to by support.
-//#define HEATER_RECOVERY
-
-// If you are using a NC sensor instead of NO (EZABL Default) enable this option
+// If you are using a NC sensor instead of NO (EZABL Default) enable this option. This is provided for convenience and is unsupported with included product support.
 //#define NC_SENSOR
 
 // If you want to use manual mesh leveling you can enable the below option. TH3D does NOT provide free support
-// to help you use this feature. This is for generating a MANUAL mesh WITHOUT a probe. See the link below for more details.
+// to help you use this feature. This is for generating a MANUAL mesh WITHOUT a probe. 
 // Mesh Bed Leveling Documentation: http://marlinfw.org/docs/gcode/G029-mbl.html
-// If used with a 1284P board like the CR-10, Ender 2, Ender 3, or Wanhao the bootscreen will be disabled to save space.
+// If used with a 1284P board like the CR-10, Ender 2, Ender 3, or Wanhao i3 the bootscreen will be disabled to save space.
 //#define MANUAL_MESH_LEVELING
 
 //===========================================================================
-// IF YOU HAVE A CUSTOM PROBE MOUNT OR ONE THAT IS NOT PRE-SUPPORTED
-// UNCOMMENT THE CUSTOM_PROBE OPTION AND ENTER YOUR PROBE LOCATION BELOW
+// IF YOU HAVE A CUSTOM PROBE MOUNT OR ONE THAT IS NOT PRE-SUPPORTED UNCOMMENT THE
+// CUSTOM_PROBE OPTION IN YOUR PRINTER SECTION AND ENTER YOUR PROBE LOCATION BELOW
 //===========================================================================
 #if ENABLED(CUSTOM_PROBE)
+  #define EZABL_ENABLE
   /**
   *   Z Probe to nozzle (X,Y) offset, relative to (0, 0).
   *   X and Y offsets must be integers.
@@ -398,7 +378,7 @@
 #endif
 
 //===========================================================================
-// Language
+// Language - This is provided for convenience and is unsupported with included product support.
 //===========================================================================
 
 /**
@@ -414,7 +394,7 @@
  #define LCD_LANGUAGE en
 
 //===========================================================================
-// Bed Skew Setup
+// Bed Skew Setup - This is provided for convenience and is unsupported with included product support.
 //===========================================================================
   
 /**
