@@ -517,13 +517,6 @@
   #if ENABLED(DUAL_HOTEND_SINGLE_NOZZLE)
     #define CR10SDUALEBOARD
     #define SINGLENOZZLE
-    
-    #define MIXING_EXTRUDER
-    #if ENABLED(MIXING_EXTRUDER)
-      #define MIXING_STEPPERS 2        // Number of steppers in your mixing extruder
-      #define MIXING_VIRTUAL_TOOLS 16  // Use the Virtual Tool method with M163 and M164
-      //#define DIRECT_MIXING_IN_G1    // Allow ABCDHI mix factors in G1 movement commands
-    #endif
         
     #if ENABLED(TITAN_EXTRUDER)
       #define INVERT_E1_DIR true
@@ -1184,8 +1177,11 @@
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
 
-#if ENABLED(WANHAO_I3MINI)
+#define MIN_SOFTWARE_ENDSTOPS
+#if ENABLED(MIN_SOFTWARE_ENDSTOPS)
   #define MIN_SOFTWARE_ENDSTOP_X
+  #define MIN_SOFTWARE_ENDSTOP_Y
+  //#define MIN_SOFTWARE_ENDSTOP_Z
 #endif
 
 #define MAX_SOFTWARE_ENDSTOPS
