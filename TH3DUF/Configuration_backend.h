@@ -1158,7 +1158,9 @@
 #define DISABLE_E false
 #define DISABLE_INACTIVE_EXTRUDER true
 
-#define INVERT_E1_DIR false
+#if DISABLED(TITAN_EXTRUDER) && DISABLED(CR10SDUALEBOARD)
+  #define INVERT_E1_DIR false
+#endif
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false
 #define INVERT_E4_DIR false

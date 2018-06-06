@@ -451,4 +451,6 @@
 
 #include "Configuration_backend.h"
 
+#define UNIFIED_VERSION "TH3D U1.R1.8h"
+
 #endif // CONFIGURATION_H
