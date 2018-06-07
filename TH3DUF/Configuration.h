@@ -239,8 +239,8 @@
 // Ender 2 will be best with a 3x3 grid, change to a 3 for Ender 2
 #define EZABL_POINTS 4
 
-// If you want to probe in on the bed more than 15mm change this below. Do not
-// use 30mm for the Standard CR-10/s or the S4 as you will be on the bed screws.
+// If you want to probe in on the bed more than 15mm change this below. 
+// Do not use 30mm for the Standard CR-10/s or the S4 as you will be on the bed screws.
 // Try 50mm to avoid the binder clips if you use them. Do NOT go under 15mm here.
 // You can do down to 10mm on the Wanhao i3 since it cannot print on the entire bed.
 // You can do down to 5mm on the Wanhao i3 Mini since it cannot print on the entire bed.
@@ -260,10 +260,11 @@
 // If you are having leveling issues with the EZABL try uncommenting the below
 // line. This will change the leveling type from bilinear to linear. Some printers
 // do better with linear leveling instead of bilinear.
-// If used with a 1284P board like the CR-10, Ender 2, Ender 3, or Wanhao the bootscreen will be disabled to save space.
+// If used with a 1284P board the bootscreen will be disabled to save space.
 //#define LINEAR_LEVELING
 
-// If you want babystepping to modify the Z Offset uncomment the below line. 
+// If you want babystepping to modify the Z Offset uncomment the below line. Use M500 to save any changes made or
+// Control > Store Settings if you want to save the changes made with the Z Offset/Babystepping combined option.
 //#define BABYSTEP_OFFSET
 
 // Allow bed to pause probing to recover heat during probing - only use if directed to by support.
@@ -271,6 +272,10 @@
 
 // If you want to keep your heaters ON during probing uncomment the below line - only use if directed to by support. We do NOT recommend doing this on AC beds.
 //#define HEATERS_ON_DURING_PROBING
+
+// This will extrapolate the implied tilt of the bed outside of the probe area
+// By default this should be ENABLED. Do not comment out unless directed by support.
+#define EZABL_OUTSIDE_GRID_COMPENSATION
 
 //===========================================================================
 // TH3D EXTRAS
@@ -451,6 +456,6 @@
 
 #include "Configuration_backend.h"
 
-#define UNIFIED_VERSION "TH3D U1.R1.8h"
+#define UNIFIED_VERSION "TH3D U1.R1.8i"
 
 #endif // CONFIGURATION_H

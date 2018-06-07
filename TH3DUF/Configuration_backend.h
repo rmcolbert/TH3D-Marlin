@@ -1007,7 +1007,11 @@
 #endif
 
 #if ENABLED(DUAL_HOTEND_DUAL_NOZZLES)
-  #define TEMP_SENSOR_1 1
+  #if ENABLED(V6_HOTEND)
+    #define TEMP_SENSOR_1 5
+  #else
+    #define TEMP_SENSOR_1 1
+  #endif
 #else
   #define TEMP_SENSOR_1 0
 #endif
@@ -1245,7 +1249,7 @@
   
   #define MIN_PROBE_EDGE 5
 
-  #if ENABLED(AUTO_BED_LEVELING_BILINEAR)
+  #if ENABLED(EZABL_OUTSIDE_GRID_COMPENSATION)
     #define EXTRAPOLATE_BEYOND_GRID
   #endif
 
