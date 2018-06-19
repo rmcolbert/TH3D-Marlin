@@ -67,6 +67,8 @@
     #include "_BootscreenTM3D.h"
   #elif ENABLED(TORNADO_BOOT) && ENABLED(TORNADO)
     #include "_BootscreenTORNADO.h"
+  #elif ENABLED(ENDER_BOOT)
+    #include "_BootscreenENDER.h"
   #else
     #include "_Bootscreen.h"
   #endif  

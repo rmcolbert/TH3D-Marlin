@@ -12,7 +12,7 @@
 * Bootscreen settings, Titan Extruder and more. You only need to edit this file.
 * 
 * For the Tornado, TAZ5, Wanhao i3 Mini, Alfawise U10, and CR-10S select Tools > Board > Arduino Mega 2560
-* For the Ender 2 and CR-10 select Tools > Board > Sanguino(1284P Boards)
+* For the Ender 2, Ender 3, and CR-10 select Tools > Board > Sanguino(1284P Boards)
 * For the ANET Printers select Tools > Board > ANET V1.0
 * 
 * Then select the COM port your printer is on from the Tools menu.
@@ -58,6 +58,7 @@
 //#define CR10_OEM
 //#define CR10_FANG
 //#define TM3DAERO
+//#define TM3DAERO_EXTENDED
 //#define PETSFANG
 //#define CUSTOM_PROBE
 
@@ -92,6 +93,7 @@
 //#define CR10_OEM
 //#define CR10_FANG
 //#define TM3DAERO
+//#define TM3DAERO_EXTENDED
 //#define PETSFANG
 //#define CUSTOM_PROBE
 
@@ -123,6 +125,7 @@
 //#define CR10_OEM
 //#define CR10_FANG
 //#define TM3DAERO
+//#define TM3DAERO_EXTENDED
 //#define PETSFANG
 //#define CUSTOM_PROBE
 
@@ -142,6 +145,7 @@
 //#define CR10_OEM
 //#define CR10_FANG
 //#define TM3DAERO
+//#define TM3DAERO_EXTENDED
 //#define PETSFANG
 //#define CUSTOM_PROBE
 
@@ -155,6 +159,7 @@
 //#define TORNADO_VOLCANO
 //#define TORNADO_V6HEAVYDUTY
 //#define TM3DAERO
+//#define TM3DAERO_EXTENDED
 //#define PETSFANG
 //#define CUSTOM_PROBE
 
@@ -341,6 +346,12 @@
 // Use TinyMachines Bootscreen instead of TH3D
 //#define TM3D_BOOT
 
+// Use Ender Bootscreeen instead of TH3D
+//#define ENDER_BOOT
+
+// Disable Bootscreen completely
+//#define DISABLE_BOOT
+
 // Use your own printer name
 //#define USER_PRINTER_NAME "Change Me" 
 
@@ -456,6 +467,6 @@
 
 #include "Configuration_backend.h"
 
-#define UNIFIED_VERSION "TH3D U1.R1.8i"
+#define UNIFIED_VERSION "TH3D U1.R1.8j"
 
 #endif // CONFIGURATION_H
