@@ -72,6 +72,11 @@
   #define Y_PROBE_OFFSET_FROM_EXTRUDER -38
   #define EZABL_ENABLE
 #endif
+#if ENABLED(WANHAO_D6_OEM)
+  #define X_PROBE_OFFSET_FROM_EXTRUDER 24
+  #define Y_PROBE_OFFSET_FROM_EXTRUDER -16
+  #define EZABL_ENABLE
+#endif
 #if ENABLED(WANHAO_I3_DIIICOOLER)
   #define X_PROBE_OFFSET_FROM_EXTRUDER -36
   #define Y_PROBE_OFFSET_FROM_EXTRUDER -37
@@ -100,6 +105,64 @@
 #if ENABLED(ANET_OEM)
      #define EZABL_ENABLE
 #endif
+
+//Wanhao D6 Model Settings
+#if ENABLED(WANHAO_D6)
+  #define BAUDRATE 250000
+  
+  #define X_MIN_ENDSTOP_INVERTING true
+  #define Y_MIN_ENDSTOP_INVERTING true
+  #define Z_MIN_ENDSTOP_INVERTING true
+  #define X_MAX_ENDSTOP_INVERTING false
+  #define Y_MAX_ENDSTOP_INVERTING false
+  #define Z_MAX_ENDSTOP_INVERTING false
+  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
+  
+  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 99 }
+
+  #define DEFAULT_MAX_FEEDRATE          { 300, 300, 15, 50 }
+
+  #define DEFAULT_MAX_ACCELERATION      { 1500, 1500, 100, 500 }
+
+  #define DEFAULT_ACCELERATION          500    // X, Y, Z and E acceleration for printing moves
+  #define DEFAULT_RETRACT_ACCELERATION  1000    // E acceleration for retracts
+  #define DEFAULT_TRAVEL_ACCELERATION   500    // X, Y, Z acceleration for travel (non printing) moves
+  
+  #define DEFAULT_XJERK                 10.0
+  #define DEFAULT_YJERK                 10.0
+  #define DEFAULT_ZJERK                  0.3
+  #define DEFAULT_EJERK                  1.0
+  
+  #define INVERT_X_DIR true
+  #define INVERT_Y_DIR false
+  #define INVERT_Z_DIR true
+  #define INVERT_E0_DIR true
+  
+  #ifndef MOTHERBOARD
+    #define MOTHERBOARD BOARD_ULTIMAIN_2
+  #endif
+  
+  #if ENABLED(WANHAO_D6_5015)
+    #define X_BED_SIZE 175
+  #else
+    #define X_BED_SIZE 200
+  #endif
+  #define Y_BED_SIZE 200  
+  #define Z_MAX_POS 170
+
+  #if ENABLED(HOME_ADJUST)
+    #define X_MIN_POS X_HOME_LOCATION
+    #define Y_MIN_POS Y_HOME_LOCATION
+  #else
+    #define X_MIN_POS 0
+    #define Y_MIN_POS 0
+  #endif
+  
+  #define ENCODER_PULSES_PER_STEP 2
+  #define ENCODER_STEPS_PER_MENU_ITEM 1
+  #define REVERSE_ENCODER_DIRECTION
+
+#endif //end D6
 
 //Alfawise U10 Model Settings
 #if ENABLED(ALFAWISE_U10)
@@ -1003,6 +1066,8 @@
 
 #if ENABLED(V6_HOTEND)
   #define TEMP_SENSOR_0 5
+#elif ENABLED(WANHAO_D6)
+  #define TEMP_SENSOR_0 20
 #elif ENABLED(WANHAO_10K_THERMISTOR)
   #define TEMP_SENSOR_0 99
 #elif ENABLED(WANHAO_I3MINI)
@@ -1032,6 +1097,8 @@
   #define TEMP_SENSOR_BED 1
 #elif ENABLED(TAZ5)
   #define TEMP_SENSOR_BED 7
+#elif ENABLED(WANHAO_D6)
+  #define TEMP_SENSOR_BED 1
 #elif ENABLED(KEENOVO_TEMPSENSOR)
   #define TEMP_SENSOR_BED 11
 #else
@@ -1076,11 +1143,18 @@
   #define PID_AUTOTUNE_MENU
   #define PID_FUNCTIONAL_RANGE 10
   
+#if ENABLED(WANHAO_D6)
+  // Duplicator 6
+  #define  DEFAULT_Kp 9.12
+  #define  DEFAULT_Ki 0.41
+  #define  DEFAULT_Kd 50.98
+#else  
   // Default Hotend PID
   #define  DEFAULT_Kp 22.2
   #define  DEFAULT_Ki 1.08
   #define  DEFAULT_Kd 114
- 
+#endif
+  
 #endif // PIDTEMP
 
 #if DISABLED(PIDBED_DISABLE)
@@ -1094,12 +1168,17 @@
 #define MAX_BED_POWER 255
 
 #if ENABLED(PIDTEMPBED)
-
-  //Default Bed PID
-  #define  DEFAULT_bedKp 690.34
-  #define  DEFAULT_bedKi 111.47
-  #define  DEFAULT_bedKd 1068.83
-  
+  #if ENABLED(WANHAO_D6)
+    // Duplicator 6
+    #define  DEFAULT_bedKp 124.55
+    #define  DEFAULT_bedKi 23.46
+    #define  DEFAULT_bedKd 165.29
+  #else
+    //Default Bed PID
+    #define  DEFAULT_bedKp 690.34
+    #define  DEFAULT_bedKi 111.47
+    #define  DEFAULT_bedKd 1068.83
+  #endif	
 #endif
 
 #define PREVENT_COLD_EXTRUSION
@@ -1327,6 +1406,15 @@
 
 #if ENABLED(ENDER2) || ENABLED(WANHAO_I3MINI)
   #define MINIPANEL
+#endif
+
+#if ENABLED(WANHAO_D6)
+  #define ULTIPANEL
+  #define U8GLIB_SSD1306
+  #define LCD_WIDTH 22
+  #define LCD_HEIGHT 5
+  #define LCD_RESET_PIN 5
+  #define PCA9632
 #endif
 
 #if ENABLED(FAN_KICKSTART)

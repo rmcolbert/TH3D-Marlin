@@ -11,7 +11,7 @@
 * There are other features in the TH3D Extras section so look there for V6 Hotend,
 * Bootscreen settings, Titan Extruder and more. You only need to edit this file.
 * 
-* For the Tornado, TAZ5, Wanhao i3 Mini, Alfawise U10, and CR-10S select Tools > Board > Arduino Mega 2560
+* For the Tornado, TAZ5, Wanhao i3 Mini, Wanhao, D6, Alfawise U10, and CR-10S select Tools > Board > Arduino Mega 2560
 * For the Ender 2, Ender 3, and CR-10 select Tools > Board > Sanguino(1284P Boards)
 * For the ANET Printers select Tools > Board > ANET V1.0
 * 
@@ -224,6 +224,15 @@
 // EZABL Probe Mounts
 //#define WANHAO_I3MINI_OEM
 //#define WANHAO_I3MINI_OEM_EZABLMINI
+//#define CUSTOM_PROBE
+
+//===========================================================================
+// Wanhao D6 Options - Select Arduino Mega 2560 from Tools > Board
+//===========================================================================
+//#define WANHAO_D6
+
+// EZABL Probe Mounts
+//#define WANHAO_D6_OEM
 //#define CUSTOM_PROBE
 
 //===========================================================================
@@ -467,6 +476,6 @@
 
 #include "Configuration_backend.h"
 
-#define UNIFIED_VERSION "TH3D U1.R1.8j"
+#define UNIFIED_VERSION "TH3D U1.R1.9"
 
 #endif // CONFIGURATION_H

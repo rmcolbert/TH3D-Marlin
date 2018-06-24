@@ -114,6 +114,42 @@
   #define DIGIPOT_I2C_MOTOR_CURRENTS { 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0 }  
 #endif
 
+#if ENABLED(WANHAO_D6)
+  #define CASE_LIGHT_ENABLE
+  #if ENABLED(CASE_LIGHT_ENABLE)
+    #define CASE_LIGHT_PIN 8                  // Override the default pin if needed
+    #define INVERT_CASE_LIGHT false             // Set true if Case Light is ON when pin is LOW
+    #define CASE_LIGHT_DEFAULT_ON true          // Set default power-up state on
+    #define CASE_LIGHT_DEFAULT_BRIGHTNESS 255   // Set default power-up brightness (0-255, requires PWM pin)
+    #define MENU_ITEM_CASE_LIGHT              // Add a Case Light option to the LCD main menu
+  #endif
+  
+  #define AXIS_RELATIVE_MODES {false, false, false, false}
+  
+  #if ENABLED(ULTIPANEL)
+    #define MANUAL_FEEDRATE {70*60, 70*60, 15*60, 6*60} // Feedrates for manual moves along X, Y, Z, E from panel
+    #define ULTIPANEL_FEEDMULTIPLY  // Comment to disable setting feedrate multiplier via encoder
+  #endif
+  
+  #define MOTOR_CURRENT_PWM_RANGE 2782
+  #define PWM_MOTOR_CURRENT { 1200, 1200, 1000 }
+  #define DIGIPOT_I2C_NUM_CHANNELS 8 
+  #define DIGIPOT_I2C_MOTOR_CURRENTS { 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0 }
+  
+  #define ENCODER_RATE_MULTIPLIER 
+  #define ENCODER_10X_STEPS_PER_SEC 75
+  #define ENCODER_100X_STEPS_PER_SEC 160
+
+  #define CHDK_DELAY 50
+  
+  #if ENABLED(DOGLCD)
+    #define USE_SMALL_INFOFONT
+  #endif
+  
+  #define I2C_SLAVE_ADDRESS  0
+  
+#endif
+
 #if ENABLED(TORNADO)
 #define E0_AUTO_FAN_PIN 7
   #define EXTRUDER_AUTO_FAN_TEMPERATURE 50
@@ -394,6 +430,11 @@
 #endif
 
 //#define PINS_DEBUGGING
+
+#if ENABLED(ULTIPANEL)
+  #define MANUAL_FEEDRATE {70*60, 70*60, 15*60, 6*60} // Feedrates for manual moves along X, Y, Z, E from panel
+  #define ULTIPANEL_FEEDMULTIPLY  // Comment to disable setting feedrate multiplier via encoder
+#endif
 
 #define AUTO_REPORT_TEMPERATURES
 
