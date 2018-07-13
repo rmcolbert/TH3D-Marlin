@@ -396,7 +396,7 @@
     #if ENABLED(CUSTOM_ESTEPS)
 	  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS_VALUE }
 	#else
-      #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
+      #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 93 }
 	#endif
   #endif
   
@@ -470,7 +470,7 @@
 #endif //end CR-10
 
 //CR-10S Model Settings
-#if ENABLED(CR10S) || ENABLED(CR10S_MINI) || ENABLED(CR10S_S4) || ENABLED(CR10S_S5)
+#if ENABLED(CR10S) || ENABLED(CR10S_MINI) || ENABLED(CR10S_S4) || ENABLED(CR10S_S5) || ENABLED(ENDER3_DUALBOARD)
   #define BAUDRATE 115200
 
   #define X_MIN_ENDSTOP_INVERTING false
@@ -498,7 +498,7 @@
     #if ENABLED(CUSTOM_ESTEPS)
 	  #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS_VALUE }
 	#else
-      #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
+      #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 93 }
 	#endif
   #endif
   
@@ -549,6 +549,13 @@
     #define X_BED_SIZE 500
     #define Y_BED_SIZE 500
     #define Z_MAX_POS 500
+  #endif
+  
+  #if ENABLED(ENDER3_DUALBOARD)
+    #define X_BED_SIZE 220
+    #define Y_BED_SIZE 220
+    #define Z_MAX_POS 250
+    #define CR10LCD_CR10S	
   #endif
   
   //dual extrusion options
@@ -634,7 +641,7 @@
     #if ENABLED(CUSTOM_ESTEPS)
 	    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS_VALUE }
 	  #else
-      #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
+      #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 93 }
 	  #endif
   #endif
   #define DEFAULT_MAX_FEEDRATE          { 500, 500, 15, 50 }
@@ -812,7 +819,7 @@
 	    #if ENABLED(CUSTOM_ESTEPS)
 		    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 400, CUSTOM_ESTEPS_VALUE }
 	    #else
-        #define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 400, 95 }
+        #define DEFAULT_AXIS_STEPS_PER_UNIT   { 100, 100, 400, 93 }
       #endif
 	  #endif
 	#else
@@ -822,7 +829,7 @@
 	    #if ENABLED(CUSTOM_ESTEPS)
 		    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS_VALUE }
 	    #else
-        #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 95 }
+        #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 93 }
 	    #endif
 	  #endif
   #endif
@@ -1396,7 +1403,7 @@
   #define SPEAKER
 #endif
 
-#if ENABLED(CR10) || ENABLED(CR10_MINI) || ENABLED(CR10_S4) || ENABLED(CR10_S5) || ENABLED(CR10S) || ENABLED(CR10S_MINI) || ENABLED(CR10S_S4) || ENABLED(CR10S_S5) || ENABLED(TORNADO) || ENABLED(TAZ5) || ENABLED(ENDER3) || ENABLED(ALFAWISE_U10)
+#if ENABLED(CR10) || ENABLED(CR10_MINI) || ENABLED(CR10_S4) || ENABLED(CR10_S5) || ENABLED(CR10S) || ENABLED(CR10S_MINI) || ENABLED(CR10S_S4) || ENABLED(CR10S_S5) || ENABLED(TORNADO) || ENABLED(TAZ5) || ENABLED(ENDER3) || ENABLED(ALFAWISE_U10) || ENABLED(ENDER3_DUALBOARD)
   #if ENABLED(CR10LCD_CR10S)
     #define CR10_STOCKDISPLAY
   #else

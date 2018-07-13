@@ -138,7 +138,6 @@
 // and then uncomment the #define EZOUT_ENABLE line below.
 //#define EZOUT_ENABLE
 
-
 // EZABL Probe Mounts (Ender 3 uses the same mounts as CR-10)
 //#define CR10_VOLCANO
 //#define CR10_V6HEAVYDUTY
@@ -148,6 +147,23 @@
 //#define TM3DAERO_EXTENDED
 //#define PETSFANG
 //#define CUSTOM_PROBE
+
+// THE BELOW SETTINGS ARE ONLY FOR USING THE CR-10S DUAL BOARD WITH THE ENDER 3
+// If you want to use the Ender 3 LCD with the CR-10S dual board board connect 
+// the LCD cable to EXP1 on the CR-10S board but rotate it 180 degrees. 
+// You will have to force it in but it will fit and work.
+// Select Arduino Mega 2560 from Tools > Board - NOT Sanguino
+// DO NOT UNCOMMENT THE ABOVE ENDER3 LINE IF USING THE DUAL BOARD INSTEAD OF THE STOCK ONE
+//#define ENDER3_DUALBOARD
+
+// If you are using a single hotend with the 2 into 1 adapter uncomment the below line
+//#define SINGLE_HOTEND_YADAPTER
+
+// If you are using a dual hotend with dual nozzles uncomment the below line
+//#define DUAL_HOTEND_DUAL_NOZZLES
+
+// If you are using a dual hotend with the single/mixing nozzle uncomment the below line
+//#define DUAL_HOTEND_SINGLE_NOZZLE
 
 //===========================================================================
 // TEVO Tornado Options - Select Arduino Mega 2560 from Tools > Board
@@ -342,6 +358,8 @@
 
 // If you need to adjust your XY home offsets from defaults then you can uncomment the HOME_ADJUST line below and enter your
 // custom XY offsets. This is provided for convenience and is unsupported with included product support.
+// How to use - measure (home XY then jog using the LCD 1mm at a time) the X and Y distance the nozzle is off
+// the build plate and then put those as negative values below.
 //#define HOME_ADJUST
 #define X_HOME_LOCATION -10
 #define Y_HOME_LOCATION -10
@@ -476,6 +494,6 @@
 
 #include "Configuration_backend.h"
 
-#define UNIFIED_VERSION "TH3D U1.R1.9"
+#define UNIFIED_VERSION "TH3D U1.R1.9a"
 
 #endif // CONFIGURATION_H
