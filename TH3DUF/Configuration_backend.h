@@ -1018,6 +1018,7 @@
     #define FIX_MOUNTED_PROBE
        #define X_PROBE_OFFSET_FROM_EXTRUDER -38
        #define Y_PROBE_OFFSET_FROM_EXTRUDER -12
+       #define DISABLE_BOOT
     #endif
     #define INVERT_X_DIR false
     #define INVERT_Y_DIR true
