@@ -7,6 +7,12 @@
 //===========================================================================
 
 //Sensor Mounts
+#if ENABLED(CUSTOM_PROBE)
+  #define EZABL_ENABLE
+  #if ENABLED(ANET_A2) || ENABLED(ANET_A6) || ENABLED(ANET_A8) || ENABLED(ANET_E10) || ENABLED(ANET_E12)
+    #define DISABLE_BOOT
+  #endif
+#endif
 #if ENABLED(CR10_VOLCANO)
   #define X_PROBE_OFFSET_FROM_EXTRUDER 30
   #define Y_PROBE_OFFSET_FROM_EXTRUDER 12
@@ -103,7 +109,8 @@
   #define EZABL_ENABLE
 #endif
 #if ENABLED(ANET_OEM)
-     #define EZABL_ENABLE
+  #define EZABL_ENABLE
+  #define DISABLE_BOOT
 #endif
 
 //Wanhao D6 Model Settings
@@ -355,13 +362,9 @@
     #define INVERT_E0_DIR true
   #endif
 
-  //testing LCD fix for some i3 models
   #define ST7920_DELAY_1 DELAY_2_NOP
   #define ST7920_DELAY_2 DELAY_2_NOP
   #define ST7920_DELAY_3 DELAY_2_NOP
-  //#define ST7920_DELAY_1 DELAY_0_NOP
-  //#define ST7920_DELAY_2 DELAY_3_NOP
-  //#define ST7920_DELAY_3 DELAY_0_NOP
 
   #define LCD_FOR_MELZI
 #endif
@@ -583,7 +586,7 @@
       #define INVERT_E1_DIR false
     #endif
         
-    #define HOTEND_OFFSET_X {0.0, 18.00} // (in mm) for each extruder, offset of the hotend on the X axis
+    #define HOTEND_OFFSET_X {0.0, DUAL_HOTEND_X_DISTANCE} // (in mm) for each extruder, offset of the hotend on the X axis
     #define HOTEND_OFFSET_Y {0.0, 0.00}  // (in mm) for each extruder, offset of the hotend on the Y axis
   
   #endif
@@ -802,6 +805,7 @@
   #ifndef MOTHERBOARD
     #define MOTHERBOARD BOARD_ANET_10 
   #endif
+  
   #define BAUDRATE 115200
 
   #define X_MIN_ENDSTOP_INVERTING true
@@ -874,9 +878,8 @@
     #define Z_MAX_POS 230
  
     #if ENABLED(ANET_OEM)
-    #define FIX_MOUNTED_PROBE
-       #define X_PROBE_OFFSET_FROM_EXTRUDER -33
-       #define Y_PROBE_OFFSET_FROM_EXTRUDER -22
+      #define X_PROBE_OFFSET_FROM_EXTRUDER -33
+      #define Y_PROBE_OFFSET_FROM_EXTRUDER -22
     #endif
  
     #define INVERT_X_DIR false
@@ -903,9 +906,8 @@
     #define Z_MAX_POS 230
     
     #if ENABLED(ANET_OEM)
-    #define FIX_MOUNTED_PROBE
-        #define X_PROBE_OFFSET_FROM_EXTRUDER -33
-        #define Y_PROBE_OFFSET_FROM_EXTRUDER -22
+      #define X_PROBE_OFFSET_FROM_EXTRUDER -33
+      #define Y_PROBE_OFFSET_FROM_EXTRUDER -22
     #endif
     #define INVERT_X_DIR false
     #define INVERT_Y_DIR true
@@ -931,10 +933,10 @@
     #define Z_MAX_POS 250
 
     #if ENABLED(ANET_OEM)
-    #define FIX_MOUNTED_PROBE
-        #define X_PROBE_OFFSET_FROM_EXTRUDER -1
-        #define Y_PROBE_OFFSET_FROM_EXTRUDER -54
+      #define X_PROBE_OFFSET_FROM_EXTRUDER -1
+      #define Y_PROBE_OFFSET_FROM_EXTRUDER -54
     #endif
+	
     #define INVERT_X_DIR false
     #define INVERT_Y_DIR false
     #define INVERT_Z_DIR true
@@ -947,30 +949,32 @@
 
 #if ENABLED(ANET_A8)
   #if ENABLED(HOME_ADJUST)
-      #define X_MIN_POS X_HOME_LOCATION
-      #define Y_MIN_POS Y_HOME_LOCATION
-    #else
-      #define X_MIN_POS -33
-      #define Y_MIN_POS -10
-    #endif
+     #define X_MIN_POS X_HOME_LOCATION
+     #define Y_MIN_POS Y_HOME_LOCATION
+  #else
+     #define X_MIN_POS -33
+     #define Y_MIN_POS -10
+  #endif
     
-    #define X_BED_SIZE 220
-    #define Y_BED_SIZE 220
-    #define Z_MAX_POS 240
+  #define X_BED_SIZE 220
+  #define Y_BED_SIZE 220
+  #define Z_MAX_POS 240
     
-   #if ENABLED(ANET_OEM)
-   #define FIX_MOUNTED_PROBE
-      #define X_PROBE_OFFSET_FROM_EXTRUDER -26
-      #define Y_PROBE_OFFSET_FROM_EXTRUDER -40
-   #endif
-    #define INVERT_X_DIR false
-    #define INVERT_Y_DIR false
-    #define INVERT_Z_DIR true
-    #if ENABLED(TITAN_EXTRUDER)
-      #define INVERT_E0_DIR true
-	#else
-      #define INVERT_E0_DIR false
-    #endif
+  #if ENABLED(ANET_OEM)
+    #define X_PROBE_OFFSET_FROM_EXTRUDER -26
+    #define Y_PROBE_OFFSET_FROM_EXTRUDER -40
+  #endif
+   
+  #define INVERT_X_DIR false
+  #define INVERT_Y_DIR false
+  #define INVERT_Z_DIR true
+  
+  #if ENABLED(TITAN_EXTRUDER)
+    #define INVERT_E0_DIR true
+  #else
+    #define INVERT_E0_DIR false
+  #endif
+  
 #endif
 
 #if ENABLED(ANET_E10)
@@ -987,18 +991,20 @@
     #define Z_MAX_POS 300
 
     #if ENABLED(ANET_OEM)
-        #define FIX_MOUNTED_PROBE
-        #define X_PROBE_OFFSET_FROM_EXTRUDER -38
-        #define Y_PROBE_OFFSET_FROM_EXTRUDER -12
+      #define X_PROBE_OFFSET_FROM_EXTRUDER -38
+      #define Y_PROBE_OFFSET_FROM_EXTRUDER -12
     #endif
+	
     #define INVERT_X_DIR false
     #define INVERT_Y_DIR true
     #define INVERT_Z_DIR true
+	
     #if ENABLED(TITAN_EXTRUDER)
       #define INVERT_E0_DIR false
 	#else
       #define INVERT_E0_DIR true
     #endif
+	
 #endif
 
 #if ENABLED(ANET_E12)
@@ -1015,14 +1021,13 @@
     #define Z_MAX_POS 400
 
     #if ENABLED(ANET_OEM)
-    #define FIX_MOUNTED_PROBE
-       #define X_PROBE_OFFSET_FROM_EXTRUDER -38
-       #define Y_PROBE_OFFSET_FROM_EXTRUDER -12
-       #define DISABLE_BOOT
+     #define X_PROBE_OFFSET_FROM_EXTRUDER -38
+     #define Y_PROBE_OFFSET_FROM_EXTRUDER -12
     #endif
     #define INVERT_X_DIR false
     #define INVERT_Y_DIR true
     #define INVERT_Z_DIR true
+	
     #if ENABLED(TITAN_EXTRUDER)
       #define INVERT_E0_DIR false
 	#else

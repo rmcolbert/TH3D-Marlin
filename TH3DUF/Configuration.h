@@ -3,7 +3,7 @@
 *
 * Uncomment means removing the 2 // in front of #define.
 * 
-* If you have EZABL uncomment the mount you are using with the printer. 
+* If you have EZABL uncomment the mount you are using with the printer. This is all that is needed now.
 * 
 * If you have a custom/unsupported mount uncomment #define CUSTOM_MOUNT
 * and enter your offsets below in the CUSTOM MOUNT section.
@@ -14,6 +14,8 @@
 * For the Tornado, TAZ5, Wanhao i3 Mini, Wanhao, D6, Alfawise U10, and CR-10S select Tools > Board > Arduino Mega 2560
 * For the Ender 2, Ender 3, and CR-10 select Tools > Board > Sanguino(1284P Boards)
 * For the ANET Printers select Tools > Board > ANET V1.0
+* 
+* If you are using the CR-10S DUAL board with the Ender 3 then read the specific section below on how to do this
 * 
 * Then select the COM port your printer is on from the Tools menu.
 * 
@@ -114,7 +116,6 @@
 //===========================================================================
 //#define ENDER2
 
-
 // EZABL Probe Mounts (Ender 2 can use the same mounts as CR-10, Ender 2 Specific mounts minimize distance from probe to nozzle for max probing area)
 // If you have issues with the non-Ender 2 mounts then please print them off and switch to one of them before contacting support. 
 // This is because the probeable area on the non-Ender 2 mounts is too small typically to get a good result.
@@ -148,12 +149,17 @@
 //#define PETSFANG
 //#define CUSTOM_PROBE
 
-// THE BELOW SETTINGS ARE ONLY FOR USING THE CR-10S DUAL BOARD WITH THE ENDER 3
-// If you want to use the Ender 3 LCD with the CR-10S dual board board connect 
-// the LCD cable to EXP1 on the CR-10S board but rotate it 180 degrees. 
-// You will have to force it in but it will fit and work.
+//=================================================================================================
+// README - THE BELOW SETTINGS ARE ONLY FOR USING THE CR-10S DUAL BOARD WITH THE ENDER 3
+// DO NOT UNCOMMENT THE ABOVE #define ENDER3 LINE IF USING THE DUAL BOARD
 // Select Arduino Mega 2560 from Tools > Board - NOT Sanguino
-// DO NOT UNCOMMENT THE ABOVE ENDER3 LINE IF USING THE DUAL BOARD INSTEAD OF THE STOCK ONE
+//
+// To use the Ender 3 LCD with the CR-10S dual board board connect the LCD cable to EXP1 on the 
+// CR-10S board but rotate it 180 degrees. The LCD end of the cable goes to EXP3 on the Ender 3 LCD.
+// You will have to force it into the EXP1 but it will fit and work.
+// 
+// EZABL and EZOut support are still supported just use the lines above this comment section.
+//=================================================================================================
 //#define ENDER3_DUALBOARD
 
 // If you are using a single hotend with the 2 into 1 adapter uncomment the below line
@@ -197,7 +203,6 @@
 //===========================================================================
 // ANET Printers Options - Select ANET 1.0 from Tools > Board
 //===========================================================================
-
 // Uncomment the ANET Model you are using
 //#define ANET_A2 //** please see option below to choose bed size for the A2 only!!
 //#define ANET_A6
@@ -214,7 +219,7 @@
 //#define ANET_LCD12864 //This is the larger LCD with the rotary controller found on most ANET machines
 //#define ANET_LCD2004 //This is the LCD with the 5 button keypad usually found on A8 and some A2 machines
 
-// EZABL Probe Mounts
+// EZABL Probe Mounts - Bootscreen logo will be disabled when enabling EZABL on the Anet Boards
 //#define ANET_OEM
 //#define CUSTOM_PROBE
 
@@ -312,6 +317,7 @@
 //===========================================================================
 
 // EXTRUDER SETTINGS --------------------------
+
 // If you want to change the Esteps for your printer you can uncomment this and 
 // set CUSTOM_ESTEPS_VALUE to what you want
 // For example the Tornado is 400, Creality & ANET Machines are 95
@@ -325,6 +331,13 @@
 //#define TITAN_EXTRUDER
 // If your titan uses steps/mm other than 463 change it below, this works for most Titans (not used if titan is disabled).
 #define TITAN_EXTRUDER_STEPS 463
+
+// HOTEND SETTINGS ----------------------------
+
+// This is the distance between each nozzle tip when using a dual hotend like the
+// TH3D Tough Dual Hotend or the E3D Chimera or Dual hotends in general.
+// This is ONLY used when using a dual hotend setup option. Default is 18mm.
+#define DUAL_HOTEND_X_DISTANCE 18.0
 
 // THERMISTOR SETTINGS ------------------------
 
@@ -393,7 +406,6 @@
 // CUSTOM_PROBE OPTION IN YOUR PRINTER SECTION AND ENTER YOUR PROBE LOCATION BELOW
 //===========================================================================
 #if ENABLED(CUSTOM_PROBE)
-  #define EZABL_ENABLE
   /**
   *   Z Probe to nozzle (X,Y) offset, relative to (0, 0).
   *   X and Y offsets must be integers.
@@ -494,6 +506,6 @@
 
 #include "Configuration_backend.h"
 
-#define UNIFIED_VERSION "TH3D U1.R1.9a"
+#define UNIFIED_VERSION "TH3D U1.R1.9b"
 
 #endif // CONFIGURATION_H
