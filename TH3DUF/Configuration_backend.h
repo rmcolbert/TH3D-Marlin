@@ -113,6 +113,73 @@
   #define DISABLE_BOOT
 #endif
 
+//FT-5 Model Settings
+#if ENABLED(FT5)
+  #ifndef MOTHERBOARD
+    #define MOTHERBOARD BOARD_MKS_13
+  #endif
+  
+  #define BAUDRATE 250000
+
+  #define X_MIN_ENDSTOP_INVERTING true
+  #define Y_MIN_ENDSTOP_INVERTING true
+  #define Z_MIN_ENDSTOP_INVERTING true
+  #define X_MAX_ENDSTOP_INVERTING false
+  #define Y_MAX_ENDSTOP_INVERTING false
+  #define Z_MAX_ENDSTOP_INVERTING false
+  #define Z_MIN_PROBE_ENDSTOP_INVERTING true
+  
+  #if ENABLED(TITAN_EXTRUDER)
+    #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, TITAN_EXTRUDER_STEPS }
+  #else
+    #if ENABLED(CUSTOM_ESTEPS)
+      #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, CUSTOM_ESTEPS_VALUE }
+    #else
+      #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 105 }
+    #endif
+  #endif
+  
+  #define DEFAULT_MAX_FEEDRATE          { 300, 300, 15, 25 }
+  #define DEFAULT_MAX_ACCELERATION      { 800, 800, 200, 10000 }
+
+  #define DEFAULT_ACCELERATION          800    
+  #define DEFAULT_RETRACT_ACCELERATION  2500   
+  #define DEFAULT_TRAVEL_ACCELERATION   800    
+  
+  #define DEFAULT_XJERK                 10.0
+  #define DEFAULT_YJERK                 10.0
+  #define DEFAULT_ZJERK                  0.4
+  #define DEFAULT_EJERK                  5.0
+  
+  #define INVERT_X_DIR true
+  #define INVERT_Y_DIR false
+  #define INVERT_Z_DIR true
+  
+  #if ENABLED(TITAN_EXTRUDER)
+    #define INVERT_E0_DIR true
+  #else
+    #define INVERT_E0_DIR false
+  #endif
+
+  #define X_BED_SIZE 300
+  #define Y_BED_SIZE 300
+  #define Z_MAX_POS 380
+  
+  #if ENABLED(HOME_ADJUST)
+    #define X_MIN_POS X_HOME_LOCATION
+    #define Y_MIN_POS Y_HOME_LOCATION
+  #else
+    #define X_MIN_POS 0
+    #define Y_MIN_POS 0
+  #endif
+  
+  #define ENCODER_PULSES_PER_STEP 4
+  #define ENCODER_STEPS_PER_MENU_ITEM 1
+
+
+#endif
+//end FT-5 Model Settings
+
 //Wanhao D6 Model Settings
 #if ENABLED(WANHAO_D6)
   #define BAUDRATE 250000
@@ -850,7 +917,8 @@
   #define DEFAULT_EJERK                  5.0
   
   #if ENABLED(ANET_LCD2004)
-    #define ZONESTAR_LCD  
+    #define ZONESTAR_LCD
+    #define LCD2004
   #endif
   #if ENABLED(ANET_LCD12864)
    #define ANET_FULL_GRAPHICS_LCD
@@ -1079,14 +1147,14 @@
 
 #if ENABLED(V6_HOTEND)
   #define TEMP_SENSOR_0 5
+#elif ENABLED(TH3D_HOTEND_THERMISTOR)
+  #define TEMP_SENSOR_0 1
 #elif ENABLED(WANHAO_D6)
   #define TEMP_SENSOR_0 20
 #elif ENABLED(WANHAO_10K_THERMISTOR)
   #define TEMP_SENSOR_0 99
 #elif ENABLED(WANHAO_I3MINI)
   #define TEMP_SENSOR_0 13
-#elif ENABLED(TH3D_HOTEND_THERMISTOR)
-  #define TEMP_SENSOR_0 1
 #else
   #define TEMP_SENSOR_0 1
 #endif
@@ -1106,7 +1174,7 @@
 
 #if ENABLED(AC_BED) || ENABLED(WANHAO_I3MINI)
   #define TEMP_SENSOR_BED 0
-#elif ENABLED(TH3D_BED_THERMISTOR)
+#elif ENABLED(TH3D_BED_THERMISTOR) || ENABLED(ALFAWISE_U10) || ENABLED(FT5)
   #define TEMP_SENSOR_BED 1
 #elif ENABLED(TAZ5)
   #define TEMP_SENSOR_BED 7
@@ -1115,7 +1183,7 @@
 #elif ENABLED(KEENOVO_TEMPSENSOR)
   #define TEMP_SENSOR_BED 11
 #else
- #if ENABLED(WANHAO_I3) || ENABLED(ALFAWISE_U10)
+ #if ENABLED(WANHAO_I3)
   #if ENABLED(WANHAO_10K_THERMISTOR)
     #define TEMP_SENSOR_BED 99
   #else
@@ -1415,6 +1483,11 @@
   #else
     #define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
   #endif
+#endif
+
+#if ENABLED(FT5)
+  #define REPRAP_DISCOUNT_SMART_CONTROLLER
+  #define LCD2004
 #endif
 
 #if ENABLED(ENDER2) || ENABLED(WANHAO_I3MINI)

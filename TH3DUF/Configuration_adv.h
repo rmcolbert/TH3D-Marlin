@@ -125,12 +125,7 @@
   #endif
   
   #define AXIS_RELATIVE_MODES {false, false, false, false}
-  
-  #if ENABLED(ULTIPANEL)
-    #define MANUAL_FEEDRATE {70*60, 70*60, 15*60, 6*60} // Feedrates for manual moves along X, Y, Z, E from panel
-    #define ULTIPANEL_FEEDMULTIPLY  // Comment to disable setting feedrate multiplier via encoder
-  #endif
-  
+
   #define MOTOR_CURRENT_PWM_RANGE 2782
   #define PWM_MOTOR_CURRENT { 1200, 1200, 1000 }
   #define DIGIPOT_I2C_NUM_CHANNELS 8 
@@ -191,7 +186,7 @@
 #define DEFAULT_MINTRAVELFEEDRATE     0.0
 
 #if ENABLED(ULTIPANEL)
-  #define MANUAL_FEEDRATE {50*60, 50*60, 4*60, 60} // Feedrates for manual moves along X, Y, Z, E from panel
+  #define MANUAL_FEEDRATE {70*60, 70*60, 4*60, 60} // Feedrates for manual moves along X, Y, Z, E from panel
   #define ULTIPANEL_FEEDMULTIPLY  // Comment to disable setting feedrate multiplier via encoder
 #endif
 
@@ -272,7 +267,13 @@
                                       // Note: Only affects SCROLL_LONG_FILENAMES with SDSORT_CACHE_NAMES but not SDSORT_DYNAMIC_RAM.
   #endif
 
-  #if DISABLED(ANET_LCD2004)
+  #if DISABLED(LCD2004)
+    #define LCD_SET_PROGRESS_MANUALLY
+  #else
+    #define LCD_PROGRESS_BAR
+    #define PROGRESS_BAR_BAR_TIME 2000
+    #define PROGRESS_BAR_MSG_TIME 3000
+    #define PROGRESS_MSG_EXPIRE   0
     #define LCD_SET_PROGRESS_MANUALLY
   #endif
   
@@ -430,11 +431,6 @@
 #endif
 
 //#define PINS_DEBUGGING
-
-#if ENABLED(ULTIPANEL)
-  #define MANUAL_FEEDRATE {70*60, 70*60, 15*60, 6*60} // Feedrates for manual moves along X, Y, Z, E from panel
-  #define ULTIPANEL_FEEDMULTIPLY  // Comment to disable setting feedrate multiplier via encoder
-#endif
 
 #define AUTO_REPORT_TEMPERATURES
 
