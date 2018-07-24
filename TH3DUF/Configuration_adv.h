@@ -193,7 +193,11 @@
 // @section extras
 
 // minimum time in microseconds that a movement needs to take if the buffer is emptied.
-#define DEFAULT_MINSEGMENTTIME        20000
+#if ENABLED(USB_PRINT_FIX)
+  #define DEFAULT_MINSEGMENTTIME        50000
+#else
+  #define DEFAULT_MINSEGMENTTIME        20000
+#endif
 
 // If defined the movements slow down when the look ahead buffer is only half full
 #define SLOWDOWN
@@ -388,16 +392,25 @@
 // The number of linear motions that can be in the plan at any give time.
 // THE BLOCK_BUFFER_SIZE NEEDS TO BE A POWER OF 2 (e.g. 8, 16, 32) because shifts and ors are used to do the ring-buffering.
 #if ENABLED(SDSUPPORT)
-  #define BLOCK_BUFFER_SIZE 16 // SD,LCD,Buttons take more memory, block buffer needs to be smaller
+  #if ENABLED(USB_PRINT_FIX)
+    #define BLOCK_BUFFER_SIZE 64 // SD,LCD,Buttons take more memory, block buffer needs to be smaller
+  #else
+    #define BLOCK_BUFFER_SIZE 32 // SD,LCD,Buttons take more memory, block buffer needs to be smaller
+  #endif
 #else
-  #define BLOCK_BUFFER_SIZE 16 // maximize block buffer
+  #define BLOCK_BUFFER_SIZE 32 // maximize block buffer
 #endif
 
 // @section serial
 
 // The ASCII buffer for serial input
 #define MAX_CMD_SIZE 96
-#define BUFSIZE 4
+#if ENABLED(USB_PRINT_FIX)
+  #define BUFSIZE 16
+#else
+  #define BUFSIZE 4
+#endif
+  
 
 #define TX_BUFFER_SIZE 0
 

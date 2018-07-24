@@ -296,16 +296,6 @@
 // do not use this on your machine.
 //#define EZABL_FASTPROBE
 
-// This can help if you have a shaky Z axis or can help with AC bed interference.
-// This will add a 500MS delay before the probe starts - only use if directed to by support.
-//#define EZABL_STABILIZE
-
-// If you are having leveling issues with the EZABL try uncommenting the below
-// line. This will change the leveling type from bilinear to linear. Some printers
-// do better with linear leveling instead of bilinear.
-// If used with a 1284P board the bootscreen will be disabled to save space.
-//#define LINEAR_LEVELING
-
 // If you want babystepping to modify the Z Offset uncomment the below line. Use M500 to save any changes made or
 // Control > Store Settings if you want to save the changes made with the Z Offset/Babystepping combined option.
 //#define BABYSTEP_OFFSET
@@ -386,6 +376,10 @@
 #define Y_HOME_LOCATION -10
 
 // MISC ------------------------------------
+
+// Experimental changes to help smooth out USB printing.
+// Read here for more details: http://lokspace.eu/bad-print-quality-with-usb-or-octoprint-the-solution-is-here/
+//#define USB_PRINT_FIX
 
 // If you are using the TH3D 5015 High Flow Layer Fan enable this to allow the firmware
 // to properly control the fan speed. If this is not enabled then the fan may not spin and/or make noise at low speeds.

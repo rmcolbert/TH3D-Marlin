@@ -175,7 +175,8 @@
   
   #define ENCODER_PULSES_PER_STEP 4
   #define ENCODER_STEPS_PER_MENU_ITEM 1
-
+  
+  #define REVERSE_ENCODER_DIRECTION
 
 #endif
 //end FT-5 Model Settings
@@ -1301,10 +1302,6 @@
 
 #define Z_PROBE_SPEED_SLOW (Z_PROBE_SPEED_FAST / 2)
 
-#if ENABLED(EZABL_STABILIZE)
-  #define DELAY_BEFORE_PROBING 500  // (ms) To prevent vibrations from triggering piezo sensors
-#endif
-
 #define MULTIPLE_PROBING 2
 
 #define Z_CLEARANCE_DEPLOY_PROBE   5
@@ -1391,11 +1388,7 @@
 #endif
 
 #if ENABLED(EZABL_ENABLE)
-  #if ENABLED(LINEAR_LEVELING)
-    #define AUTO_BED_LEVELING_LINEAR
-  #else
-    #define AUTO_BED_LEVELING_BILINEAR
-  #endif
+  #define AUTO_BED_LEVELING_BILINEAR
 #endif
 
 #if ENABLED(MESH_BED_LEVELING) || ENABLED(AUTO_BED_LEVELING_BILINEAR) || ENABLED(AUTO_BED_LEVELING_UBL)
