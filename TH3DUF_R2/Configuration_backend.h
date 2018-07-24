@@ -6,20 +6,6 @@
 //==================== DO NOT MODIFY BELOW THIS LINE ========================
 //===========================================================================
 
-//NEW FOR U2 RELEASE
-
-/**
- * S-Curve Acceleration
- *
- * This option eliminates vibration during printing by fitting a BÃ©zier
- * curve to move acceleration, producing much smoother direction changes.
- *
- * See https://github.com/synthetos/TinyG/wiki/Jerk-Controlled-Motion-Explained
- */
-//#define S_CURVE_ACCELERATION //not sure if can be used on 1284p needs testing
-
-
-
 //Sensor Mounts
 #if ENABLED(CUSTOM_PROBE)
   #define EZABL_ENABLE
@@ -1132,6 +1118,7 @@
 
 #if ENABLED(SLIM_1284P)
   #define SLIM_LCD_MENUS
+  #define DISABLE_BOOT
 #endif
 
 #define STRING_CONFIG_H_AUTHOR "(TH3D)"
@@ -1256,9 +1243,11 @@
 
 #if DISABLED(PIDBED_DISABLE)
   #if DISABLED(TORNADO)
-	#if DISABLED(KEENOVO_TEMPSENSOR)
-	  #define PIDTEMPBED
-	#endif
+	  #if DISABLED(KEENOVO_TEMPSENSOR)
+	    #if DISABLED(SLIM_1284P)
+	      #define PIDTEMPBED
+      #endif
+	  #endif
   #endif
 #endif
 
@@ -1311,10 +1300,6 @@
   #if ENABLED(FIX_MOUNTED_PROBE) && DISABLED(HEATERS_ON_DURING_PROBING)
     #define PROBING_HEATERS_OFF   
   #endif
-
-  #if ENABLED(EZABL_STABILIZE)
-    #define DELAY_BEFORE_PROBING 500  // (ms) To prevent vibrations from triggering piezo sensors
-  #endif
   
   #define MULTIPLE_PROBING 2
   #define Z_CLEARANCE_DEPLOY_PROBE   5
@@ -1325,7 +1310,11 @@
   #define Z_AFTER_PROBING           5
   #define Z_PROBE_LOW_POINT          -2
 #endif  
-  
+
+#if DISABLED(POWER_LOSS_RECOVERY) && ENABLED(SLIM_1284P)
+  #define S_CURVE_ACCELERATION
+#endif
+
 #define X_ENABLE_ON 0
 #define Y_ENABLE_ON 0
 #define Z_ENABLE_ON 0
@@ -1401,11 +1390,7 @@
 #endif
 
 #if ENABLED(EZABL_ENABLE)
-  #if ENABLED(LINEAR_LEVELING)
-    #define AUTO_BED_LEVELING_LINEAR
-  #else
-    #define AUTO_BED_LEVELING_BILINEAR
-  #endif
+  #define AUTO_BED_LEVELING_BILINEAR
 #endif
 
 #if ENABLED(MESH_BED_LEVELING) || ENABLED(AUTO_BED_LEVELING_BILINEAR) || ENABLED(AUTO_BED_LEVELING_UBL)
@@ -1485,7 +1470,7 @@
   #define LEVEL_CENTER_TOO
 #endif
 
-#if DISABLED(ENDER2) || DISABLED(EZOUT_ENABLE) || DISABLED(WANHAO_I3)
+#if DISABLED(ENDER2) || DISABLED(EZOUT_ENABLE) || DISABLED(WANHAO_I3) || DISABLED(SLIM_1284P)
   #define SPEAKER
 #endif
 

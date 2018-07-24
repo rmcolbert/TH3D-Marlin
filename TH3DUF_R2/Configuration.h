@@ -45,19 +45,19 @@
 //===========================================================================
 // Creality CR-10 Options - Select Sanguino(1284P) from Tools > Board
 //===========================================================================
-#define CR10
+//#define CR10
 //#define CR10_MINI
 //#define CR10_S4
 //#define CR10_S5
 
 // If you are using our EZOut filament sensor kit please follow the install guide
 // and then uncomment the #define EZOUT_ENABLE line below.
-#define EZOUT_ENABLE
+//#define EZOUT_ENABLE
 
 // EZABL Probe Mounts
 //#define CR10_VOLCANO
 //#define CR10_V6HEAVYDUTY
-#define CR10_OEM
+//#define CR10_OEM
 //#define CR10_FANG
 //#define TM3DAERO
 //#define TM3DAERO_EXTENDED
@@ -296,16 +296,6 @@
 // do not use this on your machine.
 //#define EZABL_FASTPROBE
 
-// This can help if you have a shaky Z axis or can help with AC bed interference.
-// This will add a 500MS delay before the probe starts - only use if directed to by support.
-//#define EZABL_STABILIZE
-
-// If you are having leveling issues with the EZABL try uncommenting the below
-// line. This will change the leveling type from bilinear to linear. Some printers
-// do better with linear leveling instead of bilinear.
-// If used with a 1284P board the bootscreen will be disabled to save space.
-//#define LINEAR_LEVELING
-
 // If you want babystepping to modify the Z Offset uncomment the below line. Use M500 to save any changes made or
 // Control > Store Settings if you want to save the changes made with the Z Offset/Babystepping combined option.
 //#define BABYSTEP_OFFSET
@@ -318,7 +308,7 @@
 
 // This will extrapolate the implied tilt of the bed outside of the probe area
 // By default this should be ENABLED. Do not comment out unless directed by support.
-#define EZABL_OUTSIDE_GRID_COMPENSATION
+//#define EZABL_OUTSIDE_GRID_COMPENSATION
 
 //===========================================================================
 // TH3D EXTRAS
@@ -398,7 +388,7 @@
 //#define ENDER_BOOT
 
 // Disable Bootscreen completely
-#define DISABLE_BOOT
+//#define DISABLE_BOOT
 
 // Use your own printer name
 //#define USER_PRINTER_NAME "Change Me" 
@@ -408,6 +398,18 @@
 // Mesh Bed Leveling Documentation: http://marlinfw.org/docs/gcode/G029-mbl.html
 // If used with a 1284P board like the CR-10, Ender 2, Ender 3, or Wanhao i3 the bootscreen will be disabled to save space.
 //#define MANUAL_MESH_LEVELING
+
+/**
+   * Continue after Power-Loss (Creality3D)
+   *
+   * Store the current state to the SD Card at the start of each layer
+   * during SD printing. If the recovery file is found at boot time, present
+   * an option on the LCD screen to continue the print from the last-known
+   * point in the file.
+   * 
+   * Will DISABLE Junction Deviation on 1284P Boards and S-Curve Acceleration
+   */
+//#define POWER_LOSS_RECOVERY
 
 //===========================================================================
 // IF YOU HAVE A CUSTOM PROBE MOUNT OR ONE THAT IS NOT PRE-SUPPORTED UNCOMMENT THE
@@ -514,6 +516,6 @@
 
 #include "Configuration_backend.h"
 
-#define UNIFIED_VERSION "TH3D U1.R2.1.ALPHA"
+#define UNIFIED_VERSION "TH3D U1.R2.1.BETA"
 
 #endif // CONFIGURATION_H

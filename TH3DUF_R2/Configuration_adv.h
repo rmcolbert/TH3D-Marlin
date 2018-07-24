@@ -206,7 +206,9 @@
 //
 // Use Junction Deviation instead of traditional Jerk Limiting
 //
-#define JUNCTION_DEVIATION
+#if DISABLED(POWER_LOSS_RECOVERY) && ENABLED(SLIM_1284P)
+  #define JUNCTION_DEVIATION
+#endif
 #if ENABLED(JUNCTION_DEVIATION)
   #define JUNCTION_DEVIATION_MM 0.02  // (mm) Distance from real junction edge
 #endif
@@ -259,26 +261,15 @@
   // Note: This is always disabled for ULTIPANEL (except ELB_FULL_GRAPHIC_CONTROLLER).
   #define SD_DETECT_INVERTED
 
-  #define SD_FINISHED_STEPPERRELEASE true          // Disable steppers when SD Print is finished
-  #define SD_FINISHED_RELEASECOMMAND "M84 X Y Z E" // You might want to keep the z enabled so your bed stays in place.
-
-  // Reverse SD sort to show "more recent" files first, according to the card's FAT.
-  // Since the FAT gets out of order with usage, SDCARD_SORT_ALPHA is recommended.
-  #define SDCARD_RATHERRECENTFIRST
-  
   #if DISABLED(SLIM_1284P)
-	#define SDCARD_SORT_ALPHA
+    #define SD_FINISHED_STEPPERRELEASE true          // Disable steppers when SD Print is finished
+    #define SD_FINISHED_RELEASECOMMAND "M84 X Y E" // You might want to keep the z enabled so your bed stays in place.
   #endif
 
-  /**
-   * Continue after Power-Loss (Creality3D)
-   *
-   * Store the current state to the SD Card at the start of each layer
-   * during SD printing. If the recovery file is found at boot time, present
-   * an option on the LCD screen to continue the print from the last-known
-   * point in the file.
-   */
-  #define POWER_LOSS_RECOVERY
+  #if DISABLED(SLIM_1284P)
+	  #define SDCARD_SORT_ALPHA
+  #endif
+
   #if ENABLED(POWER_LOSS_RECOVERY)
     //#define POWER_LOSS_PIN   44     // Pin to detect power loss
     //#define POWER_LOSS_STATE HIGH   // State of pin indicating power loss

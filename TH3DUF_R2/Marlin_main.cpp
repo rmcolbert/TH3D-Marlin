@@ -7640,19 +7640,23 @@ inline void gcode_M42() {
     if (axis_unhomed_error()) return;
 
     const int8_t verbose_level = parser.byteval('V', 1);
-    if (!WITHIN(verbose_level, 0, 4)) {
-      SERIAL_PROTOCOLLNPGM("?(V)erbose level is implausible (0-4).");
-      return;
-    }
+    #if DISABLED(SLIM_1284P)
+      if (!WITHIN(verbose_level, 0, 4)) {
+        SERIAL_PROTOCOLLNPGM("?(V)erbose level is implausible (0-4).");
+        return;
+      }
+    #endif
 
     if (verbose_level > 0)
-      SERIAL_PROTOCOLLNPGM("M48 Z-Probe Repeatability Test");
+      SERIAL_PROTOCOLLNPGM("Z-Probe Test");
 
     const int8_t n_samples = parser.byteval('P', 10);
-    if (!WITHIN(n_samples, 4, 50)) {
-      SERIAL_PROTOCOLLNPGM("?Sample size not plausible (4-50).");
-      return;
-    }
+    #if DISABLED(SLIM_1284P)
+      if (!WITHIN(n_samples, 4, 50)) {
+        SERIAL_PROTOCOLLNPGM("?Sample size not plausible (4-50).");
+        return;
+      }
+    #endif
 
     const ProbePtRaise raise_after = parser.boolval('E') ? PROBE_PT_STOW : PROBE_PT_RAISE;
 
@@ -7670,7 +7674,7 @@ inline void gcode_M42() {
     bool seen_L = parser.seen('L');
     uint8_t n_legs = seen_L ? parser.value_byte() : 0;
     if (n_legs > 15) {
-      SERIAL_PROTOCOLLNPGM("?Number of legs in movement not plausible (0-15).");
+      SERIAL_PROTOCOLLNPGM("?L Error (0-15).");
       return;
     }
     if (n_legs == 1) n_legs = 2;
@@ -7717,13 +7721,15 @@ inline void gcode_M42() {
             #endif
           );
 
-          if (verbose_level > 3) {
-            SERIAL_ECHOPAIR("Starting radius: ", radius);
-            SERIAL_ECHOPAIR("   angle: ", angle);
-            SERIAL_ECHOPGM(" Direction: ");
-            if (dir > 0) SERIAL_ECHOPGM("Counter-");
-            SERIAL_ECHOLNPGM("Clockwise");
-          }
+          #if DISABLED(SLIM_1284P)
+            if (verbose_level > 3) {
+              SERIAL_ECHOPAIR("Starting radius: ", radius);
+              SERIAL_ECHOPAIR("   angle: ", angle);
+              SERIAL_ECHOPGM(" Direction: ");
+              if (dir > 0) SERIAL_ECHOPGM("Counter-");
+              SERIAL_ECHOLNPGM("Clockwise");
+            }
+          #endif
 
           for (uint8_t l = 0; l < n_legs - 1; l++) {
             float delta_angle;
@@ -7757,18 +7763,24 @@ inline void gcode_M42() {
               while (!position_is_reachable_by_probe(X_current, Y_current)) {
                 X_current *= 0.8;
                 Y_current *= 0.8;
-                if (verbose_level > 3) {
-                  SERIAL_ECHOPAIR("Pulling point towards center:", X_current);
-                  SERIAL_ECHOLNPAIR(", ", Y_current);
-                }
+                #if DISABLED(SLIM_1284P)
+                  if (verbose_level > 3) {
+                    SERIAL_ECHOPAIR("Pulling point towards center:", X_current);
+                    SERIAL_ECHOLNPAIR(", ", Y_current);
+                  }
+                #endif
               }
             #endif
-            if (verbose_level > 3) {
-              SERIAL_PROTOCOLPGM("Going to:");
-              SERIAL_ECHOPAIR(" X", X_current);
-              SERIAL_ECHOPAIR(" Y", Y_current);
-              SERIAL_ECHOLNPAIR(" Z", current_position[Z_AXIS]);
-            }
+            
+            #if DISABLED(SLIM_1284P)
+              if (verbose_level > 3) {
+                SERIAL_PROTOCOLPGM("Going to:");
+                SERIAL_ECHOPAIR(" X", X_current);
+                SERIAL_ECHOPAIR(" Y", Y_current);
+                SERIAL_ECHOLNPAIR(" Z", current_position[Z_AXIS]);
+              }
+            #endif
+            
             do_blocking_move_to_xy(X_current, Y_current);
           } // n_legs loop
         } // n_legs
@@ -7799,28 +7811,30 @@ inline void gcode_M42() {
           sum += sq(sample_set[j] - mean);
 
         sigma = SQRT(sum / (n + 1));
-        if (verbose_level > 0) {
-          if (verbose_level > 1) {
-            SERIAL_PROTOCOL(n + 1);
-            SERIAL_PROTOCOLPGM(" of ");
-            SERIAL_PROTOCOL((int)n_samples);
-            SERIAL_PROTOCOLPGM(": z: ");
-            SERIAL_PROTOCOL_F(sample_set[n], 3);
-            if (verbose_level > 2) {
-              SERIAL_PROTOCOLPGM(" mean: ");
-              SERIAL_PROTOCOL_F(mean, 4);
-              SERIAL_PROTOCOLPGM(" sigma: ");
-              SERIAL_PROTOCOL_F(sigma, 6);
-              SERIAL_PROTOCOLPGM(" min: ");
-              SERIAL_PROTOCOL_F(min, 3);
-              SERIAL_PROTOCOLPGM(" max: ");
-              SERIAL_PROTOCOL_F(max, 3);
-              SERIAL_PROTOCOLPGM(" range: ");
-              SERIAL_PROTOCOL_F(max-min, 3);
+        #if DISABLED(SLIM_1284P)
+          if (verbose_level > 0) {
+            if (verbose_level > 1) {
+              SERIAL_PROTOCOL(n + 1);
+              SERIAL_PROTOCOLPGM(" of ");
+              SERIAL_PROTOCOL((int)n_samples);
+              SERIAL_PROTOCOLPGM(": z: ");
+              SERIAL_PROTOCOL_F(sample_set[n], 3);
+              if (verbose_level > 2) {
+                SERIAL_PROTOCOLPGM(" mean: ");
+                SERIAL_PROTOCOL_F(mean, 4);
+                SERIAL_PROTOCOLPGM(" sigma: ");
+                SERIAL_PROTOCOL_F(sigma, 6);
+                SERIAL_PROTOCOLPGM(" min: ");
+                SERIAL_PROTOCOL_F(min, 3);
+                SERIAL_PROTOCOLPGM(" max: ");
+                SERIAL_PROTOCOL_F(max, 3);
+                SERIAL_PROTOCOLPGM(" range: ");
+                SERIAL_PROTOCOL_F(max-min, 3);
+              }
+              SERIAL_EOL();
             }
-            SERIAL_EOL();
           }
-        }
+        #endif
 
       } // n_samples loop
     }
@@ -7830,17 +7844,19 @@ inline void gcode_M42() {
     if (probing_good) {
       SERIAL_PROTOCOLLNPGM("Finished!");
 
-      if (verbose_level > 0) {
-        SERIAL_PROTOCOLPGM("Mean: ");
-        SERIAL_PROTOCOL_F(mean, 6);
-        SERIAL_PROTOCOLPGM(" Min: ");
-        SERIAL_PROTOCOL_F(min, 3);
-        SERIAL_PROTOCOLPGM(" Max: ");
-        SERIAL_PROTOCOL_F(max, 3);
-        SERIAL_PROTOCOLPGM(" Range: ");
-        SERIAL_PROTOCOL_F(max-min, 3);
-        SERIAL_EOL();
+      #if DISABLED(SLIM_1284P)
+        if (verbose_level > 0) {
+          SERIAL_PROTOCOLPGM("Mean: ");
+          SERIAL_PROTOCOL_F(mean, 6);
+          SERIAL_PROTOCOLPGM(" Min: ");
+          SERIAL_PROTOCOL_F(min, 3);
+          SERIAL_PROTOCOLPGM(" Max: ");
+          SERIAL_PROTOCOL_F(max, 3);
+          SERIAL_PROTOCOLPGM(" Range: ");
+          SERIAL_PROTOCOL_F(max-min, 3);
+          SERIAL_EOL();
       }
+      #endif
 
       SERIAL_PROTOCOLPGM("Standard Deviation: ");
       SERIAL_PROTOCOL_F(sigma, 6);
@@ -12522,8 +12538,10 @@ void process_parsed_command() {
       case 400: gcode_M400(); break;                              // M400: Synchronize. Wait for moves to finish.
 
       #if HAS_BED_PROBE
-        case 401: gcode_M401(); break;                            // M401: Deploy Probe
-        case 402: gcode_M402(); break;                            // M402: Stow Probe
+        #if DISABLED(SLIM_1284P)
+          case 401: gcode_M401(); break;                            // M401: Deploy Probe
+          case 402: gcode_M402(); break;                            // M402: Stow Probe
+        #endif
       #endif
 
       #if ENABLED(FILAMENT_WIDTH_SENSOR)
@@ -12547,7 +12565,7 @@ void process_parsed_command() {
       #if DISABLED(DISABLE_M503)
         case 503: gcode_M503(); break;                            // M503: Report Settings (in SRAM)
       #endif
-      #if ENABLED(EEPROM_SETTINGS)
+      #if ENABLED(EEPROM_SETTINGS) && DISABLED(SLIM_1284P)
         case 504: gcode_M504(); break;                            // M504: Validate EEPROM
       #endif
 
@@ -12571,7 +12589,7 @@ void process_parsed_command() {
         case 666: gcode_M666(); break;                            // M666: DELTA/Dual Endstop Adjustment
       #endif
 
-      #if ENABLED(FILAMENT_LOAD_UNLOAD_GCODES)
+      #if ENABLED(FILAMENT_LOAD_UNLOAD_GCODES) && DISABLED(SLIM_1284P)
         case 701: gcode_M701(); break;                            // M701: Load Filament
         case 702: gcode_M702(); break;                            // M702: Unload Filament
       #endif
@@ -12609,7 +12627,9 @@ void process_parsed_command() {
         case 900: gcode_M900(); break;                            // M900: Set Linear Advance K factor
       #endif
 
-      case 907: gcode_M907(); break;                              // M907: Set Digital Trimpot Motor Current using axis codes.
+      #if DISABLED(SLIM_1284P)
+        case 907: gcode_M907(); break;                              // M907: Set Digital Trimpot Motor Current using axis codes.
+      #endif
 
       #if HAS_DIGIPOTSS || ENABLED(DAC_STEPPER_CURRENT)
         case 908: gcode_M908(); break;                            // M908: Direct Control Digital Trimpot
@@ -12637,7 +12657,9 @@ void process_parsed_command() {
         #endif
       #endif
 
-      case 999: gcode_M999(); break;                              // M999: Restart after being Stopped
+      #if DISABLED(SLIM_1284P)
+        case 999: gcode_M999(); break;                              // M999: Restart after being Stopped
+      #endif
 
       default: parser.unknown_command_error();
     }
