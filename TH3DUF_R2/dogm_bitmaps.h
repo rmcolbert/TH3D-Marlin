@@ -36,7 +36,17 @@
 
   #if ENABLED(SHOW_CUSTOM_BOOTSCREEN)
 
-    #include "_Bootscreen.h"
+    #if ENABLED(SHOW_BOOTSCREEN) && ENABLED(SHOW_CUSTOM_BOOTSCREEN)
+      #if ENABLED(TM3D_BOOT)
+        #include "_BootscreenTM3D.h"
+      #elif ENABLED(TORNADO_BOOT) && ENABLED(TORNADO)
+        #include "_BootscreenTORNADO.h"
+      #elif ENABLED(ENDER_BOOT)
+        #include "_BootscreenENDER.h"
+      #else
+        #include "_Bootscreen.h"
+      #endif  
+    #endif
 
     #ifndef CUSTOM_BOOTSCREEN_TIMEOUT
       #define CUSTOM_BOOTSCREEN_TIMEOUT 2500

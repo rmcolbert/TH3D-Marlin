@@ -16,7 +16,7 @@
  *
  * See https://github.com/synthetos/TinyG/wiki/Jerk-Controlled-Motion-Explained
  */
-#define S_CURVE_ACCELERATION //not sure if can be used on 1284p needs testing
+//#define S_CURVE_ACCELERATION //not sure if can be used on 1284p needs testing
 
 
 
@@ -1303,36 +1303,29 @@
 
 #if ENABLED(EZABL_ENABLE)
   #define FIX_MOUNTED_PROBE
-#endif
+  #define Z_PROBE_OFFSET_FROM_EXTRUDER 0
+  #define XY_PROBE_SPEED 12000
+  #define Z_PROBE_SPEED_FAST HOMING_FEEDRATE_Z
+  #define Z_PROBE_SPEED_SLOW (Z_PROBE_SPEED_FAST / 2)
+  
+  #if ENABLED(FIX_MOUNTED_PROBE) && DISABLED(HEATERS_ON_DURING_PROBING)
+    #define PROBING_HEATERS_OFF   
+  #endif
 
-#if ENABLED(FIX_MOUNTED_PROBE) && DISABLED(HEATERS_ON_DURING_PROBING)
-  #define PROBING_HEATERS_OFF   
-#endif
-
-#define Z_PROBE_OFFSET_FROM_EXTRUDER 0   
-
-#define XY_PROBE_SPEED 12000
-
-#define Z_PROBE_SPEED_FAST HOMING_FEEDRATE_Z
-
-#define Z_PROBE_SPEED_SLOW (Z_PROBE_SPEED_FAST / 2)
-
-#if ENABLED(EZABL_STABILIZE)
-  #define DELAY_BEFORE_PROBING 500  // (ms) To prevent vibrations from triggering piezo sensors
-#endif
-
-#define MULTIPLE_PROBING 2
-
-#define Z_CLEARANCE_DEPLOY_PROBE   5
-#define Z_CLEARANCE_BETWEEN_PROBES  3 
-
-#define Z_PROBE_OFFSET_RANGE_MIN -10
-#define Z_PROBE_OFFSET_RANGE_MAX 10
-
-#if ENABLED(FIX_MOUNTED_PROBE)
+  #if ENABLED(EZABL_STABILIZE)
+    #define DELAY_BEFORE_PROBING 500  // (ms) To prevent vibrations from triggering piezo sensors
+  #endif
+  
+  #define MULTIPLE_PROBING 2
+  #define Z_CLEARANCE_DEPLOY_PROBE   5
+  #define Z_CLEARANCE_BETWEEN_PROBES  3 
+  #define Z_PROBE_OFFSET_RANGE_MIN -10
+  #define Z_PROBE_OFFSET_RANGE_MAX 10
   #define Z_MIN_PROBE_REPEATABILITY_TEST
+  #define Z_AFTER_PROBING           5
+  #define Z_PROBE_LOW_POINT          -2
 #endif  
-
+  
 #define X_ENABLE_ON 0
 #define Y_ENABLE_ON 0
 #define Z_ENABLE_ON 0
@@ -1389,7 +1382,7 @@
       #define FIL_RUNOUT_INVERTING true
     #endif
     #define NUM_RUNOUT_SENSORS   1
-    #define ENDSTOPPULLUP_FIL_RUNOUT
+    #define FIL_RUNOUT_PULLUP
     #define FILAMENT_RUNOUT_SCRIPT "M600"
   #endif
 #endif
@@ -1488,6 +1481,8 @@
 
 #if DISABLED(EZABL_ENABLE)
   #define LEVEL_BED_CORNERS
+  #define LEVEL_CORNERS_INSET 30
+  #define LEVEL_CENTER_TOO
 #endif
 
 #if DISABLED(ENDER2) || DISABLED(EZOUT_ENABLE) || DISABLED(WANHAO_I3)

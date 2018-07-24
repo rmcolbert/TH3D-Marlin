@@ -45,19 +45,19 @@
 //===========================================================================
 // Creality CR-10 Options - Select Sanguino(1284P) from Tools > Board
 //===========================================================================
-//#define CR10
+#define CR10
 //#define CR10_MINI
 //#define CR10_S4
 //#define CR10_S5
 
 // If you are using our EZOut filament sensor kit please follow the install guide
 // and then uncomment the #define EZOUT_ENABLE line below.
-//#define EZOUT_ENABLE
+#define EZOUT_ENABLE
 
 // EZABL Probe Mounts
 //#define CR10_VOLCANO
 //#define CR10_V6HEAVYDUTY
-//#define CR10_OEM
+#define CR10_OEM
 //#define CR10_FANG
 //#define TM3DAERO
 //#define TM3DAERO_EXTENDED
@@ -398,7 +398,7 @@
 //#define ENDER_BOOT
 
 // Disable Bootscreen completely
-//#define DISABLE_BOOT
+#define DISABLE_BOOT
 
 // Use your own printer name
 //#define USER_PRINTER_NAME "Change Me" 
