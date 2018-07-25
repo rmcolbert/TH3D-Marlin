@@ -270,6 +270,9 @@
 //===========================================================================
 //#define FT5
 
+// If you are using a 12864 LCD instead of the stock LCD 2004 display uncomment the below line.
+//#define FT5_12864LCD
+
 // EZABL Probe Mounts
 //#define CUSTOM_PROBE
 
@@ -508,6 +511,6 @@
 
 #include "Configuration_backend.h"
 
-#define UNIFIED_VERSION "TH3D U1.R1.10"
+#define UNIFIED_VERSION "TH3D U1.R1.10.B1"
 
 #endif // CONFIGURATION_H
