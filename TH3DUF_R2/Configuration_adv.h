@@ -350,8 +350,10 @@
   #endif
   #define DOUBLECLICK_FOR_Z_BABYSTEPPING // Double-click on the Status Screen for Z Babystepping.
   #define DOUBLECLICK_MAX_INTERVAL 2000 // Maximum interval between clicks, in milliseconds.
-                                        // Note: Extra time may be added to mitigate controller latency.
-  //#define BABYSTEP_ZPROBE_GFX_OVERLAY // Enable graphical overlay on Z-offset editor
+  
+  #if ENABLED(BABYSTEP_OFFSET) && DISABLED(SLIM_1284P)
+    #define BABYSTEP_ZPROBE_GFX_OVERLAY // Enable graphical overlay on Z-offset editor
+  #endif
 #endif
 
 // @section extruder
@@ -408,15 +410,17 @@
 
 /**
  * Minimum delay after setting the stepper DIR (in ns)
- *    0 : No delay (Expect at least 10µS since one Stepper ISR must transpire)
- *   20 : Minimum for TMC2xxx drivers
- *  200 : Minimum for A4988 drivers
- *  500 : Minimum for LV8729 drivers (guess, no info in datasheet)
- *  650 : Minimum for DRV8825 drivers
- * 1500 : Minimum for TB6600 drivers (guess, no info in datasheet)
- *15000 : Minimum for TB6560 drivers (guess, no info in datasheet)
+ *     0 : No delay (Expect at least 10µS since one Stepper ISR must transpire)
+ *    20 : Minimum for TMC2xxx drivers
+ *   200 : Minimum for A4988 drivers
+ *   500 : Minimum for LV8729 drivers (guess, no info in datasheet)
+ *   650 : Minimum for DRV8825 drivers
+ *  1500 : Minimum for TB6600 drivers (guess, no info in datasheet)
+ * 15000 : Minimum for TB6560 drivers (guess, no info in datasheet)
+ *
+ * Override the default value based on the driver type set in Configuration.h.
  */
-#define MINIMUM_STEPPER_DIR_DELAY 0
+//#define MINIMUM_STEPPER_DIR_DELAY 650
 
 /**
  * Minimum stepper driver pulse width (in µs)
@@ -426,8 +430,10 @@
  *   2 : Minimum for DRV8825 stepper drivers
  *   3 : Minimum for TB6600 stepper drivers
  *  30 : Minimum for TB6560 stepper drivers
+ *
+ * Override the default value based on the driver type set in Configuration.h.
  */
-#define MINIMUM_STEPPER_PULSE 2
+//#define MINIMUM_STEPPER_PULSE 2
 
 /**
  * Maximum stepping rate (in Hz) the stepper driver allows
@@ -438,8 +444,10 @@
  *  150000 : Maximum for TB6600 stepper driver
  *  130000 : Maximum for LV8729 stepper driver
  *   15000 : Maximum for TB6560 stepper driver
+ *
+ * Override the default value based on the driver type set in Configuration.h.
  */
-#define MAXIMUM_STEPPER_RATE 250000
+//#define MAXIMUM_STEPPER_RATE 250000
 
 // @section temperature
 
