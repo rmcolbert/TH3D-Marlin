@@ -6,6 +6,31 @@
 //==================== DO NOT MODIFY BELOW THIS LINE ========================
 //===========================================================================
 
+//needs tuning
+
+/**
+ * Specify Stepper Driver types
+ * The options are used to determine driver pulse timings as well as more advanced functionality.
+ * Stepper timing options can be overridden in Configuration_adv.h
+ *
+ * Options: A4988, DRV8825, LV8729, L6470, TB6560, TB6600, TMC2100,
+ *          TMC2130, TMC2130_STANDALONE, TMC2208, TMC2208_STANDALONE,
+ *          TMC26X,  TMC26X_STANDALONE,  TMC2660, TMC2660_STANDALONE,
+ *          TMC5130, TMC5130_STANDALONE
+ * :['A4988', 'DRV8825', 'LV8729', 'L6470', 'TB6560', 'TB6600', 'TMC2100', 'TMC2130', 'TMC2130_STANDALONE', 'TMC2208', 'TMC2208_STANDALONE', 'TMC26X', 'TMC26X_STANDALONE', 'TMC2660', 'TMC2660_STANDALONE', 'TMC5130', 'TMC5130_STANDALONE']
+ */
+#define X_DRIVER_TYPE  A4988
+#define Y_DRIVER_TYPE  A4988
+#define Z_DRIVER_TYPE  A4988
+#define X2_DRIVER_TYPE A4988
+#define Y2_DRIVER_TYPE A4988
+#define Z2_DRIVER_TYPE A4988
+#define E0_DRIVER_TYPE A4988
+#define E1_DRIVER_TYPE A4988
+#define E2_DRIVER_TYPE A4988
+#define E3_DRIVER_TYPE A4988
+#define E4_DRIVER_TYPE A4988
+
 //Sensor Mounts
 #if ENABLED(CUSTOM_PROBE)
   #define EZABL_ENABLE
@@ -1400,7 +1425,7 @@
 #endif
 
 #if ENABLED(MESH_BED_LEVELING) || ENABLED(AUTO_BED_LEVELING_BILINEAR) || ENABLED(AUTO_BED_LEVELING_UBL)
-  //#define ENABLE_LEVELING_FADE_HEIGHT //Disabled due to Z Offset issues
+  #define ENABLE_LEVELING_FADE_HEIGHT
   #define SEGMENT_LEVELED_MOVES
   #define LEVELED_SEGMENT_LENGTH 5.0
 #endif
