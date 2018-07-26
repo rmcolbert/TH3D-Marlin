@@ -390,6 +390,12 @@
 // Disable Bootscreen completely
 //#define DISABLE_BOOT
 
+// Use Ender Status Screen instead of the default
+//#define ENDER_STATUS
+
+// Use CR-10S Status Screen instead of the default
+//#define CR10S_STATUS
+
 // Use your own printer name
 //#define USER_PRINTER_NAME "Change Me" 
 

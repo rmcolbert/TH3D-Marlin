@@ -138,12 +138,17 @@
 
 #endif
 
-#if ENABLED(CUSTOM_STATUS_SCREEN_IMAGE)
-
+#if ENABLED(SHOW_CUSTOM_STATUSSCREEN)
   // This file must define STATUS_SCREENWIDTH and status_screen[012]_bmp.
   // It can also define STATUS_SCREEN_X, STATUS_SCREEN_{BED,FAN}_TEXT_X and
   // STATUS_SCREEN_HOTEND_TEXT_X(i) to modify draw locations.
-  #include "_Statusscreen.h"
+  #if ENABLED(CR10S_STATUS)
+    #include "_StatusscreenCR10S.h"
+  #elif ENABLED(ENDER_STATUS)
+    #include "_StatusscreenENDER.h"
+  #else
+    #include "_Statusscreen.h"
+  #endif  
 
 #else // !CUSTOM_STATUS_SCREEN_IMAGE
 
