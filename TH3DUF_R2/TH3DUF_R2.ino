@@ -18,13 +18,12 @@
 /*
 ================================================================================
 
-  Marlin Firmware
+  Unified Firmware - Built By TH3D
+  Powered by Marlin
 
   (c) 2011-2018 MarlinFirmware
   Portions of Marlin are (c) by their respective authors.
   All code complies with GPLv2 and/or GPLv3
 
 ================================================================================
-
-Greetings! Thank you for choosing Unified Firmware as your 3D printer firmware.
 */

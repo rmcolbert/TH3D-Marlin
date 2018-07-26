@@ -182,11 +182,11 @@
 #elif MB(GT2560_REV_A_PLUS)
   #include "pins_GT2560_REV_A_PLUS.h" // ATmega1280, ATmega2560                     env:megaatmega1280 env:megaatmega2560
 #elif MB(CR10S)
-  #include "pins_RAMPS_CR10S.h"       // ATmega2560
+  #include "pins_RAMPS_CR10S.h"       // ATmega2560                                 env:megaatmega2560
 #elif MB(ONEPLUS1_wanhao)
-  #include "pins_ONEPLUS1_wanhao.h"   // ATmega2560
+  #include "pins_ONEPLUS1_wanhao.h"   // ATmega2560                                 env:megaatmega2560
 #elif MB(RAMPSPLUS2)
-  #include "pins_RAMPSPLUS2.h"        // ATmega2560
+  #include "pins_RAMPSPLUS2.h"        // ATmega2560                                 env:megaatmega2560
 
 //
 // ATmega1281, ATmega2561
@@ -212,7 +212,7 @@
 #elif MB(MELZI_CREALITY)
   #include "pins_MELZI_CREALITY.h"    // ATmega644P, ATmega1284P                    env:sanguino_atmega644p env:sanguino_atmega1284p
 #elif MB(MELZI_CREALITY_ENDER2)
-  #include "pins_MELZI_CREALITY_ENDER2.h" // ATmega644P, ATmega1284P
+  #include "pins_MELZI_CREALITY_ENDER2.h" // ATmega644P, ATmega1284P                env:sanguino_atmega1284p
 #elif MB(MELZI_MALYAN)
   #include "pins_MELZI_MALYAN.h"      // ATmega644P, ATmega1284P                    env:sanguino_atmega644p env:sanguino_atmega1284p
 #elif MB(MELZI_TRONXY)

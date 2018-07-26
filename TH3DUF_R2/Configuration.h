@@ -3,7 +3,7 @@
 *
 * Uncomment means removing the 2 // in front of #define.
 * 
-* If you have EZABL uncomment the mount you are using with the printer. This is all that is needed now.
+* If you have EZABL uncomment the mount you are using with the printer.
 * 
 * If you have a custom/unsupported mount uncomment #define CUSTOM_MOUNT
 * and enter your offsets below in the CUSTOM MOUNT section.
@@ -308,7 +308,7 @@
 
 // This will extrapolate the implied tilt of the bed outside of the probe area
 // By default this should be ENABLED. Do not comment out unless directed by support.
-//#define EZABL_OUTSIDE_GRID_COMPENSATION
+#define EZABL_OUTSIDE_GRID_COMPENSATION
 
 //===========================================================================
 // TH3D EXTRAS
@@ -393,22 +393,28 @@
 // Use your own printer name
 //#define USER_PRINTER_NAME "Change Me" 
 
+// These are new motion control options for jerk and acceleration. They will give you faster print speeds
+// and lower noise of your machine. These are very new features so if you notice issues with prints try
+// disabling them below. These will be automatically disabled on 1284p Boards if Power Resume is enabled
+// as the 1284p does not have enough space for all these features.
+#define NEW_JERK_CONTROL
+#define NEW_ACCELERATION_CONTROL
+
 // If you want to use manual mesh leveling you can enable the below option. TH3D does NOT provide free support
 // to help you use this feature. This is for generating a MANUAL mesh WITHOUT a probe. 
 // Mesh Bed Leveling Documentation: http://marlinfw.org/docs/gcode/G029-mbl.html
 // If used with a 1284P board like the CR-10, Ender 2, Ender 3, or Wanhao i3 the bootscreen will be disabled to save space.
 //#define MANUAL_MESH_LEVELING
 
-/**
-   * Continue after Power-Loss (Creality3D)
-   *
-   * Store the current state to the SD Card at the start of each layer
-   * during SD printing. If the recovery file is found at boot time, present
-   * an option on the LCD screen to continue the print from the last-known
-   * point in the file.
-   * 
-   * Will DISABLE Junction Deviation on 1284P Boards and S-Curve Acceleration
-   */
+// !!!USE AT YOUR OWN RISK!!!
+// Continue after Power-Loss feature will store the current state to the SD Card at the start of each layer
+// during SD printing. If the recovery file is found at boot time, present an option on the LCD screen to
+// continue the print from the last-known point in the file.
+// This will DISABLE Junction Deviation on 1284P Boards and S-Curve Acceleration due to limited space on these boards.
+//
+// NOTE: This feature is UNSUPPORTED and causes excessive wear on your SD card. TH3D will NOT provide support for this
+// feature even if you are a customer and/or replace SD cards due to pre-mature failure. This is provided based on community demands.
+// !!!USE AT YOUR OWN RISK!!!
 //#define POWER_LOSS_RECOVERY
 
 //===========================================================================
@@ -517,5 +523,6 @@
 #include "Configuration_backend.h"
 
 #define UNIFIED_VERSION "TH3D U1.R2.1.BETA"
+// LAST MODIFIED 072618 @ 1250 CST
 
 #endif // CONFIGURATION_H
